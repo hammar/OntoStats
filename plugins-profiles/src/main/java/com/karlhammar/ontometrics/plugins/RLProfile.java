@@ -9,15 +9,15 @@ import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.profiles.OWL2QLProfile;
+import org.semanticweb.owlapi.profiles.OWL2RLProfile;
 import org.semanticweb.owlapi.profiles.OWLProfileReport;
 
-public class QLProfile implements OntoMetricsPlugin {
+public class RLProfile implements OntoMetricsPlugin {
 	
 	private Logger logger = Logger.getLogger(getClass().getName());
 	
 	public String getName() {
-		return "QL Profile Plugin";
+		return "RL Profile Plugin";
 	}
 
 	public void init() {
@@ -25,15 +25,15 @@ public class QLProfile implements OntoMetricsPlugin {
 	}
 
 	public String getMetricAbbreviation() {
-		return "QLProfile";
+		return "RLProfile";
 	}
 
 	public String getMetricValue(File ontologyFile) {
 		try {
-			OWL2QLProfile o2ql = new OWL2QLProfile();
+			OWL2RLProfile o2rl = new OWL2RLProfile();
 			OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 			OWLOntology ontology = manager.loadOntologyFromOntologyDocument(ontologyFile);
-			OWLProfileReport report = o2ql.checkOntology(ontology);
+			OWLProfileReport report = o2rl.checkOntology(ontology);
 			return new Boolean(report.isInProfile()).toString();
 		} 
 		catch (OWLOntologyCreationException e) {
