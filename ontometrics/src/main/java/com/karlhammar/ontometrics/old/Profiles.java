@@ -9,8 +9,8 @@ import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.profiles.OWL2ELProfile;
 import org.semanticweb.owlapi.profiles.OWL2QLProfile;
 import org.semanticweb.owlapi.profiles.OWL2RLProfile;
-import org.semanticweb.owlapi.profiles.OWLProfileReport;*/
-
+import org.semanticweb.owlapi.profiles.OWLProfileReport;
+*/
 public class Profiles {
 	/*
 	private File ontologyFile;

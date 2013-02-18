@@ -66,7 +66,14 @@ public class OntoMetrics {
         Iterator<OntoMetricsPlugin> plugins = pluginService.getPlugins();
         while (plugins.hasNext()) {
         	OntoMetricsPlugin plugin = plugins.next();
-        	results.put(plugin.getMetricAbbreviation(), plugin.getMetricValue(ontologyFile));
+        	
+        	// An error in plugin execution can mean null values returned, so check
+        	// for this.
+        	String metricValue = plugin.getMetricValue(ontologyFile);
+        	String metricAbbreviation = plugin.getMetricAbbreviation();
+        	if (null != metricAbbreviation && null != metricValue) {
+        		results.put(plugin.getMetricAbbreviation(), plugin.getMetricValue(ontologyFile));
+        	}
         }
         
         // Iterate over results to generate output string
