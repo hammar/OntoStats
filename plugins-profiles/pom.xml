@@ -29,21 +29,21 @@
   			<artifactId>maven-shade-plugin</artifactId>
   			<version>2.0</version>
   			<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<finalName>uber-${project.artifactId}-${project.version}</finalName>
-					<artifactSet>
-						<excludes>
-							<exclude>com.karlhammar.ontometrics:ontometrics</exclude>
-						</excludes>
-					</artifactSet>
-				</configuration>
+				<execution>
+					<phase>package</phase>
+					<goals>
+						<goal>shade</goal>
+					</goals>
+				</execution>
+			</executions>
+			<configuration>
+				<finalName>uber-${project.artifactId}-${project.version}</finalName>
+				<artifactSet>
+					<excludes>
+						<exclude>com.karlhammar.ontometrics:ontometrics</exclude>
+					</excludes>
+				</artifactSet>
+			</configuration>
   		</plugin>
   	</plugins>
   </build>
