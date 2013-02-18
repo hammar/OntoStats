@@ -5,4 +5,46 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>Profile Plugin</name>
   <description>OWL 2 profiles calculation plugin for OntoMetrics.</description>
+  <dependencies>
+  	<dependency>
+  		<groupId>net.sourceforge.owlapi</groupId>
+  		<artifactId>owlapi-api</artifactId>
+  		<version>3.4.3</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>net.sourceforge.owlapi</groupId>
+  		<artifactId>owlapi-apibinding</artifactId>
+  		<version>3.4.3</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.karlhammar.ontometrics</groupId>
+  		<artifactId>ontometrics</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
+  <build>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-shade-plugin</artifactId>
+  			<version>2.0</version>
+  			<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<finalName>uber-${project.artifactId}-${project.version}</finalName>
+					<artifactSet>
+						<excludes>
+							<exclude>com.karlhammar.ontometrics:ontometrics</exclude>
+						</excludes>
+					</artifactSet>
+				</configuration>
+  		</plugin>
+  	</plugins>
+  </build>
 </project>
