@@ -1,10 +1,9 @@
-package com.karlhammar.ontometrics;
+package com.karlhammar.ontometrics.plugins.api;
 
 import java.util.Iterator;
 import java.util.ServiceLoader;
 import java.util.logging.Logger;
 
-import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
 public class StandardPluginService implements PluginService {
 	private static StandardPluginService pluginService;

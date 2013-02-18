@@ -1,6 +1,5 @@
-package com.karlhammar.ontometrics;
+package com.karlhammar.ontometrics.plugins.api;
 
-import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 import java.util.Iterator;
 
 public interface PluginService {

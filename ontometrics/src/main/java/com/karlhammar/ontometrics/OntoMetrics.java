@@ -2,6 +2,9 @@ package com.karlhammar.ontometrics;
 
 import java.io.File;
 
+import com.karlhammar.ontometrics.plugins.api.PluginService;
+import com.karlhammar.ontometrics.plugins.api.PluginServiceFactory;
+
 public class OntoMetrics {
 
 	/**

@@ -1,4 +1,4 @@
-package com.karlhammar.ontometrics;
+package com.karlhammar.ontometrics.plugins.api;
 
 import java.io.File;
 import java.io.IOException;

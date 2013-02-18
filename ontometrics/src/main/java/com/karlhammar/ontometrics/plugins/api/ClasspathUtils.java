@@ -1,4 +1,4 @@
-package com.karlhammar.ontometrics;
+package com.karlhammar.ontometrics.plugins.api;
 
 import java.io.File;
 import java.io.IOException;
@@ -62,14 +62,5 @@ public class ClasspathUtils {
 					"Error, could not add URL to system classloader");
 		}
 	}
-
-	private static class CustomURLClassLoader extends URLClassLoader {
-		public CustomURLClassLoader() {
-		super(new URL[]{}) ;
-		}
-		@Override
-		public void addURL(URL url) {
-		super.addURL(url);
-		}
-}}
+}
 
