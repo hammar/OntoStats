@@ -5,22 +5,24 @@ import java.util.logging.Logger;
 
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
-import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyCreationException;
-import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.profiles.OWL2QLProfile;
 import org.semanticweb.owlapi.profiles.OWLProfileReport;
 
 public class QLProfile implements OntoMetricsPlugin {
 	
 	private Logger logger = Logger.getLogger(getClass().getName());
+	private ProfileSingleton ps;
 	
 	public String getName() {
 		return "QL Profile Plugin";
 	}
 
-	public void init() {
+	/**
+	 * Initialize the plugin. Required before metrics calculation.
+	 */
+	public void init(File ontologyFile) {
+		ps = ProfileSingleton.getSingletonObject(ontologyFile);
 		
 	}
 
@@ -28,18 +30,18 @@ public class QLProfile implements OntoMetricsPlugin {
 		return "QLProfile";
 	}
 
+	/**
+	 * If plugin has been initiated (and profile singleton instantiated), 
+	 * return report on whether this ontology is in the QL profile or not.
+	 */
 	public String getMetricValue(File ontologyFile) {
-		try {
-			OWL2QLProfile o2ql = new OWL2QLProfile();
-			OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-			OWLOntology ontology = manager.loadOntologyFromOntologyDocument(ontologyFile);
-			OWLProfileReport report = o2ql.checkOntology(ontology);
-			return new Boolean(report.isInProfile()).toString();
-		} 
-		catch (OWLOntologyCreationException e) {
-			logger.severe(e.getMessage());
+		if (null == ps) {
+			logger.severe("getMetricValue called before init()!");
 			return null;
 		}
+		OWL2QLProfile o2ql = new OWL2QLProfile();
+		OWLOntology ontology = ps.getOntology();
+		OWLProfileReport report = o2ql.checkOntology(ontology);
+		return new Boolean(report.isInProfile()).toString();
 	}
-
 }

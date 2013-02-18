@@ -58,7 +58,6 @@ public class OntoMetrics {
 
 		// Initialize the plugins and results map
 		PluginService pluginService = PluginServiceFactory.createPluginService();
-        pluginService.initPlugins();
         Map<String,String> results = new HashMap<String, String>();
         
         // Execute each plugin in turn
@@ -66,6 +65,7 @@ public class OntoMetrics {
         Iterator<OntoMetricsPlugin> plugins = pluginService.getPlugins();
         while (plugins.hasNext()) {
         	OntoMetricsPlugin plugin = plugins.next();
+        	plugin.init(ontologyFile);
         	
         	// An error in plugin execution can mean null values returned, so check
         	// for this.

@@ -4,7 +4,7 @@ import java.io.File;
 
 public interface OntoMetricsPlugin {
 	String getName();
-	void init();
+	void init(File ontologyFile);
 	String getMetricAbbreviation();
 	String getMetricValue(File ontologyFile);
 }
