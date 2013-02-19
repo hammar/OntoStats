@@ -1,3 +1,6 @@
 com.karlhammar.ontometrics.plugins.structural.ClassSize
 com.karlhammar.ontometrics.plugins.structural.PropertySize
 com.karlhammar.ontometrics.plugins.structural.CpRatio
+com.karlhammar.ontometrics.plugins.structural.AbsoluteDepth
+com.karlhammar.ontometrics.plugins.structural.AverageDepth
+com.karlhammar.ontometrics.plugins.structural.MaximumDepth
