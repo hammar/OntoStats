@@ -23,7 +23,7 @@ public class OntoMetrics {
 
 	private static void printHelpAndQuit(Options options) {
 		HelpFormatter formatter = new HelpFormatter();
-		formatter.printHelp( "OntoMetrics -f <PATH> [-h] | -l", options);
+		formatter.printHelp( "OntoMetrics -f <PATH> [-h] [-n] | -l", options);
 		System.exit(1);
 	}
 	
@@ -47,6 +47,7 @@ public class OntoMetrics {
 		options.addOption("f", true, "File name of OWL file to process. Either this or the '-l' option is mandatory.");
 		options.addOption("l", false, "If present, print listing of installed plugins and quit. Either this or the '-f' option is mandatory.");
 		options.addOption("h", false, "Optional. If present, do not include header row.");
+		options.addOption("n", false, "Optional. If present, return the input file name as first column. Useful for batch jobs including many files.");
 		final Parser commandlineparser = new PosixParser();
 		
 		// Parse command line, displaying help message if needed
@@ -92,8 +93,16 @@ public class OntoMetrics {
         }
         
         // Iterate over results to generate output string
-        String metricAbbreviations = "";
-        String metricValues = "";
+        String metricAbbreviations;
+        String metricValues;
+        if (cl.hasOption("n")) {
+        	metricAbbreviations = "FileName";
+        	metricValues = ontologyFile.getName();
+        }
+        else {
+        	metricAbbreviations = "";
+            metricValues = "";	
+        }
         for (String key: results.keySet()) {
         	if (metricAbbreviations.length() == 0) {
         		metricAbbreviations = key;
