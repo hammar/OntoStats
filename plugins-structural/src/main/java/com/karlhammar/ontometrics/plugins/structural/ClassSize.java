@@ -11,14 +11,14 @@ import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 public class ClassSize implements OntoMetricsPlugin  {
 
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private StructuralSingleton ss;
+	private StructuralSingletonJena ss;
 	
 	public String getName() {
 		return "Class size plugin";
 	}
 
 	public void init(File ontologyFile) {
-		ss = StructuralSingleton.getSingletonObject(ontologyFile);
+		ss = StructuralSingletonJena.getSingletonObject(ontologyFile);
 	}
 
 	public String getMetricAbbreviation() {

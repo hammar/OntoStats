@@ -13,17 +13,17 @@ import com.hp.hpl.jena.rdf.model.ModelFactory;
  * @author Karl Hammar <karl@karlhammar.com>
  *
  */
-public class StructuralSingleton {
+public class StructuralSingletonJena {
 
 	// Member variables.
-	private static StructuralSingleton ref;
+	private static StructuralSingletonJena ref;
 	private OntModel ontology;
 
 	/**
 	 * Private constructor. Loads ontology document.
 	 * @param ontologyFile
 	 */
-	private StructuralSingleton(File ontologyFile) {
+	private StructuralSingletonJena(File ontologyFile) {
 		this.ontology = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
 		this.ontology.read(ontologyFile.toURI().toString());
 	}
@@ -42,9 +42,9 @@ public class StructuralSingleton {
 	 * @param ontologyFile The File instance referring to ontology to calculate metrics over.
 	 * @return New or existing Singleton instance.
 	 */
-	public static synchronized StructuralSingleton getSingletonObject(File ontologyFile) {
+	public static synchronized StructuralSingletonJena getSingletonObject(File ontologyFile) {
 		if (ref == null) {
-			ref = new StructuralSingleton(ontologyFile);
+			ref = new StructuralSingletonJena(ontologyFile);
 		}
 		return ref;
 	}
