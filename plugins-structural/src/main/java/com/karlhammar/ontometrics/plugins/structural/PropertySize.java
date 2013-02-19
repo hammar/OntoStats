@@ -4,17 +4,17 @@ import java.io.File;
 import java.util.List;
 import java.util.logging.Logger;
 
-import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
+import com.hp.hpl.jena.ontology.OntProperty;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
-public class ClassSize implements OntoMetricsPlugin  {
+public class PropertySize implements OntoMetricsPlugin {
 
 	private Logger logger = Logger.getLogger(getClass().getName());
 	private StructuralSingleton ss;
 	
 	public String getName() {
-		return "Class size plugin";
+		return "Property size plugin";
 	}
 
 	public void init(File ontologyFile) {
@@ -22,7 +22,7 @@ public class ClassSize implements OntoMetricsPlugin  {
 	}
 
 	public String getMetricAbbreviation() {
-		return "ClsSize";
+		return "PropSize";
 	}
 
 	public String getMetricValue(File ontologyFile) {
@@ -31,9 +31,11 @@ public class ClassSize implements OntoMetricsPlugin  {
 			init(ontologyFile);
 		}
 		OntModel ontology = ss.getOntology();
-		List<OntClass> classes = ontology.listNamedClasses().toList();
-		// -1 to account for owl:Thing
-		Integer result = classes.size() - 1;
-		return result.toString();
+		Integer nrOfProperties = 0;
+		List<OntProperty> properties = ontology.listAllOntProperties().toList();
+		for (OntProperty op: properties)
+			if (!op.isAnnotationProperty())
+				nrOfProperties++;	
+		return nrOfProperties.toString();
 	}
 }

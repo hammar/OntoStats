@@ -1,1 +1,2 @@
 com.karlhammar.ontometrics.plugins.structural.ClassSize
+com.karlhammar.ontometrics.plugins.structural.PropertySize
