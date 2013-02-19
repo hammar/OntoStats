@@ -36,8 +36,8 @@ public class QLProfile implements OntoMetricsPlugin {
 	 */
 	public String getMetricValue(File ontologyFile) {
 		if (null == ps) {
-			logger.severe("getMetricValue called before init()!");
-			return null;
+			logger.info("getMetricValue called before init()!");
+			init(ontologyFile);
 		}
 		OWL2QLProfile o2ql = new OWL2QLProfile();
 		OWLOntology ontology = ps.getOntology();

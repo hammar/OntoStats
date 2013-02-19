@@ -36,8 +36,8 @@ public class RLProfile implements OntoMetricsPlugin {
 	 */
 	public String getMetricValue(File ontologyFile) {
 		if (null == ps) {
-			logger.severe("getMetricValue called before init()!");
-			return null;
+			logger.info("getMetricValue called before init()!");
+			init(ontologyFile);
 		}
 		OWL2RLProfile o2rl = new OWL2RLProfile();
 		OWLOntology ontology = ps.getOntology();

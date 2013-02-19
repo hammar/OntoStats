@@ -23,7 +23,6 @@ public class ELProfile implements OntoMetricsPlugin {
 	 */
 	public void init(File ontologyFile) {
 		ps = ProfileSingleton.getSingletonObject(ontologyFile);
-		
 	}
 
 	public String getMetricAbbreviation() {
@@ -36,8 +35,8 @@ public class ELProfile implements OntoMetricsPlugin {
 	 */
 	public String getMetricValue(File ontologyFile) {
 		if (null == ps) {
-			logger.severe("getMetricValue called before init()!");
-			return null;
+			logger.info("getMetricValue called before init()!");
+			init(ontologyFile);
 		}
 		OWL2ELProfile o2el = new OWL2ELProfile();
 		OWLOntology ontology = ps.getOntology();
