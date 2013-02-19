@@ -23,7 +23,6 @@ public class AnnotationRatio implements OntoMetricsPlugin {
 
 	public void init(File ontologyFile) {
 		ss = StructuralSingleton.getSingletonObject(ontologyFile);
-
 	}
 
 	public String getMetricAbbreviation() {
