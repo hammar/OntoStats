@@ -31,11 +31,15 @@ public class PropertySize implements OntoMetricsPlugin {
 			init(ontologyFile);
 		}
 		OntModel ontology = ss.getOntology();
+		return getPropertySize(ontology).toString();
+	}
+	
+	protected static Integer getPropertySize(OntModel ontology) {
 		Integer nrOfProperties = 0;
 		List<OntProperty> properties = ontology.listAllOntProperties().toList();
 		for (OntProperty op: properties)
 			if (!op.isAnnotationProperty())
-				nrOfProperties++;	
-		return nrOfProperties.toString();
+				nrOfProperties++;
+		return nrOfProperties;
 	}
 }
