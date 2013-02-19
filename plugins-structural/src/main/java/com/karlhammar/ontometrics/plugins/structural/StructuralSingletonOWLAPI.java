@@ -91,6 +91,11 @@ public class StructuralSingletonOWLAPI {
 		    	}
 		    }
 		    
+		    // If ALL superclasses are anonymous expressions, consider top reached
+		    if (parentHeights.size() == 0) {
+		    	parentHeights.add(0);
+		    }
+		    
 		    // Get and return only the longest path
 		    Collections.sort(parentHeights, Collections.reverseOrder());
 		    int longestParentHeight = parentHeights.get(parentHeights.size()-1);
