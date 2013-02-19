@@ -22,7 +22,7 @@ public class AnonymousClassCount implements OntoMetricsPlugin {
 	}
 
 	public String getMetricAbbreviation() {
-		return "AnonymousClasses";
+		return "Anonymous";
 	}
 
 	public String getMetricValue(File ontologyFile) {

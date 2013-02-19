@@ -20,7 +20,7 @@ public class CpRatio implements OntoMetricsPlugin {
 	}
 
 	public String getMetricAbbreviation() {
-		return "CpRatio";
+		return "CtoPRatio";
 	}
 
 	public String getMetricValue(File ontologyFile) {

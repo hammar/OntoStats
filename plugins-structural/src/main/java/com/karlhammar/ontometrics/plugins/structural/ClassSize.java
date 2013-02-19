@@ -22,7 +22,7 @@ public class ClassSize implements OntoMetricsPlugin  {
 	}
 
 	public String getMetricAbbreviation() {
-		return "ClsSize";
+		return "ClassSize";
 	}
 
 	public String getMetricValue(File ontologyFile) {

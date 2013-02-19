@@ -23,8 +23,18 @@ public class OntoMetrics {
 
 	private static void printHelpAndQuit(Options options) {
 		HelpFormatter formatter = new HelpFormatter();
-		formatter.printHelp( "OntoMetrics -f <PATH> [-h]", options);
+		formatter.printHelp( "OntoMetrics -f <PATH> [-h] | -l", options);
 		System.exit(1);
+	}
+	
+	private static void printPluginsAndQuit() {
+		PluginService pluginService = PluginServiceFactory.createPluginService();
+		Iterator<OntoMetricsPlugin> plugins = pluginService.getPlugins();
+		while (plugins.hasNext()) {
+			OntoMetricsPlugin plugin = plugins.next();
+			System.out.println(String.format("%s\t\t%s", plugin.getMetricAbbreviation(), plugin.getName()));
+		}
+		System.exit(0);
 	}
 	
 	/**
@@ -34,7 +44,8 @@ public class OntoMetrics {
 		
 		// Configure CLI parameters
 		Options options = new Options();
-		options.addOption("f", true, "Mandatory. File name of OWL file to process.");
+		options.addOption("f", true, "File name of OWL file to process. Either this or the '-l' option is mandatory.");
+		options.addOption("l", false, "If present, print listing of installed plugins and quit. Either this or the '-f' option is mandatory.");
 		options.addOption("h", false, "Optional. If present, do not include header row.");
 		final Parser commandlineparser = new PosixParser();
 		
@@ -46,9 +57,17 @@ public class OntoMetrics {
 		catch (final ParseException exp) {
         	logger.severe("Unexpected exception:" + exp.getMessage());
         }
-		if (null == cl || !cl.hasOption("f")) {
+		if (null == cl || (!cl.hasOption("f") && !cl.hasOption("l"))) {
 			printHelpAndQuit(options);
 		}
+		
+		if (cl.hasOption("l")) {
+			printPluginsAndQuit();
+		}
+		
+		// Initialize the plugins and results map
+		PluginService pluginService = PluginServiceFactory.createPluginService();
+        Map<String,String> results = new HashMap<String, String>();
 		
 		// Check that input file actually exists
 		File ontologyFile=new File(cl.getOptionValue("f"));
@@ -56,10 +75,6 @@ public class OntoMetrics {
 			printHelpAndQuit(options);
 		}
 
-		// Initialize the plugins and results map
-		PluginService pluginService = PluginServiceFactory.createPluginService();
-        Map<String,String> results = new HashMap<String, String>();
-        
         // Execute each plugin in turn
         // TODO: What happens if two plugins share abbreviation?
         Iterator<OntoMetricsPlugin> plugins = pluginService.getPlugins();
