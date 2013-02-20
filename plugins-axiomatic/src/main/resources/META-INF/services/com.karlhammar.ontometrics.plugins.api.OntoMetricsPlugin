@@ -3,3 +3,4 @@ com.karlhammar.ontometrics.plugins.axiomatic.AnonymousClassCount
 com.karlhammar.ontometrics.plugins.axiomatic.PropertyDomainRestrictionRatio
 com.karlhammar.ontometrics.plugins.axiomatic.PropertyRangeRestrictionRatio
 com.karlhammar.ontometrics.plugins.axiomatic.ClassInDegree
+com.karlhammar.ontometrics.plugins.axiomatic.ClassOutDegree
