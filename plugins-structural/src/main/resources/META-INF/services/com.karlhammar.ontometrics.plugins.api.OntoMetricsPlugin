@@ -4,3 +4,4 @@ com.karlhammar.ontometrics.plugins.structural.CpRatio
 com.karlhammar.ontometrics.plugins.structural.AbsoluteDepth
 com.karlhammar.ontometrics.plugins.structural.AverageDepth
 com.karlhammar.ontometrics.plugins.structural.MaximumDepth
+com.karlhammar.ontometrics.plugins.structural.TreeImpurity
