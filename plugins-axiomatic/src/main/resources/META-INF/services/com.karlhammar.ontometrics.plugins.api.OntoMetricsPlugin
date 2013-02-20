@@ -5,3 +5,4 @@ com.karlhammar.ontometrics.plugins.axiomatic.PropertyRangeRestrictionRatio
 com.karlhammar.ontometrics.plugins.axiomatic.ClassInDegree
 com.karlhammar.ontometrics.plugins.axiomatic.ClassOutDegree
 com.karlhammar.ontometrics.plugins.axiomatic.ExistentialQuantification
+com.karlhammar.ontometrics.plugins.axiomatic.GeneralConceptInclusions
