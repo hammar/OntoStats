@@ -36,21 +36,19 @@ public class ClassInDegree implements OntoMetricsPlugin {
 		}
 		OntModel ontology = ss.getOntology();
 		ExtendedIterator<OntClass> allClasses = ontology.listClasses();
-		int nrNamedClasses = 0;
+		int nrClasses = 0;
 		int inEdges = 0;
 		while (allClasses.hasNext()) {
 			OntClass c = allClasses.next();
-			if (!c.isAnon()) {
-				Selector selector = new SimpleSelector(null, null, c);
-				StmtIterator iter = ontology.listStatements(selector);
-				while (iter.hasNext()) {
-					iter.next();
-					inEdges++;
-				}
-				nrNamedClasses++;
+			nrClasses++;
+			Selector selector = new SimpleSelector(null, null, c);
+			StmtIterator iter = ontology.listStatements(selector);
+			while (iter.hasNext()) {
+				iter.next();
+				inEdges++;
 			}
 		}
-		Float inDegree = (float)inEdges / nrNamedClasses;
+		Float inDegree = (float)inEdges / nrClasses;
 		return inDegree.toString();
 	}
 }
