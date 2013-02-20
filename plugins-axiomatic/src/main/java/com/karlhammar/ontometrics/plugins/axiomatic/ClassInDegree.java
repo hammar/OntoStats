@@ -44,6 +44,7 @@ public class ClassInDegree implements OntoMetricsPlugin {
 				Selector selector = new SimpleSelector(null, null, c);
 				StmtIterator iter = ontology.listStatements(selector);
 				while (iter.hasNext()) {
+					iter.next();
 					inEdges++;
 				}
 				nrNamedClasses++;
