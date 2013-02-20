@@ -10,7 +10,6 @@ import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.Selector;
 import com.hp.hpl.jena.rdf.model.SimpleSelector;
-import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
@@ -34,7 +33,6 @@ public class TreeImpurity implements OntoMetricsPlugin {
 	}
 
 	public String getMetricValue(File ontologyFile) {
-		System.out.println("RUNNING GETMETRICVALUE");
 		if (null == ss) {
 			logger.info("getMetricValue called before init()!");
 			init(ontologyFile);
@@ -47,15 +45,13 @@ public class TreeImpurity implements OntoMetricsPlugin {
 		Selector selector = new SimpleSelector(null, subClassOfProperty, (RDFNode)null);
 		StmtIterator subClassIter = ontology.listStatements(selector);
 		while (subClassIter.hasNext()) {
-			Statement s = subClassIter.next();
-			System.out.println("Subclass statement: " + s.toString());
+			subClassIter.next();
 			subClassEdges++;
 		}
 		
 		ExtendedIterator<OntClass> allClasses = ontology.listClasses();
 		while (allClasses.hasNext()) {
-			OntClass c = allClasses.next();
-			System.out.println("Class " + c.toString());
+			allClasses.next();
 			classNodes++;
 		}
 		
