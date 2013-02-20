@@ -88,7 +88,7 @@ public class OntoMetrics {
         	String metricValue = plugin.getMetricValue(ontologyFile);
         	String metricAbbreviation = plugin.getMetricAbbreviation();
         	if (null != metricAbbreviation && null != metricValue) {
-        		results.put(plugin.getMetricAbbreviation(), plugin.getMetricValue(ontologyFile));
+        		results.put(metricAbbreviation, metricValue);
         	}
         }
         
