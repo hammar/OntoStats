@@ -33,7 +33,16 @@ public class MaximumDepth implements OntoMetricsPlugin {
 			ss.calculateHeights();
 		}
 		List<Integer> heights = ss.getHeights();
-		Collections.sort(heights, Collections.reverseOrder());
-		return heights.get(0).toString();
+		
+		// If no heights are recorded then no classes are asserted in the ontology. In that case, 
+		// return zero maximum height.
+		if (heights.size() == 0) {
+			return "0"; 
+		}
+		// Otherwise, sort height paths and return highest.
+		else {
+			Collections.sort(heights, Collections.reverseOrder());
+			return heights.get(0).toString();
+		}
 	}
 }
