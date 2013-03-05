@@ -54,7 +54,10 @@ public class StructuralSingletonOWLAPI {
 	    while (iter.hasNext())
 	    {
 	    	OWLClass leafNode = iter.next();
-	    	heights.add(calculateTallestHeightFromNode(ontology,leafNode));
+	    	// Ignore OWL thing if it for some reason shows up w/o children
+	    	if (!leafNode.isOWLThing()) {
+	    		heights.add(calculateTallestHeightFromNode(ontology,leafNode));
+	    	}
 	    }
 	}
 	
@@ -68,32 +71,36 @@ public class StructuralSingletonOWLAPI {
 	 */
 	private int calculateTallestHeightFromNode(OWLOntology o, OWLClass c)
 	{
+		
 		Set<OWLClassExpression> superClasses = c.getSuperClasses(o);
+		Set<OWLClass> namedSuperClasses = new HashSet<OWLClass>();
+		
+		// Get only named classes, i.e. non-anonymous
+		for (OWLClassExpression oce: superClasses) {
+			if (!oce.isAnonymous()) {
+				namedSuperClasses.add(oce.asOWLClass());
+			}
+		}
 		
 		// If there are no superclasses, stop recursing.
-		if (superClasses.size() <= 0)
+		if (namedSuperClasses.size() <= 0)
 		{
-			return 0;
+			if (c.isOWLThing()) {
+				// Top has been reached
+				return 0;
+			}
+			else {
+				// Class has no asserted superclass and is not itself owl:Thing so we must 
+				// infer that it is a direct child of owl:Thing 
+				return 1;
+			}
 		}
 		else
 		{
 			List<Integer> parentHeights = new ArrayList<Integer>();
-			Iterator<OWLClassExpression> iter = superClasses.iterator();
-		    while (iter.hasNext()) {
-		    	OWLClassExpression i = iter.next();
-		    	
-		    	// We don't want anonymous classes, only explicitly stated 
-		    	// superclass relations
-		    	if (!i.isAnonymous())
-		    	{
-		    		OWLClass superClass = i.asOWLClass();
-		    		parentHeights.add(calculateTallestHeightFromNode(o,superClass));
-		    	}
-		    }
-		    
-		    // If ALL superclasses are anonymous expressions, consider top reached
-		    if (parentHeights.size() == 0) {
-		    	parentHeights.add(0);
+		    for(OWLClass namedParentClass: namedSuperClasses) {
+		    	// Recurse one step up hierarchy
+		    	parentHeights.add(calculateTallestHeightFromNode(o,namedParentClass));
 		    }
 		    
 		    // Get and return only the longest path

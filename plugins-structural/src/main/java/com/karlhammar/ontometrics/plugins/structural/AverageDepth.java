@@ -32,7 +32,18 @@ public class AverageDepth implements OntoMetricsPlugin {
 			ss.calculateHeights();
 		}
 		List<Integer> heights = ss.getHeights();
-		Float avgHeight = AbsoluteDepth.getAbsoluteDepth(heights).floatValue() / heights.size();
+		Float avgHeight;
+		
+		// If no heights are recorded then no classes are asserted in the ontology. In that case, 
+		// return zero average height.
+		if (heights.size() == 0) {
+			avgHeight = new Float(0.0); 
+		}
+		// Otherwise, return average height by calculating total height by number of height paths.
+		else {
+			avgHeight = AbsoluteDepth.getAbsoluteDepth(heights).floatValue() / heights.size();
+		}
+		
 		return avgHeight.toString();
 	}
 }
