@@ -17,4 +17,46 @@
   		<version>1.7.2</version>
   	</dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <!-- Create a Jar with a Manifest -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+          <archive>
+            <index>true</index>
+	    <manifest>
+              <mainClass>com.karlhammar.ontometrics.OntoMetrics</mainClass>
+              <packageName>com.karlhammar.ontometrics</packageName>
+	    </manifest>
+            <manifestEntries>
+              <mode>development</mode>
+              <url>https://github.com/hammar/OntoStats</url>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+      <!-- Allow mvn exec to execute the project -->
+      <plugin>
+	<groupId>org.codehaus.mojo</groupId>
+	<artifactId>exec-maven-plugin</artifactId>
+	<version>1.2.1</version>
+	<executions>
+	  <execution>
+            <goals>
+              <goal>java</goal>
+            </goals>
+	  </execution>
+	</executions>
+	<configuration>
+	  <executable>java</executable>
+          <mainClass>com.karlhammar.ontometrics.OntoMetrics</mainClass>
+	</configuration>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>
