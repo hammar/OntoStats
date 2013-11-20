@@ -1,5 +1,6 @@
 com.karlhammar.ontometrics.plugins.axiomatic.AnnotationRatio
 com.karlhammar.ontometrics.plugins.axiomatic.AnonymousClassCount
+com.karlhammar.ontometrics.plugins.axiomatic.BoxyRatio
 com.karlhammar.ontometrics.plugins.axiomatic.PropertyDomainRestrictionRatio
 com.karlhammar.ontometrics.plugins.axiomatic.PropertyRangeRestrictionRatio
 com.karlhammar.ontometrics.plugins.axiomatic.ClassInDegree
