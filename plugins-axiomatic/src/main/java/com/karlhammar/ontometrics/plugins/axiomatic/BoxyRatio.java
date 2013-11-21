@@ -8,6 +8,16 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import java.io.File;
 import java.util.logging.Logger;
 
+/**
+ *
+ * @author Aidan Delaney <aidan@ontologyengineering.org>
+ *
+ * The Boxyness Ratio calculates the ratio of TBox:ABox:RBox axioms in an
+ * ontology.  The sum of the ratio components often does not equal 1 as there
+ * are axioms that are neither TBox, ABox nor RBox.  An example of such an axiom
+ * is OWL API's AxiomType.SWRL_RULE or, more informally, other examples are
+ * those axioms that relate to annotations.
+ */
 public class BoxyRatio implements OntoMetricsPlugin {
     private Logger logger = Logger.getLogger(getClass().getName());
     private StructuralSingletonOWLAPI ss;
@@ -28,6 +38,13 @@ public class BoxyRatio implements OntoMetricsPlugin {
     }
 
     /**
+     * The ratio of TBoxAxioms:ABoxAxioms:RBoxAxioms.  In the ratio we divide
+     * the number of TBoxAxioms by the total number of axioms in the ontology.
+     * Similarly, ABoxAxioms and RBoxAxioms are divided by the total number of
+     * axioms in the ontology.
+     *
+     * @return The ratio of TBoxAxioms:ABoxAxioms:RBoxAxioms with respect to the
+     * size of the ontology.
      */
     public String getMetricValue(File ontologyFile) {
         if (null == ss) {
@@ -41,19 +58,20 @@ public class BoxyRatio implements OntoMetricsPlugin {
         for(AxiomType<?> tbox: AxiomType.TBoxAxiomTypes) {
             tboxes += ontology.getAxiomCount(tbox);
         }
-        float tboxCount = (float) tboxes/total;
 
         int aboxes = 0;
         for(AxiomType<?> abox: AxiomType.ABoxAxiomTypes) {
             aboxes += ontology.getAxiomCount(abox);
         }
-        float aboxCount = (float) aboxes/total;
 
         int rboxes = 0;
         for(AxiomType<?> rbox: AxiomType.RBoxAxiomTypes) {
             rboxes += ontology.getAxiomCount(rbox);
         }
-        float rboxCount = (float) rboxes/total;
+
+        float tboxCount   = (float) tboxes/total;
+        float aboxCount   = (float) aboxes/total;
+        float rboxCount   = (float) rboxes/total;
 
         return new String(tboxCount + ":" + aboxCount + ":" + rboxCount);
     }
