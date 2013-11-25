@@ -22,35 +22,15 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="/ontometrics"/>
-	<classpathentry kind="lib" path="/Users/karl/.m2/repository/com/hp/hpl/jena/jena/2.6.4/jena-2.6.4.jar" sourcepath="/Users/karl/.m2/repository/com/hp/hpl/jena/jena/2.6.4/jena-2.6.4-sources.jar">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="javadoc_location" value="jar:file:/Users/karl/.m2/repository/com/hp/hpl/jena/jena/2.6.4/jena-2.6.4-javadoc.jar!/"/>
-			<attribute name="maven.groupId" value="com.hp.hpl.jena"/>
-			<attribute name="maven.artifactId" value="jena"/>
-			<attribute name="maven.version" value="2.6.4"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/karl/.m2/repository/net/sourceforge/owlapi/owlapi-api/3.4.3/owlapi-api-3.4.3.jar" sourcepath="/Users/karl/.m2/repository/net/sourceforge/owlapi/owlapi-api/3.4.3/owlapi-api-3.4.3-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="javadoc_location" value="jar:file:/Users/karl/.m2/repository/net/sourceforge/owlapi/owlapi-api/3.4.3/owlapi-api-3.4.3-javadoc.jar!/"/>
-			<attribute name="maven.groupId" value="net.sourceforge.owlapi"/>
-			<attribute name="maven.artifactId" value="owlapi-api"/>
-			<attribute name="maven.version" value="3.4.3"/>
-			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
