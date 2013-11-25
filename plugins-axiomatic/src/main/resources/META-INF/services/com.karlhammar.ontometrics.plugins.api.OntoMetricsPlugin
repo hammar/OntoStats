@@ -7,3 +7,4 @@ com.karlhammar.ontometrics.plugins.axiomatic.ClassInDegree
 com.karlhammar.ontometrics.plugins.axiomatic.ClassOutDegree
 com.karlhammar.ontometrics.plugins.axiomatic.ExistentialQuantification
 com.karlhammar.ontometrics.plugins.axiomatic.GeneralConceptInclusions
+com.karlhammar.ontometrics.plugins.axiomatic.PrettyDiagramAxiomRatio
