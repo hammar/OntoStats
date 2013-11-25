@@ -33,10 +33,10 @@ public class CommentsRatio implements OntoMetricsPlugin {
 			init(ontologyFile);
 		}
 		OntModel ontology = ss.getOntology();
-		return calculateAnnotationRatio(ontology).toString();
+		return calculateCommentsRatio(ontology).toString();
 	}
 
-	private static Double calculateAnnotationRatio(OntModel m) {
+	private static Double calculateCommentsRatio(OntModel m) {
 		// Add all named classes, individuals, and properties
 		// to a set of "commentable" entities.
 		Set<OntResource> commentableEntities = new HashSet<OntResource>();
