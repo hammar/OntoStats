@@ -1,4 +1,4 @@
-com.karlhammar.ontometrics.plugins.axiomatic.AnnotationRatio
+com.karlhammar.ontometrics.plugins.axiomatic.CommentsRatio
 com.karlhammar.ontometrics.plugins.axiomatic.AnonymousClassCount
 com.karlhammar.ontometrics.plugins.axiomatic.BoxyRatio
 com.karlhammar.ontometrics.plugins.axiomatic.PropertyDomainRestrictionRatio
