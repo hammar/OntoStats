@@ -1,4 +1,4 @@
-package com.karlhammar.ontometrics.plugins.axiomatic;
+package org.ontologyengineering.ontometrics.plugins;
 
 import java.io.File;
 import java.util.Arrays;
@@ -10,6 +10,7 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.query.*;
 
+import com.karlhammar.ontometrics.plugins.*;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
 /**
@@ -31,7 +32,7 @@ import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
  * This metric calculates the amount of the ontology that can be represented as
  * Concept Diagrams using the "pretty" mechanism.
  */
-public class PrettyDiagramAxiomRatio implements OntoMetricsPlugin {
+public class AtomSubsetAtom implements OntoMetricsPlugin {
 
     private Logger logger = Logger.getLogger(getClass().getName());
     private StructuralSingletonOWLAPI sowl;

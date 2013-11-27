@@ -1,4 +1,4 @@
-package com.karlhammar.ontometrics.plugins.axiomatic;
+package com.karlhammar.ontometrics.plugins;
 
 import java.io.File;
 
