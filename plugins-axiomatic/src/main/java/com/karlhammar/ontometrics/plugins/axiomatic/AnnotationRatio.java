@@ -10,6 +10,7 @@ import com.hp.hpl.jena.ontology.AnnotationProperty;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntProperty;
 import com.hp.hpl.jena.ontology.OntResource;
+import com.karlhammar.ontometrics.plugins.*;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
 public class AnnotationRatio implements OntoMetricsPlugin {

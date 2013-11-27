@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntProperty;
+import com.karlhammar.ontometrics.plugins.*;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
 public class PropertyRangeRestrictionRatio implements OntoMetricsPlugin {

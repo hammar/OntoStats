@@ -41,7 +41,8 @@
 		<finalName>uber-${project.artifactId}-${project.version}</finalName>
 		<artifactSet>
 			<excludes>
-				<exclude>com.karlhammar.ontometrics:ontometrics</exclude>
+				<exclude>com.karlhammar.ontometrics:ontometrics-core</exclude>
+				<exclude>com.karlhammar.ontometrics:plugins-axiomatic</exclude>
 			</excludes>
 		</artifactSet>
 	</configuration>

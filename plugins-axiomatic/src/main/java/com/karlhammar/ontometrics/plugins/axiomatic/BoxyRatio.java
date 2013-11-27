@@ -1,5 +1,6 @@
 package com.karlhammar.ontometrics.plugins.axiomatic;
 
+import com.karlhammar.ontometrics.plugins.*;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
 import org.semanticweb.owlapi.model.AxiomType;

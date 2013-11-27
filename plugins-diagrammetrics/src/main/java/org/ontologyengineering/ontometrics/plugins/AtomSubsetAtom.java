@@ -39,7 +39,7 @@ public class AtomSubsetAtom implements OntoMetricsPlugin {
     private StructuralSingleton ss;
     
     public String getName() {
-        return "Pretty diagram ratio plugin";
+        return "Ratio of Atom Subsumes Atom axioms to the TBox size";
     }
 
     public void init(File ontologyFile) {
@@ -49,7 +49,7 @@ public class AtomSubsetAtom implements OntoMetricsPlugin {
     }
 
     public String getMetricAbbreviation() {
-        return "PrettyDiagramRatio";
+        return "AtomSubsetAtom";
     }
 
     public String getMetricValue(File ontologyFile) {

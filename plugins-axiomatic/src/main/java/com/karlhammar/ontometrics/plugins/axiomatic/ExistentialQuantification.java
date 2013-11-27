@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import com.karlhammar.ontometrics.plugins.*;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
 import org.semanticweb.owlapi.model.ClassExpressionType;

@@ -9,6 +9,7 @@ import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.OWLClassAxiom;
 import org.semanticweb.owlapi.model.OWLOntology;
 
+import com.karlhammar.ontometrics.plugins.*;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
 public class GeneralConceptInclusions implements OntoMetricsPlugin {
