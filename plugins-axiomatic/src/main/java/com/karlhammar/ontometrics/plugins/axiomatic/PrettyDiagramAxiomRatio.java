@@ -7,6 +7,9 @@ import java.util.logging.Logger;
 import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.OWLOntology;
 
+import com.hp.hpl.jena.ontology.OntModel;
+import com.hp.hpl.jena.query.*;
+
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
 /**
@@ -32,13 +35,16 @@ public class PrettyDiagramAxiomRatio implements OntoMetricsPlugin {
 
     private Logger logger = Logger.getLogger(getClass().getName());
     private StructuralSingletonOWLAPI sowl;
+    private StructuralSingleton ss;
     
     public String getName() {
         return "Pretty diagram ratio plugin";
     }
 
     public void init(File ontologyFile) {
+        // We need both OWL API and Jena for this trick.
         sowl = StructuralSingletonOWLAPI.getSingletonObject(ontologyFile);
+        ss   = StructuralSingleton.getSingletonObject(ontologyFile);
     }
 
     public String getMetricAbbreviation() {
@@ -46,30 +52,72 @@ public class PrettyDiagramAxiomRatio implements OntoMetricsPlugin {
     }
 
     public String getMetricValue(File ontologyFile) {
-        if (null == sowl) {
+        if ((null == sowl) || (null == ss)) {
             logger.info("getMetricValue called before init()!");
             init(ontologyFile);
         }
         OWLOntology owlmodel = sowl.getOntology();
-        return calculatePrettyDiagramRatio(owlmodel).toString();
+        OntModel    ontmodel = ss.getOntology();
+        return calculatePrettyDiagramRatio(owlmodel, ontmodel);
     }
 
+    final String PREFIX_STRING =
+            "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+                + "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
+                + "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
+                + "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> ";
 
-    private static Double calculatePrettyDiagramRatio(OWLOntology owl) {
+
+    private class SimpleQuery {
+        // this is almost documentation.
+        public String laTeXString;
+        public String queryString;
+    }
+
+    // Hacktastic double brace initialisation
+    final SimpleQuery s1 = new SimpleQuery() {{
+        laTeXString = "C_1 \\sqsubseteq C_3";
+        queryString = PREFIX_STRING
+                + "SELECT ?subject ?object "
+                + "       WHERE { ?subject rdfs:subClassOf ?object ; "
+                + "                        rdf:type              owl:Class . "
+                + "               ?object  rdf:type              owl:Class . "
+                + "               FILTER NOT EXISTS{?subject owl:unionOf        ?o1 } "
+                + "               FILTER NOT EXISTS{?subject owl:intersectionOf ?o2 } "
+                + "               FILTER NOT EXISTS{?subject owl:complementOf   ?o3 } "
+                + "               FILTER NOT EXISTS{?object  owl:unionOf        ?o4 } "
+                + "               FILTER NOT EXISTS{?object  owl:intersectionOf ?o5 } "
+                + "               FILTER NOT EXISTS{?object  owl:complementOf   ?o6 } "
+                + "               } "
+                + "               GROUP BY ?subject ?object "
+                ;
+    }};
+
+    private String calculatePrettyDiagramRatio(OWLOntology owl, OntModel jena) {
         // Get number of tbox axioms in ontology.
         double tboxes = 0.0;
         for(AxiomType<?> tbox: AxiomType.TBoxAxiomTypes) {
             tboxes += owl.getAxiomCount(tbox);
         }
 
-        // We can deal with DisjointUnion, EquivalentClasses, DisjointClasses 
-        // and SubClassOf, count the number of tbox axioms of each of these 
-        // types
-        double present = 0.0;
-        for(AxiomType<?> tbox: Arrays.asList(AxiomType.DISJOINT_UNION, AxiomType.EQUIVALENT_CLASSES, AxiomType.DISJOINT_CLASSES, AxiomType.SUBCLASS_OF)) {
-            present += owl.getAxiomCount(tbox);
-        }
+        return runQuery(jena, s1, tboxes).toString();
+    }
 
-        return present / tboxes;
+    private Double runQuery(OntModel jena, SimpleQuery sq, double tboxes) {
+        Query qs1         = QueryFactory.create(sq.queryString);
+        QueryExecution qe = QueryExecutionFactory.create(qs1, jena);
+        ResultSet results =  qe.execSelect();
+        
+        return new Double(sumResultSet(results))/ tboxes;
+    }
+
+    // ResultSet is neither a Collection nor Iterable.
+    private int sumResultSet(ResultSet rs) {
+        int sum = 0;
+        while (rs.hasNext()) {
+            sum ++;
+            rs.next();
+        }
+        return sum;
     }
 }
