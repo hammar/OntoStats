@@ -13,7 +13,7 @@
   	</dependency>
   	<dependency>
   		<groupId>com.karlhammar.ontometrics</groupId>
-  		<artifactId>ontometrics</artifactId>
+  		<artifactId>ontometrics-core</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   </dependencies>

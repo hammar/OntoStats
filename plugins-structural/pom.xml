@@ -3,23 +3,12 @@
   <groupId>com.karlhammar.ontometrics</groupId>
   <artifactId>plugins-structural</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>plugins-structural</name>
+  <name>Plugins Structural</name>
   <description>Structural metrics plugins for OntoMetrics.</description>
   <dependencies>
   	<dependency>
-  		<groupId>com.hp.hpl.jena</groupId>
-  		<artifactId>jena</artifactId>
-  		<version>2.6.4</version>
-  		  <exclusions>
-  			<exclusion>
-  				<groupId>org.slf4j</groupId>
-        		<artifactId>slf4j-log4j12</artifactId>
-  			</exclusion>
-  		</exclusions>
-  	</dependency>
-  	<dependency>
   		<groupId>com.karlhammar.ontometrics</groupId>
-  		<artifactId>ontometrics</artifactId>
+  		<artifactId>ontometrics-core</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   	<dependency>
