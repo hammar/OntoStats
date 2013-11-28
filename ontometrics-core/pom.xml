@@ -65,6 +65,10 @@
 	<configuration>
 	  <executable>java</executable>
           <mainClass>com.karlhammar.ontometrics.OntoMetrics</mainClass>
+	  <executableDependency>
+            <groupId>com.karlhammar.ontometrics</groupId>
+            <artifactId>ontometrics-core</artifactId>
+	  </executableDependency>
 	</configuration>
       </plugin>
     </plugins>
