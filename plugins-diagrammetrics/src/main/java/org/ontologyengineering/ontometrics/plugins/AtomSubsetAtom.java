@@ -1,7 +1,6 @@
 package org.ontologyengineering.ontometrics.plugins;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.logging.Logger;
 
 import org.semanticweb.owlapi.model.AxiomType;

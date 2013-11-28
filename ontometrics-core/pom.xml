@@ -50,7 +50,7 @@
           </archive>
         </configuration>
       </plugin>
-      <!-- Allow mvn exec to execute the project -->
+      <!-- Allow mvn exec:java to execute the project -->
       <plugin>
 	<groupId>org.codehaus.mojo</groupId>
 	<artifactId>exec-maven-plugin</artifactId>
@@ -63,12 +63,8 @@
 	  </execution>
 	</executions>
 	<configuration>
-	  <executable>java</executable>
+          <executable>java</executable>
           <mainClass>com.karlhammar.ontometrics.OntoMetrics</mainClass>
-	  <executableDependency>
-            <groupId>com.karlhammar.ontometrics</groupId>
-            <artifactId>ontometrics-core</artifactId>
-	  </executableDependency>
 	</configuration>
       </plugin>
     </plugins>

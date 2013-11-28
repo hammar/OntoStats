@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.ServiceLoader;
 import java.util.logging.Logger;
 
-
 public class StandardPluginService implements PluginService {
 	private static StandardPluginService pluginService;
     private ServiceLoader<OntoMetricsPlugin> serviceLoader;
