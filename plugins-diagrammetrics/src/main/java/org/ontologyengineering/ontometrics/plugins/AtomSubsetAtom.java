@@ -36,7 +36,7 @@ public class AtomSubsetAtom implements OntoMetricsPlugin {
     private Logger logger = Logger.getLogger(getClass().getName());
     private StructuralSingletonOWLAPI sowl;
     private StructuralSingleton ss;
-    
+
     public String getName() {
         return "Ratio of Atom Subsumes Atom axioms to the TBox size";
     }
@@ -58,7 +58,7 @@ public class AtomSubsetAtom implements OntoMetricsPlugin {
         }
         OWLOntology owlmodel = sowl.getOntology();
         OntModel    ontmodel = ss.getOntology();
-        return calculatePrettyDiagramRatio(owlmodel, ontmodel);
+        return SimpleQuery.calculatePrettyDiagramRatio(owlmodel, ontmodel, s1);
     }
 
     // Hacktastic double brace initialisation
@@ -79,32 +79,4 @@ public class AtomSubsetAtom implements OntoMetricsPlugin {
                 + "               GROUP BY ?subject ?object "
                 ;
     }};
-
-    private String calculatePrettyDiagramRatio(OWLOntology owl, OntModel jena) {
-        // Get number of tbox axioms in ontology.
-        double tboxes = 0.0;
-        for(AxiomType<?> tbox: AxiomType.TBoxAxiomTypes) {
-            tboxes += owl.getAxiomCount(tbox);
-        }
-
-        return runQuery(jena, s1, tboxes).toString();
-    }
-
-    private Double runQuery(OntModel jena, SimpleQuery sq, double tboxes) {
-        Query qs1         = QueryFactory.create(sq.queryString);
-        QueryExecution qe = QueryExecutionFactory.create(qs1, jena);
-        ResultSet results =  qe.execSelect();
-        
-        return new Double(sumResultSet(results))/ tboxes;
-    }
-
-    // ResultSet is neither a Collection nor Iterable.
-    private int sumResultSet(ResultSet rs) {
-        int sum = 0;
-        while (rs.hasNext()) {
-            sum ++;
-            rs.next();
-        }
-        return sum;
-    }
 }
