@@ -25,6 +25,7 @@ public class StructuralSingleton {
 	 */
 	private StructuralSingleton(File ontologyFile) {
 		this.ontology = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
+		this.ontology.getDocumentManager().setProcessImports(false);
 		this.ontology.read(ontologyFile.toURI().toString());
 	}
 	
