@@ -1,4 +1,12 @@
 org.ontologyengineering.ontometrics.plugins.AtomSubsetAtom
+org.ontologyengineering.ontometrics.plugins.AtomSubsetNegAtom
 org.ontologyengineering.ontometrics.plugins.AtomSubsetConj
 org.ontologyengineering.ontometrics.plugins.AtomSubsetDisj
-org.ontologyengineering.ontometrics.plugins.AtomSubsetNegAtom
+org.ontologyengineering.ontometrics.plugins.AtomSubsetOnly
+org.ontologyengineering.ontometrics.plugins.AtomSubsetSome
+org.ontologyengineering.ontometrics.plugins.AtomSubsetTop
+org.ontologyengineering.ontometrics.plugins.ConjSubsetAtom
+org.ontologyengineering.ontometrics.plugins.ConjSubsetDisj
+org.ontologyengineering.ontometrics.plugins.ConjSubsetNegAtom
+org.ontologyengineering.ontometrics.plugins.ConjSubsetOnly
+org.ontologyengineering.ontometrics.plugins.ConjSubsetSome
