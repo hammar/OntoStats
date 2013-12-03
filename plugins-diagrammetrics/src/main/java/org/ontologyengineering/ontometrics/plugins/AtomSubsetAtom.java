@@ -1,15 +1,9 @@
 package org.ontologyengineering.ontometrics.plugins;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.logging.Logger;
 
-import org.semanticweb.owlapi.model.AxiomType;
-import org.semanticweb.owlapi.model.OWLOntology;
-
-import com.hp.hpl.jena.ontology.OntModel;
-import com.hp.hpl.jena.query.*;
-
-import com.karlhammar.ontometrics.plugins.*;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
 /**
@@ -34,17 +28,18 @@ import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 public class AtomSubsetAtom implements OntoMetricsPlugin {
 
     private Logger logger = Logger.getLogger(getClass().getName());
-    private StructuralSingletonOWLAPI sowl;
-    private StructuralSingleton ss;
+    private SimpleQuery sq;
 
     public String getName() {
         return "Ratio of Atom Subsumes Atom axioms to the TBox size";
     }
 
     public void init(File ontologyFile) {
-        // We need both OWL API and Jena for this trick.
-        sowl = StructuralSingletonOWLAPI.getSingletonObject(ontologyFile);
-        ss   = StructuralSingleton.getSingletonObject(ontologyFile);
+        try {
+            sq = new SimpleQuery(ontologyFile, "simple_atomsubsetatom.sparql");
+        } catch (IOException e) {
+            logger.severe(e.getMessage());
+        }
     }
 
     public String getMetricAbbreviation() {
@@ -52,31 +47,6 @@ public class AtomSubsetAtom implements OntoMetricsPlugin {
     }
 
     public String getMetricValue(File ontologyFile) {
-        if ((null == sowl) || (null == ss)) {
-            logger.info("getMetricValue called before init()!");
-            init(ontologyFile);
-        }
-        OWLOntology owlmodel = sowl.getOntology();
-        OntModel    ontmodel = ss.getOntology();
-        return SimpleQuery.calculatePrettyDiagramRatio(owlmodel, ontmodel, s1);
+        return sq.calculatePrettyDiagramRatio();
     }
-
-    // Hacktastic double brace initialisation
-    final SimpleQuery s1 = new SimpleQuery() {{
-        laTeXString = "C_1 \\sqsubseteq C_3";
-        queryString = PREFIX_STRING
-                + "SELECT ?subject ?object "
-                + "       WHERE { ?subject rdfs:subClassOf ?object ; "
-                + "                        rdf:type              owl:Class . "
-                + "               ?object  rdf:type              owl:Class . "
-                + "               FILTER NOT EXISTS{?subject owl:unionOf        ?o1 } "
-                + "               FILTER NOT EXISTS{?subject owl:intersectionOf ?o2 } "
-                + "               FILTER NOT EXISTS{?subject owl:complementOf   ?o3 } "
-                + "               FILTER NOT EXISTS{?object  owl:unionOf        ?o4 } "
-                + "               FILTER NOT EXISTS{?object  owl:intersectionOf ?o5 } "
-                + "               FILTER NOT EXISTS{?object  owl:complementOf   ?o6 } "
-                + "               } "
-                + "               GROUP BY ?subject ?object "
-                ;
-    }};
 }

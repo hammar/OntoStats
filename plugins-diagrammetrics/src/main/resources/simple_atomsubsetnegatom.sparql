@@ -1,0 +1,23 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+SELECT ?atoma ?atomb
+WHERE { ?atoma     rdfs:subClassOf                          ?object
+                 ; rdf:type                                 owl:Class
+                 .
+        # FIXME: would like to write ?object owl:unionOf/owl:Class/rdf:first ?atomb here, but it doesn't work.
+        ?object     owl:complementOf                          ?atomb
+                 ;  rdf:type                                owl:Class 
+                 .
+        ?atomb     rdf:type                                 owl:Class 
+                 .
+        # Ensure each atom is atomic
+        FILTER NOT EXISTS{?atoma owl:unionOf        ?ox }
+        FILTER NOT EXISTS{?atoma owl:intersectionOf ?oy } 
+        FILTER NOT EXISTS{?atoma owl:complementOf   ?oz } 
+        FILTER NOT EXISTS{?atomb owl:unionOf        ?o1 } 
+        FILTER NOT EXISTS{?atomb owl:intersectionOf ?o2 } 
+        FILTER NOT EXISTS{?atomb owl:complementOf   ?o3 } 
+       } 
+GROUP BY ?atoma ?atomb

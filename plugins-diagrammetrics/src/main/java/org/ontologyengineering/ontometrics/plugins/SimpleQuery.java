@@ -1,5 +1,10 @@
 package org.ontologyengineering.ontometrics.plugins;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Logger;
+
+import org.apache.commons.io.*;
 import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.OWLOntology;
 
@@ -9,30 +14,38 @@ import com.hp.hpl.jena.query.QueryExecution;
 import com.hp.hpl.jena.query.QueryExecutionFactory;
 import com.hp.hpl.jena.query.QueryFactory;
 import com.hp.hpl.jena.query.ResultSet;
+import com.karlhammar.ontometrics.plugins.StructuralSingleton;
+import com.karlhammar.ontometrics.plugins.StructuralSingletonOWLAPI;
 
 public class SimpleQuery {
-    final String PREFIX_STRING =
-            "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-                + "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
-                + "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
-                + "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> ";
+    private Logger logger = Logger.getLogger(getClass().getName());
+    private StructuralSingletonOWLAPI sowl;
+    private StructuralSingleton ss;
 
     // this is almost documentation.
-    public String laTeXString;
     public String queryString;
 
-    /* package */ static String calculatePrettyDiagramRatio(OWLOntology owl, OntModel jena, SimpleQuery query) {
+    /* package */ SimpleQuery(File ontologyFile, String resourceId) throws IOException {
+        sowl = StructuralSingletonOWLAPI.getSingletonObject(ontologyFile);
+        ss   = StructuralSingleton.getSingletonObject(ontologyFile);
+        queryString = IOUtils.toString(getClass().getClassLoader().getResource(resourceId).openStream());
+    }
+
+    /* package */ String calculatePrettyDiagramRatio() {
+        OWLOntology owlmodel = sowl.getOntology();
+        OntModel    ontmodel = ss.getOntology();
+
         // Get number of tbox axioms in ontology.
         double tboxes = 0.0;
         for(AxiomType<?> tbox: AxiomType.TBoxAxiomTypes) {
-            tboxes += owl.getAxiomCount(tbox);
+            tboxes += owlmodel.getAxiomCount(tbox);
         }
 
-        return SimpleQuery.runQuery(jena, query, tboxes).toString();
+        return runQuery(ontmodel, tboxes).toString();
     }
-    
-    /* package */ static Double runQuery(OntModel jena, SimpleQuery sq, double tboxes) {
-        Query qs1         = QueryFactory.create(sq.queryString);
+
+    private Double runQuery(OntModel jena, double tboxes) {
+        Query qs1         = QueryFactory.create(queryString);
         QueryExecution qe = QueryExecutionFactory.create(qs1, jena);
         ResultSet results =  qe.execSelect();
         
