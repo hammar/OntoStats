@@ -11,3 +11,7 @@ org.ontologyengineering.ontometrics.plugins.ConjSubsetNegAtom
 org.ontologyengineering.ontometrics.plugins.ConjSubsetOnly
 org.ontologyengineering.ontometrics.plugins.ConjSubsetSome
 org.ontologyengineering.ontometrics.plugins.DisjSubsetAtom
+org.ontologyengineering.ontometrics.plugins.DisjSubsetDisj
+org.ontologyengineering.ontometrics.plugins.DisjSubsetNegAtom
+org.ontologyengineering.ontometrics.plugins.DisjSubsetOnly
+org.ontologyengineering.ontometrics.plugins.DisjSubsetSome
