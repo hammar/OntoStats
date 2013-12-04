@@ -27,7 +27,7 @@ public class SimpleQuery {
 
     /* package */ SimpleQuery(File ontologyFile, String resourceId) throws IOException {
         sowl = StructuralSingletonOWLAPI.getSingletonObject(ontologyFile);
-        ss   = StructuralSingleton.getSingletonObject(ontologyFile);
+        ss   = StructuralSingleton.getSingletonObject(ontologyFile, true);
         queryString = IOUtils.toString(getClass().getClassLoader().getResource(resourceId).openStream());
     }
 
