@@ -24,9 +24,18 @@ public class StructuralSingleton {
 	 * @param ontologyFile
 	 */
 	private StructuralSingleton(File ontologyFile) {
-		this.ontology = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
-		this.ontology.getDocumentManager().setProcessImports(false);
-		this.ontology.read(ontologyFile.toURI().toString());
+	    this(ontologyFile, false);
+	}
+	
+	/**
+	 * Create a StructuralSingleton that may ignore imported ontologes.
+	 * @param ontologyFile
+	 * @param ignoreImports true to not import linked ontologies, false otherwise.
+	 */
+	private StructuralSingleton(File ontologyFile, boolean ignoreImports) {
+	    this.ontology = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
+	    this.ontology.getDocumentManager().setProcessImports(!ignoreImports);
+	    this.ontology.read(ontologyFile.toURI().toString());
 	}
 	
 	/**
@@ -44,10 +53,14 @@ public class StructuralSingleton {
 	 * @return New or existing Singleton instance.
 	 */
 	public static synchronized StructuralSingleton getSingletonObject(File ontologyFile) {
-		if (ref == null) {
-			ref = new StructuralSingleton(ontologyFile);
-		}
-		return ref;
+		return getSingletonObject(ontologyFile, false);
+	}
+
+	public static synchronized StructuralSingleton getSingletonObject(File ontologyFile, boolean ignoreImports) {
+	    if (ref == null) {
+	        ref = new StructuralSingleton(ontologyFile, ignoreImports);
+	    }
+	    return ref;
 	}
 
 	/**
