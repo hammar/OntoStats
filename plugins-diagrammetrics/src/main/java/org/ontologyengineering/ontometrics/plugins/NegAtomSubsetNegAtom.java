@@ -11,7 +11,7 @@ public class NegAtomSubsetNegAtom implements OntoMetricsPlugin {
     private SimpleQuery sq;
 
     public String getName() {
-        return "Ratio of (Neg Atom) Subsumes (Neg Atom) axioms to the TBox size";
+        return "Count of (Neg Atom) Subsumes (Neg Atom) axioms to the TBox size";
     }
 
     public void init(File ontologyFile) {

@@ -12,7 +12,7 @@ public class SomeSubsetOnly implements OntoMetricsPlugin {
     private SimpleQuery sq;
 
     public String getName() {
-        return "Ratio of Some Subsumes Only axioms to the TBox size";
+        return "Count of Some Subsumes Only axioms to the TBox size";
     }
 
     public void init(File ontologyFile) {

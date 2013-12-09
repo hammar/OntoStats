@@ -11,7 +11,7 @@ public class ConjSubsetOnly implements OntoMetricsPlugin {
     private SimpleQuery sq;
 
     public String getName() {
-        return "Ratio of (Atom Conj Atom) Subsumes Only axioms to the TBox size";
+        return "Count of (Atom Conj Atom) Subsumes Only axioms to the TBox size";
     }
 
     public void init(File ontologyFile) {

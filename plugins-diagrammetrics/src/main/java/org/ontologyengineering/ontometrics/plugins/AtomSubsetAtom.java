@@ -8,7 +8,7 @@ import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
 /**
  *
- * @author Aidan Delaney <aidan@ontologyengineering.org>
+ * @author Aidan Delaney <aidan@phoric.eu>
  */
 public class AtomSubsetAtom implements OntoMetricsPlugin {
 
@@ -16,7 +16,7 @@ public class AtomSubsetAtom implements OntoMetricsPlugin {
     private SimpleQuery sq;
 
     public String getName() {
-        return "Ratio of Atom Subsumes Atom axioms to the TBox size";
+        return "Count of Atom Subsumes Atom axioms to the TBox size";
     }
 
     public void init(File ontologyFile) {

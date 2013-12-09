@@ -36,20 +36,20 @@ public class SimpleQuery {
         OntModel    ontmodel = ss.getOntology();
 
         // Get number of tbox axioms in ontology.
-        double tboxes = 0.0;
-        for(AxiomType<?> tbox: AxiomType.TBoxAxiomTypes) {
-            tboxes += owlmodel.getAxiomCount(tbox);
-        }
+        //double tboxes = 0.0;
+        //for(AxiomType<?> tbox: AxiomType.TBoxAxiomTypes) {
+        //    tboxes += owlmodel.getAxiomCount(tbox);
+        //}
 
-        return runQuery(ontmodel, tboxes).toString();
+        return runQuery(ontmodel).toString();
     }
 
-    private Double runQuery(OntModel jena, double tboxes) {
+    private Double runQuery(OntModel jena) {
         Query qs1         = QueryFactory.create(queryString);
         QueryExecution qe = QueryExecutionFactory.create(qs1, jena);
         ResultSet results =  qe.execSelect();
         
-        return new Double(sumResultSet(results))/ tboxes;
+        return new Double(sumResultSet(results));
     }
 
     // ResultSet is neither a Collection nor Iterable.

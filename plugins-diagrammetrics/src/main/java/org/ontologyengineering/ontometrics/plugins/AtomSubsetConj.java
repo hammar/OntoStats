@@ -12,7 +12,7 @@ public class AtomSubsetConj implements OntoMetricsPlugin{
     private SimpleQuery sq;
 
     public String getName() {
-        return "Ratio of Atom Subsumes (Atom Conj Atom) axioms to the TBox size";
+        return "Count of Atom Subsumes (Atom Conj Atom) axioms to the TBox size";
     }
 
     public void init(File ontologyFile) {

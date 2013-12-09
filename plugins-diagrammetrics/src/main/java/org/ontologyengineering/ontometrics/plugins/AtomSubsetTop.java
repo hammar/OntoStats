@@ -11,7 +11,7 @@ public class AtomSubsetTop implements OntoMetricsPlugin {
     private SimpleQuery sq;
 
     public String getName() {
-        return "Ratio of Atom Subsumes Top axioms to the TBox size";
+        return "Count of Atom Subsumes Top axioms to the TBox size";
     }
 
     public void init(File ontologyFile) {
