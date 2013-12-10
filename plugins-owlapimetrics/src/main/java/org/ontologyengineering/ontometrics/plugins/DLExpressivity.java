@@ -21,7 +21,7 @@ public class DLExpressivity implements OntoMetricsPlugin {
     }
     @Override
     public void init(File ontologyFile) {
-        sowl = StructuralSingletonOWLAPI.getSingletonObject(ontologyFile);
+        sowl = StructuralSingletonOWLAPI.getSingletonObject(ontologyFile, true);
     }
     @Override
     public String getMetricAbbreviation() {

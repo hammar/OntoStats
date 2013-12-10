@@ -19,20 +19,20 @@ import com.karlhammar.ontometrics.plugins.StructuralSingletonOWLAPI;
 
 public class SimpleQuery {
     private Logger logger = Logger.getLogger(getClass().getName());
-    private StructuralSingletonOWLAPI sowl;
+    //private StructuralSingletonOWLAPI sowl;
     private StructuralSingleton ss;
 
     // this is almost documentation.
     public String queryString;
 
     /* package */ SimpleQuery(File ontologyFile, String resourceId) throws IOException {
-        sowl = StructuralSingletonOWLAPI.getSingletonObject(ontologyFile);
+    //    sowl = StructuralSingletonOWLAPI.getSingletonObject(ontologyFile, true);
         ss   = StructuralSingleton.getSingletonObject(ontologyFile, true);
         queryString = IOUtils.toString(getClass().getClassLoader().getResource(resourceId).openStream());
     }
 
     /* package */ String calculatePrettyDiagramRatio() {
-        OWLOntology owlmodel = sowl.getOntology();
+     //   OWLOntology owlmodel = sowl.getOntology();
         OntModel    ontmodel = ss.getOntology();
 
         // Get number of tbox axioms in ontology.
