@@ -22,7 +22,7 @@ public class AxiomCount implements OntoMetricsPlugin {
 
     @Override
     public void init(File ontologyFile) {
-        sowl = StructuralSingletonOWLAPI.getSingletonObject(ontologyFile);
+        sowl = StructuralSingletonOWLAPI.getSingletonObject(ontologyFile, true);
     }
 
     @Override
@@ -32,9 +32,8 @@ public class AxiomCount implements OntoMetricsPlugin {
 
     @Override
     public String getMetricValue(File ontologyFile) {
-        if(null == sowl) {
-            init(ontologyFile);
-        }
+        init(ontologyFile);
+
         org.semanticweb.owlapi.metrics.AxiomCount ac = new org.semanticweb.owlapi.metrics.AxiomCount(sowl.getOntology().getOWLOntologyManager());
         ac.setOntology(sowl.getOntology());
         ac.setImportsClosureUsed(false);

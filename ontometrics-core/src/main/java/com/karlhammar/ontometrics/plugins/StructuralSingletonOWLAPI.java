@@ -1,5 +1,6 @@
 package com.karlhammar.ontometrics.plugins;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -57,7 +58,7 @@ public class StructuralSingletonOWLAPI {
             File tmp = null;
             try {
                 // Create temp file.
-                tmp = File.createTempFile("blank", "..rdf");
+                tmp = File.createTempFile("blank", ".rdf");
 
                 // Delete temp file when program exits.
                 tmp.deleteOnExit();

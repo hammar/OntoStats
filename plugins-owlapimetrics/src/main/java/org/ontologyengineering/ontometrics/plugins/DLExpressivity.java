@@ -29,9 +29,8 @@ public class DLExpressivity implements OntoMetricsPlugin {
     }
     @Override
     public String getMetricValue(File ontologyFile) {
-        if(null == sowl) {
-            init(ontologyFile);
-        }
+        init(ontologyFile);
+
         org.semanticweb.owlapi.metrics.DLExpressivity de = new org.semanticweb.owlapi.metrics.DLExpressivity(sowl.getOntology().getOWLOntologyManager());
         de.setOntology(sowl.getOntology());
         de.setImportsClosureUsed(false);
