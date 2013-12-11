@@ -9,10 +9,10 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.profiles.OWL2RLProfile;
 import org.semanticweb.owlapi.profiles.OWLProfileReport;
 
-public class RLProfile implements OntoMetricsPlugin {
+public class RLProfile extends OntoMetricsPlugin {
 	
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private ProfileSingleton ps;
+	private StructuralSingletonOWLAPI ps;
 	
 	public String getName() {
 		return "RL Profile Plugin";
@@ -21,9 +21,8 @@ public class RLProfile implements OntoMetricsPlugin {
 	/**
 	 * Initialize the plugin. Required before metrics calculation.
 	 */
-	public void init(File ontologyFile) {
-		ps = ProfileSingleton.getSingletonObject(ontologyFile);
-		
+	public void init(StructuralSingleton jena, StructuralSingletonOWLAPI owlapi) {
+	    ps = owlapi;
 	}
 
 	public String getMetricAbbreviation() {
@@ -36,8 +35,7 @@ public class RLProfile implements OntoMetricsPlugin {
 	 */
 	public String getMetricValue(File ontologyFile) {
 		if (null == ps) {
-			logger.info("getMetricValue called before init()!");
-			init(ontologyFile);
+			logger.severe("getMetricValue called before init()!");
 		}
 		OWL2RLProfile o2rl = new OWL2RLProfile();
 		OWLOntology ontology = ps.getOntology();

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 import com.karlhammar.ontometrics.plugins.ParserConfiguration;
+import com.karlhammar.ontometrics.plugins.StructuralSingleton;
 import com.karlhammar.ontometrics.plugins.StructuralSingletonOWLAPI;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
@@ -12,7 +13,7 @@ import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
  *
  * @author Aidan Delaney <aidan@phoric.eu>
  */
-public class DLExpressivity implements OntoMetricsPlugin {
+public class DLExpressivity extends OntoMetricsPlugin {
     private Logger logger = Logger.getLogger(getClass().getName());
     private StructuralSingletonOWLAPI sowl;
 
@@ -21,8 +22,8 @@ public class DLExpressivity implements OntoMetricsPlugin {
         return "The DL expressiveness of the ontology as per OWL API.";
     }
     @Override
-    public void init(File ontologyFile) {
-        sowl = StructuralSingletonOWLAPI.getSingletonObject(ontologyFile, (new ParserConfiguration()).setImportStrategy(ParserConfiguration.ImportStrategy.IGNORE_IMPORTS));
+    public void init(StructuralSingleton jena, StructuralSingletonOWLAPI owlapi) {
+        sowl = owlapi;
     }
     @Override
     public String getMetricAbbreviation() {
@@ -30,7 +31,9 @@ public class DLExpressivity implements OntoMetricsPlugin {
     }
     @Override
     public String getMetricValue(File ontologyFile) {
-        init(ontologyFile);
+        if(null == sowl) {
+            logger.severe("getMetricValue called before init!");
+        }
 
         org.semanticweb.owlapi.metrics.DLExpressivity de = new org.semanticweb.owlapi.metrics.DLExpressivity(sowl.getOntology().getOWLOntologyManager());
         de.setOntology(sowl.getOntology());

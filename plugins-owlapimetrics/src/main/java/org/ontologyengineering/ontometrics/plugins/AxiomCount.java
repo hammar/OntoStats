@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 import com.karlhammar.ontometrics.plugins.ParserConfiguration;
+import com.karlhammar.ontometrics.plugins.StructuralSingleton;
 import com.karlhammar.ontometrics.plugins.StructuralSingletonOWLAPI;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
@@ -12,7 +13,7 @@ import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
  *
  * @author Aidan Delaney <aidan@phoric.eu>
  */
-public class AxiomCount implements OntoMetricsPlugin {
+public class AxiomCount extends OntoMetricsPlugin {
     private Logger logger = Logger.getLogger(getClass().getName());
     private StructuralSingletonOWLAPI sowl;
 
@@ -22,8 +23,8 @@ public class AxiomCount implements OntoMetricsPlugin {
     }
 
     @Override
-    public void init(File ontologyFile) {
-        sowl = StructuralSingletonOWLAPI.getSingletonObject(ontologyFile, (new ParserConfiguration()).setImportStrategy(ParserConfiguration.ImportStrategy.IGNORE_IMPORTS));
+    public void init(StructuralSingleton jena, StructuralSingletonOWLAPI owlapi) {
+        sowl = owlapi;
     }
 
     @Override
@@ -33,7 +34,9 @@ public class AxiomCount implements OntoMetricsPlugin {
 
     @Override
     public String getMetricValue(File ontologyFile) {
-        init(ontologyFile);
+        if(null == sowl) {
+            logger.severe("getMetricValue called before init!");
+        }
 
         org.semanticweb.owlapi.metrics.AxiomCount ac = new org.semanticweb.owlapi.metrics.AxiomCount(sowl.getOntology().getOWLOntologyManager());
         ac.setOntology(sowl.getOntology());

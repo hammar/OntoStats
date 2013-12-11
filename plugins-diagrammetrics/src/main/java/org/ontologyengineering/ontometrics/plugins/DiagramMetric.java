@@ -8,6 +8,11 @@ import com.karlhammar.ontometrics.plugins.StructuralSingleton;
 import com.karlhammar.ontometrics.plugins.StructuralSingletonOWLAPI;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
+/**
+ * 
+ * @author Aidan Delaney <aidan@phoric.eu>
+ *
+ */
 public class DiagramMetric extends OntoMetricsPlugin {
     private String name, abbreviation, resource;
     private Logger logger = Logger.getLogger(getClass().getName());
