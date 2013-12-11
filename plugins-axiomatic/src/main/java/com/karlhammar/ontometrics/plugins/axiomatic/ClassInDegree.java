@@ -12,30 +12,26 @@ import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import com.karlhammar.ontometrics.plugins.*;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
-public class ClassInDegree implements OntoMetricsPlugin {
+public class ClassInDegree extends OntoMetricsPlugin {
 
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private StructuralSingleton ss;
-	
+
+	@Override
 	public String getName() {
 		return "Class in-degree plugin";
 	}
 
-	public void init(File ontologyFile) {
-		ss = StructuralSingleton.getSingletonObject(ontologyFile);
-
-	}
-
+	@Override
 	public String getMetricAbbreviation() {
 		return "CInDegree";
 	}
 
+	@Override
 	public String getMetricValue(File ontologyFile) {
-		if (null == ss) {
-			logger.info("getMetricValue called before init()!");
-			init(ontologyFile);
+		if (null == jena) {
+			logger.severe("getMetricValue called before init()!");
 		}
-		OntModel ontology = ss.getOntology();
+		OntModel ontology = jena.getOntology();
 		ExtendedIterator<OntClass> allClasses = ontology.listClasses();
 		int nrClasses = 0;
 		int inEdges = 0;

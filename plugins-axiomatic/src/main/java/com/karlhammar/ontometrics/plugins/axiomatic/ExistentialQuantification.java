@@ -5,30 +5,22 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import com.karlhammar.ontometrics.plugins.*;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
 import org.semanticweb.owlapi.model.ClassExpressionType;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLOntology;
 
-public class ExistentialQuantification implements OntoMetricsPlugin {
+public class ExistentialQuantification extends OntoMetricsPlugin {
 	
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private StructuralSingletonOWLAPI ss;
-	
+
+	@Override
 	public String getName() {
 		return "Existential quantification count plugin";
 	}
 
-	/**
-	 * Initialize the plugin. Required before metrics calculation.
-	 */
-	public void init(File ontologyFile) {
-		ss = StructuralSingletonOWLAPI.getSingletonObject(ontologyFile);
-		
-	}
-
+	@Override
 	public String getMetricAbbreviation() {
 		return "ExiQuants";
 	}
@@ -37,12 +29,12 @@ public class ExistentialQuantification implements OntoMetricsPlugin {
 	 * If plugin has been initiated (and profile singleton instantiated), 
 	 * return report on whether this ontology is in the RL profile or not.
 	 */
+	@Override
 	public String getMetricValue(File ontologyFile) {
-		if (null == ss) {
-			logger.info("getMetricValue called before init()!");
-			init(ontologyFile);
+		if (null == owlapi) {
+			logger.severe("getMetricValue called before init()!");
 		}
-		OWLOntology ontology = ss.getOntology();
+		OWLOntology ontology = owlapi.getOntology();
 		Set<OWLClassExpression> ces = ontology.getNestedClassExpressions();
 		Iterator<OWLClassExpression> cesIter = ces.iterator();
 		Integer exiQuants = 0;

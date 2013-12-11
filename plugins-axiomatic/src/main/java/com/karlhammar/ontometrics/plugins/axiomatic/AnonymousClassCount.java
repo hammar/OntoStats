@@ -9,29 +9,26 @@ import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import com.karlhammar.ontometrics.plugins.*;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
-public class AnonymousClassCount implements OntoMetricsPlugin {
+public class AnonymousClassCount extends OntoMetricsPlugin {
 
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private StructuralSingleton ss;
-	
+
+	@Override
 	public String getName() {
 		return "Anonymous class count plugin";
 	}
 
-	public void init(File ontologyFile) {
-		ss = StructuralSingleton.getSingletonObject(ontologyFile);
-	}
-
+	@Override
 	public String getMetricAbbreviation() {
 		return "Anonymous";
 	}
 
+	@Override
 	public String getMetricValue(File ontologyFile) {
-		if (null == ss) {
-			logger.info("getMetricValue called before init()!");
-			init(ontologyFile);
+		if (null == jena) {
+			logger.severe("getMetricValue called before init()!");
 		}
-		OntModel ontology = ss.getOntology();
+		OntModel ontology = jena.getOntology();
 		return calculateAnonymousClasses(ontology).toString();
 	}
 

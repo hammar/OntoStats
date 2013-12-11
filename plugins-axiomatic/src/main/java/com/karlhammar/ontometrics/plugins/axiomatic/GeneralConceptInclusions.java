@@ -12,29 +12,26 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import com.karlhammar.ontometrics.plugins.*;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
-public class GeneralConceptInclusions implements OntoMetricsPlugin {
+public class GeneralConceptInclusions extends OntoMetricsPlugin {
 
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private StructuralSingletonOWLAPI ss;
-	
+
+	@Override
 	public String getName() {
 		return "General Concept Inclusion count plugin";
 	}
 
-	public void init(File ontologyFile) {
-		ss = StructuralSingletonOWLAPI.getSingletonObject(ontologyFile);
-	}
-
+	@Override
 	public String getMetricAbbreviation() {
 		return "GCICount";
 	}
 
+	@Override
 	public String getMetricValue(File ontologyFile) {
-		if (null == ss) {
-			logger.info("getMetricValue called before init()!");
-			init(ontologyFile);
+		if (null == owlapi) {
+			logger.severe("getMetricValue called before init()!");
 		}
-		OWLOntology ontology = ss.getOntology();
+		OWLOntology ontology = owlapi.getOntology();
 		Set<OWLClassAxiom> gcas = ontology.getGeneralClassAxioms();
 		Iterator<OWLClassAxiom> gcasIter = gcas.iterator();
 		Integer GCIs = 0;

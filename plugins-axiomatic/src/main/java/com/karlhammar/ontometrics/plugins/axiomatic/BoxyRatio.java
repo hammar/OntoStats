@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Aidan Delaney <aidan@ontologyengineering.org>
+ * @author Aidan Delaney <aidan@phoric.eu>
  *
  * The Boxyness Ratio calculates the ratio of TBox:ABox:RBox axioms in an
  * ontology.  The sum of the ratio components often does not equal 1 as there
@@ -19,21 +19,15 @@ import java.util.logging.Logger;
  * is OWL API's AxiomType.SWRL_RULE or, more informally, other examples are
  * those axioms that relate to annotations.
  */
-public class BoxyRatio implements OntoMetricsPlugin {
+public class BoxyRatio extends OntoMetricsPlugin {
     private Logger logger = Logger.getLogger(getClass().getName());
-    private StructuralSingletonOWLAPI ss;
 
+    @Override
     public String getName() {
         return "Boxyness Ratio Plugin";
     }
 
-    /**
-     * Initialize the plugin. Required before metrics calculation.
-     */
-    public void init(File ontologyFile) {
-        ss = StructuralSingletonOWLAPI.getSingletonObject(ontologyFile);
-    }
-
+    @Override
     public String getMetricAbbreviation() {
         return "BoxyRatio";
     }
@@ -47,12 +41,12 @@ public class BoxyRatio implements OntoMetricsPlugin {
      * @return The ratio of TBoxAxioms:ABoxAxioms:RBoxAxioms with respect to the
      * size of the ontology.
      */
+    @Override
     public String getMetricValue(File ontologyFile) {
-        if (null == ss) {
-            logger.info("getMetricValue called before init()!");
-            init(ontologyFile);
+        if (null == owlapi) {
+            logger.severe("getMetricValue called before init()!");
         }
-        OWLOntology ontology = ss.getOntology();
+        OWLOntology ontology = owlapi.getOntology();
         int total  = ontology.getAxiomCount();
 
         int tboxes = 0;

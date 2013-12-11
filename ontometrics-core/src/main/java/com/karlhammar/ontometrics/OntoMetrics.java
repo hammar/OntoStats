@@ -13,6 +13,8 @@ import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.Parser;
 import org.apache.commons.cli.PosixParser;
 
+import com.karlhammar.ontometrics.plugins.StructuralSingleton;
+import com.karlhammar.ontometrics.plugins.StructuralSingletonOWLAPI;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 import com.karlhammar.ontometrics.plugins.api.PluginService;
 import com.karlhammar.ontometrics.plugins.api.PluginServiceFactory;
@@ -81,7 +83,7 @@ public class OntoMetrics {
         Iterator<OntoMetricsPlugin> plugins = pluginService.getPlugins();
         while (plugins.hasNext()) {
         	OntoMetricsPlugin plugin = plugins.next();
-        	plugin.init(ontologyFile);
+        	plugin.init(StructuralSingleton.getSingletonObject(ontologyFile), StructuralSingletonOWLAPI.getSingletonObject(ontologyFile));
         	
         	// An error in plugin execution can mean null values returned, so check
         	// for this.

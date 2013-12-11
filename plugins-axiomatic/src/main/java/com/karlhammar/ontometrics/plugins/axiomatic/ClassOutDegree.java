@@ -11,32 +11,28 @@ import com.hp.hpl.jena.rdf.model.SimpleSelector;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
-import com.karlhammar.ontometrics.plugins.*;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
-public class ClassOutDegree implements OntoMetricsPlugin {
+public class ClassOutDegree extends OntoMetricsPlugin {
 
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private StructuralSingleton ss;
-	
+
+	@Override
 	public String getName() {
 		return "Class out-degree plugin";
 	}
 
-	public void init(File ontologyFile) {
-		ss = StructuralSingleton.getSingletonObject(ontologyFile);
-	}
-
+	@Override
 	public String getMetricAbbreviation() {
 		return "COutDegree";
 	}
 
+	@Override
 	public String getMetricValue(File ontologyFile) {
-		if (null == ss) {
-			logger.info("getMetricValue called before init()!");
-			init(ontologyFile);
+		if (null == jena) {
+			logger.severe("getMetricValue called before init()!");
 		}
-		OntModel ontology = ss.getOntology();
+		OntModel ontology = jena.getOntology();
 		ExtendedIterator<OntClass> allClasses = ontology.listClasses();
 		int nrClasses = 0;
 		int outEdges = 0;

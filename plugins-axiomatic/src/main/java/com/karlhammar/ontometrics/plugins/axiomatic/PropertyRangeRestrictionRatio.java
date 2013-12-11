@@ -6,33 +6,28 @@ import java.util.logging.Logger;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntProperty;
-import com.karlhammar.ontometrics.plugins.*;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
-public class PropertyRangeRestrictionRatio implements OntoMetricsPlugin {
+public class PropertyRangeRestrictionRatio extends OntoMetricsPlugin {
 
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private StructuralSingleton ss;
-	
+
+	@Override
 	public String getName() {
 		return "Property range restrictions ratio plugin";
 	}
 
-	public void init(File ontologyFile) {
-		ss = StructuralSingleton.getSingletonObject(ontologyFile);
-
-	}
-
+	@Override
 	public String getMetricAbbreviation() {
 		return "PropRangeRatio";
 	}
 
+	@Override
 	public String getMetricValue(File ontologyFile) {
-		if (null == ss) {
-			logger.info("getMetricValue called before init()!");
-			init(ontologyFile);
+		if (null == jena) {
+			logger.severe("getMetricValue called before init()!");
 		}
-		OntModel ontology = ss.getOntology();
+		OntModel ontology = jena.getOntology();
 		return calculatePropertyRangeRestrictionRate(ontology).toString();
 	}
 	
