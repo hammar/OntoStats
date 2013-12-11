@@ -21,3 +21,13 @@ A run target is defined for the Maven exec:java lifecycle target.
 ```sh
 $ mvn exec:java
 ```
+
+Development Environment
+----------
+To hack on OntoStats using Eclipse as your IDE, it is easiest to:
+
+```sh
+$ mvn eclipse:eclipse
+```
+
+and then import it as an existing Eclipse project.
