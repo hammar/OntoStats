@@ -1,6 +1,5 @@
 package com.karlhammar.ontometrics.plugins.api;
 
-import java.io.File;
 import java.util.Iterator;
 import java.util.ServiceLoader;
 import java.util.logging.Logger;
@@ -28,20 +27,5 @@ public class StandardPluginService implements PluginService {
     public Iterator<OntoMetricsPlugin> getPlugins()
     {
         return serviceLoader.iterator();
-    }
- 
-    public void initPlugins(File ontologyFile)
-    {
-        Iterator<OntoMetricsPlugin> iterator = getPlugins();
-        if(!iterator.hasNext())
-        {
-            logger.info("No plugins were found!");
-        }
-        while(iterator.hasNext())
-        {
-        	OntoMetricsPlugin plugin = iterator.next();
-            logger.info("Initializing the plugin " + plugin.getName());
-            plugin.init(ontologyFile);
-        }
     }
 }
