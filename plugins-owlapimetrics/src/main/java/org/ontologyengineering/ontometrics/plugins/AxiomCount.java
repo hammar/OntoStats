@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 import com.karlhammar.ontometrics.plugins.ParserConfiguration;
-import com.karlhammar.ontometrics.plugins.StructuralSingleton;
-import com.karlhammar.ontometrics.plugins.StructuralSingletonOWLAPI;
+import com.karlhammar.ontometrics.plugins.ParserJena;
+import com.karlhammar.ontometrics.plugins.ParserOWLAPI;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
 /**
@@ -15,7 +15,7 @@ import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
  */
 public class AxiomCount extends OntoMetricsPlugin {
     private Logger logger = Logger.getLogger(getClass().getName());
-    private StructuralSingletonOWLAPI sowl;
+    private ParserOWLAPI sowl;
 
     @Override
     public String getName() {
@@ -23,7 +23,7 @@ public class AxiomCount extends OntoMetricsPlugin {
     }
 
     @Override
-    public void init(StructuralSingleton jena, StructuralSingletonOWLAPI owlapi) {
+    public void init(ParserJena jena, ParserOWLAPI owlapi) {
         sowl = owlapi;
     }
 

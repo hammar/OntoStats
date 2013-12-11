@@ -12,20 +12,20 @@ import com.hp.hpl.jena.rdf.model.Selector;
 import com.hp.hpl.jena.rdf.model.SimpleSelector;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
-import com.karlhammar.ontometrics.plugins.StructuralSingleton;
-import com.karlhammar.ontometrics.plugins.StructuralSingletonOWLAPI;
+import com.karlhammar.ontometrics.plugins.ParserJena;
+import com.karlhammar.ontometrics.plugins.ParserOWLAPI;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
 public class TreeImpurity extends OntoMetricsPlugin {
 
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private StructuralSingleton ss;
+	private ParserJena ss;
 	
 	public String getName() {
 		return "Tree impurity plugin";
 	}
 
-	public void init(StructuralSingleton jena, StructuralSingletonOWLAPI owlapi) {
+	public void init(ParserJena jena, ParserOWLAPI owlapi) {
 		ss = jena;
 
 	}

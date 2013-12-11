@@ -4,11 +4,11 @@ import java.io.File;
 import com.karlhammar.ontometrics.plugins.*;
 
 public abstract class OntoMetricsPlugin {
-    protected StructuralSingleton       jena;
-    protected StructuralSingletonOWLAPI owlapi;
+    protected ParserJena       jena;
+    protected ParserOWLAPI owlapi;
 
 	abstract public String getName();
-	public void init(StructuralSingleton jena, StructuralSingletonOWLAPI owlapi) {
+	public void init(ParserJena jena, ParserOWLAPI owlapi) {
 	    this.jena   = jena;
 	    this.owlapi = owlapi;
 	}

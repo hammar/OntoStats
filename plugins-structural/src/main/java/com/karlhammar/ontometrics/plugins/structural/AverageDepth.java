@@ -4,20 +4,20 @@ import java.io.File;
 import java.util.List;
 import java.util.logging.Logger;
 
-import com.karlhammar.ontometrics.plugins.StructuralSingleton;
-import com.karlhammar.ontometrics.plugins.StructuralSingletonOWLAPI;
+import com.karlhammar.ontometrics.plugins.ParserJena;
+import com.karlhammar.ontometrics.plugins.ParserOWLAPI;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
 public class AverageDepth extends OntoMetricsPlugin {
 
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private StructuralSingletonOWLAPI ss;
+	private ParserOWLAPI ss;
 	
 	public String getName() {
 		return "Average depth plugin";
 	}
 
-	public void init(StructuralSingleton jena, StructuralSingletonOWLAPI owlapi) {
+	public void init(ParserJena jena, ParserOWLAPI owlapi) {
 		ss = owlapi;
 	}
 

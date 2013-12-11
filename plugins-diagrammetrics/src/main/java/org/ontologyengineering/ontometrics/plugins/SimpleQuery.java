@@ -12,17 +12,17 @@ import com.hp.hpl.jena.query.QueryExecutionFactory;
 import com.hp.hpl.jena.query.QueryFactory;
 import com.hp.hpl.jena.query.ResultSet;
 
-import com.karlhammar.ontometrics.plugins.StructuralSingleton;
+import com.karlhammar.ontometrics.plugins.ParserJena;
 
 public class SimpleQuery {
     private Logger logger = Logger.getLogger(getClass().getName());
-    private StructuralSingleton jena;
+    private ParserJena jena;
 
     // this is almost documentation.
     public String queryString;
 
 
-    /* package */ SimpleQuery(StructuralSingleton jena, String resourceId) throws IOException {
+    /* package */ SimpleQuery(ParserJena jena, String resourceId) throws IOException {
         this.jena   = jena;
         queryString = IOUtils.toString(getClass().getClassLoader().getResource(resourceId).openStream());
     }

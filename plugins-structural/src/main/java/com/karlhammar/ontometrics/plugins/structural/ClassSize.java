@@ -6,20 +6,20 @@ import java.util.logging.Logger;
 
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
-import com.karlhammar.ontometrics.plugins.StructuralSingleton;
-import com.karlhammar.ontometrics.plugins.StructuralSingletonOWLAPI;
+import com.karlhammar.ontometrics.plugins.ParserJena;
+import com.karlhammar.ontometrics.plugins.ParserOWLAPI;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
 public class ClassSize extends OntoMetricsPlugin  {
 
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private StructuralSingleton ss;
+	private ParserJena ss;
 	
 	public String getName() {
 		return "Class size plugin";
 	}
 
-	public void init(StructuralSingleton jena, StructuralSingletonOWLAPI owlapi) {
+	public void init(ParserJena jena, ParserOWLAPI owlapi) {
 		ss = jena;
 	}
 

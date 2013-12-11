@@ -12,7 +12,7 @@ import org.semanticweb.owlapi.profiles.OWLProfileReport;
 public class ELProfile extends OntoMetricsPlugin {
 	
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private StructuralSingletonOWLAPI ps;
+	private ParserOWLAPI ps;
 	
 	public String getName() {
 		return "EL Profile Plugin";
@@ -21,7 +21,7 @@ public class ELProfile extends OntoMetricsPlugin {
 	/**
 	 * Initialize the plugin. Required before metrics calculation.
 	 */
-	public void init(StructuralSingleton jena, StructuralSingletonOWLAPI owlapi) {
+	public void init(ParserJena jena, ParserOWLAPI owlapi) {
 		ps = owlapi;
 	}
 

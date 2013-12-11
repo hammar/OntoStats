@@ -13,10 +13,10 @@ import com.hp.hpl.jena.rdf.model.ModelFactory;
  * @author Karl Hammar <karl@karlhammar.com>
  *
  */
-public class StructuralSingleton {
+public class ParserJena {
 
 	// Member variables.
-	private static StructuralSingleton ref;
+	private static ParserJena ref;
 	private OntModel ontology;
 
 	// If we get asked for an instance of this singleton that has a different
@@ -27,7 +27,7 @@ public class StructuralSingleton {
 	 * Private constructor. Loads ontology document.
 	 * @param ontologyFile
 	 */
-	private StructuralSingleton(File ontologyFile) {
+	private ParserJena(File ontologyFile) {
 	    this(ontologyFile, new ParserConfiguration());
 	}
 	
@@ -36,7 +36,7 @@ public class StructuralSingleton {
 	 * @param ontologyFile
 	 * @param ignoreImports true to not import linked ontologies, false otherwise.
 	 */
-	private StructuralSingleton(File ontologyFile, ParserConfiguration pc) {
+	private ParserJena(File ontologyFile, ParserConfiguration pc) {
 	    this.config = pc;
 	    this.ontology = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
 	    this.ontology.getDocumentManager().setProcessImports(pc.getImportStrategy() == ParserConfiguration.ImportStrategy.ALLOW_IMPORTS);
@@ -57,13 +57,13 @@ public class StructuralSingleton {
 	 * @param ontologyFile The File instance referring to ontology to calculate metrics over.
 	 * @return New or existing Singleton instance.
 	 */
-	public static synchronized StructuralSingleton getSingletonObject(File ontologyFile) {
+	public static synchronized ParserJena getSingletonObject(File ontologyFile) {
 		return getSingletonObject(ontologyFile, new ParserConfiguration());
 	}
 
-	public static synchronized StructuralSingleton getSingletonObject(File ontologyFile, ParserConfiguration pc) {
+	public static synchronized ParserJena getSingletonObject(File ontologyFile, ParserConfiguration pc) {
 	    if (ref == null) {
-	        ref = new StructuralSingleton(ontologyFile, pc);
+	        ref = new ParserJena(ontologyFile, pc);
 	    }
 
 	    // if the caller is asking for a Singleton that has a different 

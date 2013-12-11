@@ -24,11 +24,11 @@ import org.semanticweb.owlapi.model.OWLOntologyManager;
  * @author Karl Hammar <karl@karlhammar.com>
  *
  */
-public class StructuralSingletonOWLAPI {
+public class ParserOWLAPI {
 
 	// Member variables.
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private static StructuralSingletonOWLAPI ref;
+	private static ParserOWLAPI ref;
 	private OWLOntology ontology;
 	
 	// If we get asked for an instance of this singleton that has a different
@@ -81,11 +81,11 @@ public class StructuralSingletonOWLAPI {
 	 * Private constructor. Loads ontology document.
 	 * @param ontologyFile
 	 */
-	private StructuralSingletonOWLAPI(File ontologyFile) {
+	private ParserOWLAPI(File ontologyFile) {
 	    this(ontologyFile, new ParserConfiguration());
 	}
 
-	private StructuralSingletonOWLAPI(File ontologyFile, ParserConfiguration pc) {
+	private ParserOWLAPI(File ontologyFile, ParserConfiguration pc) {
 	    this.config = pc;
 
 		try {
@@ -123,13 +123,13 @@ public class StructuralSingletonOWLAPI {
 	 * @param ontologyFile The File instance referring to ontology to calculate metrics over.
 	 * @return New or existing Singleton instance.
 	 */
-	public static synchronized StructuralSingletonOWLAPI getSingletonObject(File ontologyFile) {
+	public static synchronized ParserOWLAPI getSingletonObject(File ontologyFile) {
 		return getSingletonObject(ontologyFile, new ParserConfiguration());
 	}
 
-	public static synchronized StructuralSingletonOWLAPI getSingletonObject(File ontologyFile, ParserConfiguration pc) {
+	public static synchronized ParserOWLAPI getSingletonObject(File ontologyFile, ParserConfiguration pc) {
         if (ref == null) {
-            ref = new StructuralSingletonOWLAPI(ontologyFile, pc);
+            ref = new ParserOWLAPI(ontologyFile, pc);
         }
 
         // if the caller is asking for a Singleton that has a different 
