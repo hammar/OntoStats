@@ -8,19 +8,16 @@ import java.util.logging.Logger;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.vocabulary.RDFS;
+import com.karlhammar.ontometrics.plugins.ParserJena;
+import com.karlhammar.ontometrics.plugins.ParserOWLAPI;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
-public class CommentsRatio implements OntoMetricsPlugin {
+public class CommentsRatio extends OntoMetricsPlugin {
 
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private StructuralSingleton ss;
 	
 	public String getName() {
 		return "Comments ratio plugin";
-	}
-
-	public void init(File ontologyFile) {
-		ss = StructuralSingleton.getSingletonObject(ontologyFile);
 	}
 
 	public String getMetricAbbreviation() {
@@ -28,11 +25,10 @@ public class CommentsRatio implements OntoMetricsPlugin {
 	}
 
 	public String getMetricValue(File ontologyFile) {
-		if (null == ss) {
-			logger.info("getMetricValue called before init()!");
-			init(ontologyFile);
+		if (null == jena) {
+			logger.severe("getMetricValue called before init()!");
 		}
-		OntModel ontology = ss.getOntology();
+		OntModel ontology = jena.getOntology();
 		return calculateCommentsRatio(ontology).toString();
 	}
 
