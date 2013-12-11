@@ -5,9 +5,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
 
+import com.karlhammar.ontometrics.plugins.StructuralSingleton;
+import com.karlhammar.ontometrics.plugins.StructuralSingletonOWLAPI;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
-public class AbsoluteDepth implements OntoMetricsPlugin {
+public class AbsoluteDepth extends OntoMetricsPlugin {
 
 	private Logger logger = Logger.getLogger(getClass().getName());
 	private StructuralSingletonOWLAPI ss;
@@ -16,8 +18,8 @@ public class AbsoluteDepth implements OntoMetricsPlugin {
 		return "Absolute depth plugin";
 	}
 
-	public void init(File ontologyFile) {
-		ss = StructuralSingletonOWLAPI.getSingletonObject(ontologyFile);
+	public void init(StructuralSingleton jena, StructuralSingletonOWLAPI owlapi) {
+		ss = owlapi;
 	}
 
 	public String getMetricAbbreviation() {
@@ -26,13 +28,14 @@ public class AbsoluteDepth implements OntoMetricsPlugin {
 
 	public String getMetricValue(File ontologyFile) {
 		if (null == ss) {
-			logger.info("getMetricValue called before init()!");
-			init(ontologyFile);
+			logger.severe("getMetricValue called before init()!");
 		}
-		if (null == ss.getHeights()) {
-			ss.calculateHeights();
+		OntologyTreeUtils otu = new OntologyTreeUtils();
+		
+		if (null == otu.getHeights()) {
+			otu.calculateHeights(ss.getOntology());
 		}
-		return getAbsoluteDepth(ss.getHeights()).toString();
+		return getAbsoluteDepth(otu.getHeights()).toString();
 	}
 	
 	public static Integer getAbsoluteDepth(List<Integer> heights)

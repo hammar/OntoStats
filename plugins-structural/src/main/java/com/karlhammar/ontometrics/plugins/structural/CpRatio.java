@@ -4,19 +4,21 @@ import java.io.File;
 import java.util.logging.Logger;
 
 import com.hp.hpl.jena.ontology.OntModel;
+import com.karlhammar.ontometrics.plugins.StructuralSingleton;
+import com.karlhammar.ontometrics.plugins.StructuralSingletonOWLAPI;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
-public class CpRatio implements OntoMetricsPlugin {
+public class CpRatio extends OntoMetricsPlugin {
 
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private StructuralSingletonJena ss;
+	private StructuralSingleton ss;
 	
 	public String getName() {
 		return "Class to property ratio plugin";
 	}
 
-	public void init(File ontologyFile) {
-		ss = StructuralSingletonJena.getSingletonObject(ontologyFile);
+	public void init(StructuralSingleton jena, StructuralSingletonOWLAPI owlapi) {
+		ss = jena;
 	}
 
 	public String getMetricAbbreviation() {
@@ -25,8 +27,7 @@ public class CpRatio implements OntoMetricsPlugin {
 
 	public String getMetricValue(File ontologyFile) {
 		if (null == ss) {
-			logger.info("getMetricValue called before init()!");
-			init(ontologyFile);
+			logger.severe("getMetricValue called before init()!");
 		}
 		OntModel ontology = ss.getOntology();
 		Integer classSize = ClassSize.getClassSize(ontology);
