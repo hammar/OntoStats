@@ -19,12 +19,16 @@ public class StructuralSingleton {
 	private static StructuralSingleton ref;
 	private OntModel ontology;
 
+	// If we get asked for an instance of this singleton that has a different
+	// config, we will throw an exception.
+	private ParserConfiguration config;
+
 	/**
 	 * Private constructor. Loads ontology document.
 	 * @param ontologyFile
 	 */
 	private StructuralSingleton(File ontologyFile) {
-	    this(ontologyFile, false);
+	    this(ontologyFile, new ParserConfiguration());
 	}
 	
 	/**
@@ -32,9 +36,10 @@ public class StructuralSingleton {
 	 * @param ontologyFile
 	 * @param ignoreImports true to not import linked ontologies, false otherwise.
 	 */
-	private StructuralSingleton(File ontologyFile, boolean ignoreImports) {
+	private StructuralSingleton(File ontologyFile, ParserConfiguration pc) {
+	    this.config = pc;
 	    this.ontology = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
-	    this.ontology.getDocumentManager().setProcessImports(!ignoreImports);
+	    this.ontology.getDocumentManager().setProcessImports(pc.getImportStrategy() == ParserConfiguration.ImportStrategy.ALLOW_IMPORTS);
 	    this.ontology.read(ontologyFile.toURI().toString());
 	}
 	
@@ -53,13 +58,17 @@ public class StructuralSingleton {
 	 * @return New or existing Singleton instance.
 	 */
 	public static synchronized StructuralSingleton getSingletonObject(File ontologyFile) {
-		return getSingletonObject(ontologyFile, false);
+		return getSingletonObject(ontologyFile, new ParserConfiguration());
 	}
 
-	public static synchronized StructuralSingleton getSingletonObject(File ontologyFile, boolean ignoreImports) {
+	public static synchronized StructuralSingleton getSingletonObject(File ontologyFile, ParserConfiguration pc) {
 	    if (ref == null) {
-	        ref = new StructuralSingleton(ontologyFile, ignoreImports);
+	        ref = new StructuralSingleton(ontologyFile, pc);
 	    }
+
+	    // if the caller is asking for a Singleton that has a different 
+	    // configuration from the current, then admonish them.
+	    if(!ref.config.equals(pc)) throw new IllegalStateException();
 	    return ref;
 	}
 

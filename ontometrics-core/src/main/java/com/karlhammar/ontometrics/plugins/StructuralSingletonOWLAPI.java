@@ -30,6 +30,10 @@ public class StructuralSingletonOWLAPI {
 	private Logger logger = Logger.getLogger(getClass().getName());
 	private static StructuralSingletonOWLAPI ref;
 	private OWLOntology ontology;
+	
+	// If we get asked for an instance of this singleton that has a different
+    // config, we will throw an exception.
+    private ParserConfiguration config;
 
 	private class NoImportLoader implements OWLOntologyIRIMapper {
 	    // Copy and pasted from a blank Protégé document.
@@ -78,18 +82,19 @@ public class StructuralSingletonOWLAPI {
 	 * @param ontologyFile
 	 */
 	private StructuralSingletonOWLAPI(File ontologyFile) {
-	    this(ontologyFile, false);
+	    this(ontologyFile, new ParserConfiguration());
 	}
 
-	private StructuralSingletonOWLAPI(File ontologyFile, boolean ignoreImports) {
+	private StructuralSingletonOWLAPI(File ontologyFile, ParserConfiguration pc) {
+	    this.config = pc;
+
 		try {
 		    OWLOntologyLoaderConfiguration config = new OWLOntologyLoaderConfiguration();
 		    config.setMissingImportHandlingStrategy(MissingImportHandlingStrategy.SILENT);
-		    OWLOntologyIRIMapper ooim = new NoImportLoader();
 
 			OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-			if(ignoreImports) {
-			    manager.addIRIMapper(ooim);
+			if(pc.getImportStrategy() == ParserConfiguration.ImportStrategy.IGNORE_IMPORTS) {
+			    manager.addIRIMapper(new NoImportLoader());
 			}
 			this.ontology = manager.loadOntologyFromOntologyDocument(new FileDocumentSource(ontologyFile), config);
 			/*if(ignoreImports) {
@@ -119,19 +124,19 @@ public class StructuralSingletonOWLAPI {
 	 * @return New or existing Singleton instance.
 	 */
 	public static synchronized StructuralSingletonOWLAPI getSingletonObject(File ontologyFile) {
-		if (ref == null) {
-			ref = new StructuralSingletonOWLAPI(ontologyFile);
-		}
-		return ref;
+		return getSingletonObject(ontologyFile, new ParserConfiguration());
 	}
 
-	public static synchronized StructuralSingletonOWLAPI getSingletonObject(File ontologyFile, boolean ignoreImports) {
+	public static synchronized StructuralSingletonOWLAPI getSingletonObject(File ontologyFile, ParserConfiguration pc) {
         if (ref == null) {
-            ref = new StructuralSingletonOWLAPI(ontologyFile, ignoreImports);
+            ref = new StructuralSingletonOWLAPI(ontologyFile, pc);
         }
+
+        // if the caller is asking for a Singleton that has a different 
+        // configuration from the current, then admonish them.
+        if(!ref.config.equals(pc)) throw new IllegalStateException();
         return ref;
     }
-
 
 	/**
 	 * Don't try this!

@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 import org.apache.commons.io.*;
-import org.semanticweb.owlapi.model.AxiomType;
-import org.semanticweb.owlapi.model.OWLOntology;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.query.Query;
@@ -14,32 +12,23 @@ import com.hp.hpl.jena.query.QueryExecution;
 import com.hp.hpl.jena.query.QueryExecutionFactory;
 import com.hp.hpl.jena.query.QueryFactory;
 import com.hp.hpl.jena.query.ResultSet;
+import com.karlhammar.ontometrics.plugins.ParserConfiguration;
 import com.karlhammar.ontometrics.plugins.StructuralSingleton;
-import com.karlhammar.ontometrics.plugins.StructuralSingletonOWLAPI;
 
 public class SimpleQuery {
     private Logger logger = Logger.getLogger(getClass().getName());
-    //private StructuralSingletonOWLAPI sowl;
     private StructuralSingleton ss;
 
     // this is almost documentation.
     public String queryString;
 
     /* package */ SimpleQuery(File ontologyFile, String resourceId) throws IOException {
-    //    sowl = StructuralSingletonOWLAPI.getSingletonObject(ontologyFile, true);
-        ss   = StructuralSingleton.getSingletonObject(ontologyFile, true);
+        ss   = StructuralSingleton.getSingletonObject(ontologyFile, (new ParserConfiguration()).setImportStrategy(ParserConfiguration.ImportStrategy.IGNORE_IMPORTS));
         queryString = IOUtils.toString(getClass().getClassLoader().getResource(resourceId).openStream());
     }
 
     /* package */ String calculatePrettyDiagramRatio() {
-     //   OWLOntology owlmodel = sowl.getOntology();
         OntModel    ontmodel = ss.getOntology();
-
-        // Get number of tbox axioms in ontology.
-        //double tboxes = 0.0;
-        //for(AxiomType<?> tbox: AxiomType.TBoxAxiomTypes) {
-        //    tboxes += owlmodel.getAxiomCount(tbox);
-        //}
 
         return runQuery(ontmodel).toString();
     }

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import com.karlhammar.ontometrics.plugins.ParserConfiguration;
 import com.karlhammar.ontometrics.plugins.StructuralSingletonOWLAPI;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
@@ -22,7 +23,7 @@ public class AxiomCount implements OntoMetricsPlugin {
 
     @Override
     public void init(File ontologyFile) {
-        sowl = StructuralSingletonOWLAPI.getSingletonObject(ontologyFile, true);
+        sowl = StructuralSingletonOWLAPI.getSingletonObject(ontologyFile, (new ParserConfiguration()).setImportStrategy(ParserConfiguration.ImportStrategy.IGNORE_IMPORTS));
     }
 
     @Override
