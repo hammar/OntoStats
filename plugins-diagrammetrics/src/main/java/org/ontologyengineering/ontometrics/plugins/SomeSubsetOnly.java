@@ -6,28 +6,9 @@ import java.util.logging.Logger;
 
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
-public class SomeSubsetOnly implements OntoMetricsPlugin {
+public class SomeSubsetOnly extends DiagramMetric {
 
-    private Logger logger = Logger.getLogger(getClass().getName());
-    private SimpleQuery sq;
-
-    public String getName() {
-        return "Count of Some Subsumes Only axioms to the TBox size";
-    }
-
-    public void init(File ontologyFile) {
-        try {
-            sq = new SimpleQuery(ontologyFile, "simple_somesubsetonly.sparql");
-        } catch (IOException e) {
-            logger.severe(e.getMessage());
-        }
-    }
-
-    public String getMetricAbbreviation() {
-        return "SomeSubsetOnly";
-    }
-
-    public String getMetricValue(File ontologyFile) {
-        return sq.calculatePrettyDiagramRatio();
+    public SomeSubsetOnly () {
+        super("Count of Some Subsumes Only axioms in the ontology", "SomeSubsetOnly", "simple_somesubsetonly.sparql");
     }
 }

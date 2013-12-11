@@ -1,33 +1,8 @@
 package org.ontologyengineering.ontometrics.plugins;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Logger;
+public class OnlySubsetAtom extends DiagramMetric {
 
-import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
-
-public class OnlySubsetAtom implements OntoMetricsPlugin {
-
-    private Logger logger = Logger.getLogger(getClass().getName());
-    private SimpleQuery sq;
-
-    public String getName() {
-        return "Count of Only Subsumes Atom axioms to the TBox size";
-    }
-
-    public void init(File ontologyFile) {
-        try {
-            sq = new SimpleQuery(ontologyFile, "simple_onlysubsetatom.sparql");
-        } catch (IOException e) {
-            logger.severe(e.getMessage());
-        }
-    }
-
-    public String getMetricAbbreviation() {
-        return "OnlySubsetAtom";
-    }
-
-    public String getMetricValue(File ontologyFile) {
-        return sq.calculatePrettyDiagramRatio();
+    public OnlySubsetAtom () {
+        super("Count of Only Subsumes Atom axioms","OnlySubsetAtom", "simple_onlysubsetatom.sparql");
     }
 }
