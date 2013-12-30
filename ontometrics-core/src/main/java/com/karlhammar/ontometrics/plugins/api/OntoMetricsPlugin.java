@@ -4,13 +4,15 @@ import java.io.File;
 import com.karlhammar.ontometrics.plugins.*;
 
 public abstract class OntoMetricsPlugin {
-    protected ParserJena       jena;
-    protected ParserOWLAPI owlapi;
+    protected ParserJena        jena;
+    protected ParserOWLAPI      owlapi;
+    protected LazyParserGremlin gremlin;
 
 	abstract public String getName();
-	public void init(ParserJena jena, ParserOWLAPI owlapi) {
-	    this.jena   = jena;
-	    this.owlapi = owlapi;
+	public void init(ParserJena jena, ParserOWLAPI owlapi, LazyParserGremlin gremlin) {
+	    this.jena    = jena;
+	    this.owlapi  = owlapi;
+	    this.gremlin = gremlin;
 	}
 	abstract public String getMetricAbbreviation();
 	abstract public String getMetricValue(File ontologyFile);

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import com.karlhammar.ontometrics.plugins.LazyParserGremlin;
 import com.karlhammar.ontometrics.plugins.ParserJena;
 import com.karlhammar.ontometrics.plugins.ParserOWLAPI;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
@@ -25,7 +26,7 @@ public class DiagramMetric extends OntoMetricsPlugin {
     }
 
     @Override
-    public void init(ParserJena jena, ParserOWLAPI owlapi) {
+    public void init(ParserJena jena, ParserOWLAPI owlapi, LazyParserGremlin gremlin) {
         try {
             sq = new SimpleQuery(jena, resource);
         } catch (IOException ioe) {

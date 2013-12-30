@@ -5,28 +5,28 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>Diagrammatic measures plugin</name>
   <description>Diagram metrics axiom related metrics calculation plugin for OntoMetrics.</description>
-    <dependencies>
-  	<dependency>
-   	       <groupId>org.apache.jena</groupId>
-	       <artifactId>apache-jena-libs</artifactId>
-	       <type>pom</type>
-	       <version>2.11.0</version>
-	</dependency>
-  	<dependency>
-  		<groupId>net.sourceforge.owlapi</groupId>
-  		<artifactId>owlapi-apibinding</artifactId>
-  		<version>3.4.8</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>com.karlhammar.ontometrics</groupId>
-  		<artifactId>ontometrics-core</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
-  	<dependency>
-          <groupId>commons-io</groupId>
-          <artifactId>commons-io</artifactId>
-          <version>2.4</version>
-	</dependency>
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.jena</groupId>
+      <artifactId>apache-jena-libs</artifactId>
+      <type>pom</type>
+      <version>2.11.0</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sourceforge.owlapi</groupId>
+      <artifactId>owlapi-apibinding</artifactId>
+      <version>3.4.8</version>
+    </dependency>
+    <dependency>
+      <groupId>com.karlhammar.ontometrics</groupId>
+      <artifactId>ontometrics-core</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.4</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>

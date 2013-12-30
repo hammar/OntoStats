@@ -15,6 +15,7 @@ import org.apache.commons.cli.PosixParser;
 
 import com.karlhammar.ontometrics.plugins.ParserJena;
 import com.karlhammar.ontometrics.plugins.ParserOWLAPI;
+import com.karlhammar.ontometrics.plugins.LazyParserGremlin;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 import com.karlhammar.ontometrics.plugins.api.PluginService;
 import com.karlhammar.ontometrics.plugins.api.PluginServiceFactory;
@@ -83,7 +84,9 @@ public class OntoMetrics {
         Iterator<OntoMetricsPlugin> plugins = pluginService.getPlugins();
         while (plugins.hasNext()) {
         	OntoMetricsPlugin plugin = plugins.next();
-        	plugin.init(ParserJena.getSingletonObject(ontologyFile), ParserOWLAPI.getSingletonObject(ontologyFile));
+        	plugin.init(ParserJena.getSingletonObject(ontologyFile),
+        	        ParserOWLAPI.getSingletonObject(ontologyFile),
+        	        LazyParserGremlin.getSingletonObject(ontologyFile));
         	
         	// An error in plugin execution can mean null values returned, so check
         	// for this.
