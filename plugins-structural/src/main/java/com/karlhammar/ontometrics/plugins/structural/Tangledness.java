@@ -13,14 +13,9 @@ import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 public class Tangledness extends OntoMetricsPlugin {
 	
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private ParserJena ss;
 
 	public String getName() {
 		return "Tangledness plugin";
-	}
-
-	public void init(ParserJena jena, ParserOWLAPI owlapi) {
-		ss = jena;
 	}
 
 	public String getMetricAbbreviation() {
@@ -28,10 +23,10 @@ public class Tangledness extends OntoMetricsPlugin {
 	}
 
 	public String getMetricValue(File ontologyFile) {
-		if (null == ss) {
+		if (null == jena) {
 			logger.severe("getMetricValue called before init()!");
 		}
-		OntModel ontology = ss.getOntology();
+		OntModel ontology = jena.getOntology();
 		Integer nrOfClasses = 0;
 		Integer nrOfMultiParentClasses = 0;
 		ExtendedIterator<OntClass> allClasses = ontology.listClasses();

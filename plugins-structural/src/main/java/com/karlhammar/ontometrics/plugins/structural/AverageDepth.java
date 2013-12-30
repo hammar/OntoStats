@@ -11,14 +11,9 @@ import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 public class AverageDepth extends OntoMetricsPlugin {
 
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private ParserOWLAPI ss;
 	
 	public String getName() {
 		return "Average depth plugin";
-	}
-
-	public void init(ParserJena jena, ParserOWLAPI owlapi) {
-		ss = owlapi;
 	}
 
 	public String getMetricAbbreviation() {
@@ -26,13 +21,13 @@ public class AverageDepth extends OntoMetricsPlugin {
 	}
 
 	public String getMetricValue(File ontologyFile) {
-		if (null == ss) {
+		if (null == owlapi) {
 			logger.severe("getMetricValue called before init()!");
 		}
 
 		OntologyTreeUtils otu = new OntologyTreeUtils();
 		if (null == otu.getHeights()) {
-			otu.calculateHeights(ss.getOntology());
+			otu.calculateHeights(owlapi.getOntology());
 		}
 		List<Integer> heights = otu.getHeights();
 		Float avgHeight;

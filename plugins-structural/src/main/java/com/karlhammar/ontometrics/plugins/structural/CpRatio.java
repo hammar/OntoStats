@@ -11,14 +11,9 @@ import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 public class CpRatio extends OntoMetricsPlugin {
 
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private ParserJena ss;
 	
 	public String getName() {
 		return "Class to property ratio plugin";
-	}
-
-	public void init(ParserJena jena, ParserOWLAPI owlapi) {
-		ss = jena;
 	}
 
 	public String getMetricAbbreviation() {
@@ -26,10 +21,10 @@ public class CpRatio extends OntoMetricsPlugin {
 	}
 
 	public String getMetricValue(File ontologyFile) {
-		if (null == ss) {
+		if (null == jena) {
 			logger.severe("getMetricValue called before init()!");
 		}
-		OntModel ontology = ss.getOntology();
+		OntModel ontology = jena.getOntology();
 		Integer classSize = ClassSize.getClassSize(ontology);
 		Integer propertySize = PropertySize.getPropertySize(ontology);
 		Double ratio = ((double)classSize / propertySize);

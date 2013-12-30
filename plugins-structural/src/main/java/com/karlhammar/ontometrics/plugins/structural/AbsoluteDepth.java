@@ -12,28 +12,23 @@ import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 public class AbsoluteDepth extends OntoMetricsPlugin {
 
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private ParserOWLAPI ss;
 	
 	public String getName() {
 		return "Absolute depth plugin";
 	}
-
-	public void init(ParserJena jena, ParserOWLAPI owlapi) {
-		ss = owlapi;
-	}
-
+	
 	public String getMetricAbbreviation() {
 		return "AbsDepth";
 	}
 
 	public String getMetricValue(File ontologyFile) {
-		if (null == ss) {
+		if (null == owlapi) {
 			logger.severe("getMetricValue called before init()!");
 		}
 		OntologyTreeUtils otu = new OntologyTreeUtils();
 		
 		if (null == otu.getHeights()) {
-			otu.calculateHeights(ss.getOntology());
+			otu.calculateHeights(owlapi.getOntology());
 		}
 		return getAbsoluteDepth(otu.getHeights()).toString();
 	}

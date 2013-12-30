@@ -19,15 +19,9 @@ import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 public class TreeImpurity extends OntoMetricsPlugin {
 
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private ParserJena ss;
 	
 	public String getName() {
 		return "Tree impurity plugin";
-	}
-
-	public void init(ParserJena jena, ParserOWLAPI owlapi) {
-		ss = jena;
-
 	}
 
 	public String getMetricAbbreviation() {
@@ -35,10 +29,10 @@ public class TreeImpurity extends OntoMetricsPlugin {
 	}
 
 	public String getMetricValue(File ontologyFile) {
-		if (null == ss) {
+		if (null == jena) {
 			logger.severe("getMetricValue called before init()!");
 		}
-		OntModel ontology = ss.getOntology();
+		OntModel ontology = jena.getOntology();
 		Integer subClassEdges = 0;
 		Integer classNodes = 0;
 		
