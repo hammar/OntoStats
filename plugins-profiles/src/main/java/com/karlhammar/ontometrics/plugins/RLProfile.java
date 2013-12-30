@@ -12,17 +12,9 @@ import org.semanticweb.owlapi.profiles.OWLProfileReport;
 public class RLProfile extends OntoMetricsPlugin {
 	
 	private Logger logger = Logger.getLogger(getClass().getName());
-	private ParserOWLAPI ps;
 	
 	public String getName() {
 		return "RL Profile Plugin";
-	}
-
-	/**
-	 * Initialize the plugin. Required before metrics calculation.
-	 */
-	public void init(ParserJena jena, ParserOWLAPI owlapi) {
-	    ps = owlapi;
 	}
 
 	public String getMetricAbbreviation() {
@@ -34,11 +26,11 @@ public class RLProfile extends OntoMetricsPlugin {
 	 * return report on whether this ontology is in the RL profile or not.
 	 */
 	public String getMetricValue(File ontologyFile) {
-		if (null == ps) {
+		if (null == owlapi) {
 			logger.severe("getMetricValue called before init()!");
 		}
 		OWL2RLProfile o2rl = new OWL2RLProfile();
-		OWLOntology ontology = ps.getOntology();
+		OWLOntology ontology = owlapi.getOntology();
 		OWLProfileReport report = o2rl.checkOntology(ontology);
 		return new Boolean(report.isInProfile()).toString();
 	}
