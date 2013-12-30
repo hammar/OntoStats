@@ -15,15 +15,10 @@ import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
  */
 public class DLExpressivity extends OntoMetricsPlugin {
     private Logger logger = Logger.getLogger(getClass().getName());
-    private ParserOWLAPI sowl;
 
     @Override
     public String getName() {
         return "The DL expressiveness of the ontology as per OWL API.";
-    }
-    @Override
-    public void init(ParserJena jena, ParserOWLAPI owlapi) {
-        sowl = owlapi;
     }
     @Override
     public String getMetricAbbreviation() {
@@ -31,12 +26,12 @@ public class DLExpressivity extends OntoMetricsPlugin {
     }
     @Override
     public String getMetricValue(File ontologyFile) {
-        if(null == sowl) {
+        if(null == owlapi) {
             logger.severe("getMetricValue called before init!");
         }
 
-        org.semanticweb.owlapi.metrics.DLExpressivity de = new org.semanticweb.owlapi.metrics.DLExpressivity(sowl.getOntology().getOWLOntologyManager());
-        de.setOntology(sowl.getOntology());
+        org.semanticweb.owlapi.metrics.DLExpressivity de = new org.semanticweb.owlapi.metrics.DLExpressivity(owlapi.getOntology().getOWLOntologyManager());
+        de.setOntology(owlapi.getOntology());
         de.setImportsClosureUsed(false);
         return de.getValue();
     }

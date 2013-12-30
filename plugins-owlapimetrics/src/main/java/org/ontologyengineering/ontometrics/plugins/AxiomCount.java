@@ -15,16 +15,10 @@ import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
  */
 public class AxiomCount extends OntoMetricsPlugin {
     private Logger logger = Logger.getLogger(getClass().getName());
-    private ParserOWLAPI sowl;
 
     @Override
     public String getName() {
         return "The count of axioms in the ontology as per OWL API.";
-    }
-
-    @Override
-    public void init(ParserJena jena, ParserOWLAPI owlapi) {
-        sowl = owlapi;
     }
 
     @Override
@@ -34,12 +28,12 @@ public class AxiomCount extends OntoMetricsPlugin {
 
     @Override
     public String getMetricValue(File ontologyFile) {
-        if(null == sowl) {
+        if(null == owlapi) {
             logger.severe("getMetricValue called before init!");
         }
 
-        org.semanticweb.owlapi.metrics.AxiomCount ac = new org.semanticweb.owlapi.metrics.AxiomCount(sowl.getOntology().getOWLOntologyManager());
-        ac.setOntology(sowl.getOntology());
+        org.semanticweb.owlapi.metrics.AxiomCount ac = new org.semanticweb.owlapi.metrics.AxiomCount(owlapi.getOntology().getOWLOntologyManager());
+        ac.setOntology(owlapi.getOntology());
         ac.setImportsClosureUsed(false);
         return Integer.toString(ac.getValue());
     }
