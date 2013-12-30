@@ -52,6 +52,17 @@ public class ParserJena {
 	}
 
 	/**
+	 * This is an evil thing to do with a singleton, but at least make it functional.
+	 * @param ontologyFile
+	 * @param pc
+	 * @return
+	 */
+	public static synchronized ParserJena resetSingletonObject(File ontologyFile, ParserConfiguration pc) {
+	    ref = null;
+	    return getSingletonObject(ontologyFile, pc);
+	}
+
+	/**
 	 * Getter for singleton. Instantiates if it does not already exist, otherwise
 	 * returns existing instance.
 	 * @param ontologyFile The File instance referring to ontology to calculate metrics over.

@@ -43,6 +43,11 @@ public class LazyParserGremlin {
         return memGraph;
     }
 
+    public static synchronized LazyParserGremlin resetSingletonObject(File ontologyFile, ParserConfiguration pc) {
+        ref = null;
+        return getSingletonObject(ontologyFile, pc);
+    }
+
     public static synchronized LazyParserGremlin getSingletonObject(File ontologyFile) {
         return getSingletonObject(ontologyFile, new ParserConfiguration());
     }

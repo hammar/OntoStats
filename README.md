@@ -11,8 +11,10 @@ Building the OntoMetrics tool requires the use of Maven.
 
 ```sh
 $ cd ontometrics
-$ mvn package
+$ mvn -X package -Ddiagrammetrics.test.resources=`pwd`/plugins-diagrammetrics/src/test/resources/
 ```
+
+Unfortunatly we need to pass in the location of some /diagrammetrics/ related resources.
 
 Running
 ----------

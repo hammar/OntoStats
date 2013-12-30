@@ -27,6 +27,7 @@ public class DiagramMetric extends OntoMetricsPlugin {
 
     @Override
     public void init(ParserJena jena, ParserOWLAPI owlapi, LazyParserGremlin gremlin) {
+        super.init(jena, owlapi, gremlin);
         try {
             sq = new SimpleQuery(jena, resource);
         } catch (IOException ioe) {
