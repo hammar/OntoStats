@@ -82,7 +82,6 @@ public class AtomSubsetAtomTest {
                                                   )
                                                   ) {
             count++;
-            //System.out.println(edge.toString());
         }
 
         assertEquals(res, new Double(count).toString()); // Compare the Jena result with the Gremlin result.

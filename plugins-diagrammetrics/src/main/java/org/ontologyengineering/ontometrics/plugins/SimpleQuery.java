@@ -46,7 +46,15 @@ public class SimpleQuery {
         int sum = 0;
         while (rs.hasNext()) {
             sum ++;
-            rs.next();
+            com.hp.hpl.jena.query.QuerySolution qs = rs.next();
+            /*  Will print the ResultSet as it is summed
+            java.util.Iterator<String> i = qs.varNames();
+            while (i.hasNext()) {
+                String key = i.next();
+                System.out.print(key + "(" + qs.get(key).toString() + ") ");
+            }
+            System.out.println();
+            */
         }
         return sum;
     }

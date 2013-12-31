@@ -29,13 +29,13 @@ public class FilterMaximalTree implements PipeFunction<Vertex, java.lang.Boolean
     private String                     typeClass = AtomSubsetAtomTest.rdfns + "type";
     // keeping track of vistited nodes ensures we don't follow cycles.
     private Map<Vertex, MaybeBoolean>    visited = new HashMap<Vertex, MaybeBoolean>();
-    private List<String>               filterFor; /* = Arrays.asList(Slig.owlns + "complementOf"
-                                             , Slig.owlns + "intersectionOf"
-                                             , Slig.owlns + "unionOf"
-                                             , Slig.owlns + "allValuesFrom"
-                                             , Slig.owlns + "someValuesFrom"
-                                             //, Slig.owlns + "onProperty" // may need to extend to owl:Restriction with owl:qualifiedCardinality
-                                             );*/
+    private List<String>               filterFor; 
+    private final List<String>      atomicFilter = Arrays.asList(AtomSubsetAtomTest.owlns + "complementOf"
+                                             , AtomSubsetAtomTest.owlns + "intersectionOf"
+                                             , AtomSubsetAtomTest.owlns + "unionOf"
+                                             , AtomSubsetAtomTest.owlns + "allValuesFrom"
+                                             , AtomSubsetAtomTest.owlns + "someValuesFrom"
+                                             );
 
     public FilterMaximalTree (List<String> filters) {
         filterFor = filters;
@@ -108,8 +108,8 @@ public class FilterMaximalTree implements PipeFunction<Vertex, java.lang.Boolean
         boolean isTypeClass = false,
                 isFiltered  = true;
 
-        // Special case for owl:Thing
-        if(v.getId().equals(AtomSubsetAtomTest.owlns + "Thing")) return Boolean.TRUE;
+        // Special case for owl:Thing i.e. \top
+        //if(v.getId().equals(AtomSubsetAtomTest.owlns + "Thing")) return Boolean.TRUE;
 
         // Check that this vertex has rdf:type owl:Class
         for(Vertex i: v.getVertices(Direction.OUT, typeClass)) {
@@ -117,7 +117,7 @@ public class FilterMaximalTree implements PipeFunction<Vertex, java.lang.Boolean
         }
 
         for(Edge e: v.getEdges(Direction.OUT)) {
-            if(filterFor.contains(e.getLabel())) isFiltered = false;
+            if(atomicFilter.contains(e.getLabel())) isFiltered = false;
         }
 
         return new Boolean(isTypeClass & isFiltered);
