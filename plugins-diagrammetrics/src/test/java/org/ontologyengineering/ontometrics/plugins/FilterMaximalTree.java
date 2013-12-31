@@ -26,15 +26,15 @@ import org.ontologyengineering.ontometrics.plugins.MaybeBoolean.Option;
  */
 public class FilterMaximalTree implements PipeFunction<Vertex, java.lang.Boolean> {
 
-    private String                     typeClass = AtomSubsetAtomTest.rdfns + "type";
+    private String                     typeClass = TestUtils.rdfns + "type";
     // keeping track of vistited nodes ensures we don't follow cycles.
     private Map<Vertex, MaybeBoolean>    visited = new HashMap<Vertex, MaybeBoolean>();
     private List<String>               filterFor; 
-    private final List<String>      atomicFilter = Arrays.asList(AtomSubsetAtomTest.owlns + "complementOf"
-                                             , AtomSubsetAtomTest.owlns + "intersectionOf"
-                                             , AtomSubsetAtomTest.owlns + "unionOf"
-                                             , AtomSubsetAtomTest.owlns + "allValuesFrom"
-                                             , AtomSubsetAtomTest.owlns + "someValuesFrom"
+    private final List<String>      atomicFilter = Arrays.asList(TestUtils.owlns + "complementOf"
+                                             , TestUtils.owlns + "intersectionOf"
+                                             , TestUtils.owlns + "unionOf"
+                                             , TestUtils.owlns + "allValuesFrom"
+                                             , TestUtils.owlns + "someValuesFrom"
                                              );
 
     public FilterMaximalTree (List<String> filters) {
@@ -113,7 +113,7 @@ public class FilterMaximalTree implements PipeFunction<Vertex, java.lang.Boolean
 
         // Check that this vertex has rdf:type owl:Class
         for(Vertex i: v.getVertices(Direction.OUT, typeClass)) {
-            if(i.getId().equals(AtomSubsetAtomTest.owlns + "Class")) isTypeClass = true;
+            if(i.getId().equals(TestUtils.owlns + "Class")) isTypeClass = true;
         }
 
         for(Edge e: v.getEdges(Direction.OUT)) {
