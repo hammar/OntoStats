@@ -23,25 +23,13 @@ public class AtomSubsetAtomTest {
             rdfns = "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
            rdfsns = "http://www.w3.org/2000/01/rdf-schema#";
 
-    private File owl, combined, ssn;
+    private File owl, ssn;
     private ParserJena jena;
 
     @Before
     public void setUp() {
-        // get the name of the OWL file
-        String dirname  = System.getProperty("diagrammetrics.test.resources");
-        String basename = getClass().getName();  // of form foo.bar.ClassNameTest
-        basename        = basename.substring(basename.lastIndexOf('.') + 1); // remove "foo.bar."
-        basename        = basename.replaceFirst("Test", ""); // remove Test from ClassNameTest
-        String fname    = dirname + File.separator + "simple_" + basename.toLowerCase() + ".owl"; // our files are called simple_classname.owl
-        try {
-            owl      = new File(fname);
-            combined = new File(dirname + File.separator + "combined.owl");
-            ssn      = new File(dirname + File.separator + "ssn.owl");
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.exit(-1);
-        }
+        owl = TestUtils.getOWLFile(getClass().getName());
+        ssn = TestUtils.getSSNFile();
     }
 
     @Test
