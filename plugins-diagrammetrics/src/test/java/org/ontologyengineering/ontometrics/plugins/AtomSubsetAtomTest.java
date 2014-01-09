@@ -11,7 +11,8 @@ import static org.junit.Assert.*;
 public class AtomSubsetAtomTest {
     @Test
     public void simpleTest() {
-        String res = TestUtils.runSimpleTest(TestUtils.getOWLFile(getClass().getName()));
+        AtomSubsetAtom cut = new AtomSubsetAtom();
+        String res = TestUtils.runSimpleTest(TestUtils.getOWLFile(getClass().getName()), cut);
         assertEquals(new String("1.0"), res);
     }
 
@@ -27,9 +28,10 @@ public class AtomSubsetAtomTest {
 
     @Test
     public void gremlinComparision () {
+        AtomSubsetAtom cut = new AtomSubsetAtom();
         // we're only looking for atoms, so filter nothing.
-        String g = TestUtils.runGremlinSSNComparision(new ArrayList<String>());
-        String j = TestUtils.runJenaSSNComparision();
+        String g = TestUtils.runGremlinSSNComparision(Filter.FilterType.ATOM_ONLY, Filter.FilterType.ATOM_ONLY);
+        String j = TestUtils.runJenaSSNComparision(cut);
 
         assertEquals(j, g); // Compare the Jena result with the Gremlin result.
     }

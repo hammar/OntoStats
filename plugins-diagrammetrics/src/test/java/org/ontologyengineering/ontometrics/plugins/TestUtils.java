@@ -1,6 +1,7 @@
 package org.ontologyengineering.ontometrics.plugins;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,13 +10,26 @@ import com.karlhammar.ontometrics.plugins.ParserConfiguration;
 import com.karlhammar.ontometrics.plugins.ParserJena;
 import com.tinkerpop.blueprints.impls.sail.SailGraph;
 import com.tinkerpop.gremlin.java.GremlinPipeline;
+import com.tinkerpop.blueprints.Edge;
+import com.tinkerpop.blueprints.Vertex;
 
 public class TestUtils {
 
     public static final String  owlns = "http://www.w3.org/2002/07/owl#",
-            rdfns = "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-           rdfsns = "http://www.w3.org/2000/01/rdf-schema#";
+                                rdfns = "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+                               rdfsns = "http://www.w3.org/2000/01/rdf-schema#",
+                            rdfnsType = rdfns + "type",
+                     rdfsnsSubClassOf = rdfsns + "subClassOf",
+                           owlnsClass = owlns + "Class",
+                           owlnsThing = owlns + "Thing",
+                    owlnsComplementOf = owlns + "complementOf",
+                         owlnsUnionOf = owlns + "unionOf",
+                  owlnsIntersectionOf = owlns + "intersectionOf",
+                    owlSomeValuesFrom = owlns + "someValuesFrom",
+                     owlAllValuesFrom = owlns + "allValuesFrom";
+
     static final String dirname = System.getProperty("diagrammetrics.test.resources");
+
     /**
      * 
      * @param basename of form foo.bar.ClassNameTest
@@ -42,33 +56,26 @@ public class TestUtils {
         return new File(dirname + File.separator + "ssn.owl");
     }
 
-    public static String runSimpleTest(File owl) {
-        AtomSubsetAtom asa = new AtomSubsetAtom();
+    public static String runSimpleTest(File owl, DiagramMetric dm) {
         ParserJena    jena = ParserJena.resetSingletonObject(owl, new ParserConfiguration());
-        asa.init(jena, null, null);
-        return asa.getMetricValue(owl);
+        dm.init(jena, null, null);
+        return dm.getMetricValue(owl);
     }
 
-    public static String runJenaSSNComparision() {
-        AtomSubsetAtom asa = new AtomSubsetAtom();
+    public static String runJenaSSNComparision(DiagramMetric dm) {
         ParserJena    jena = ParserJena.resetSingletonObject(getSSNFile(), new ParserConfiguration());
-        asa.init(jena, null, null);
-        return asa.getMetricValue(getSSNFile());
+        dm.init(jena, null, null);
+        return dm.getMetricValue(getSSNFile());
     }
 
-    public static String runGremlinSSNComparision(List<String> filters) {
+    public static String runGremlinSSNComparision(Filter.FilterType lhs, Filter.FilterType rhs) {
         LazyParserGremlin lpg = LazyParserGremlin.resetSingletonObject(getSSNFile(), new ParserConfiguration());
         SailGraph          sg = lpg.getOntology();
-        double          count = 0.0;
-        for(Object edge : new GremlinPipeline(sg.getEdges())
-                                .has("label", rdfsns + "subClassOf")
-                                .and(
-                                        new GremlinPipeline().inV().filter(new FilterMaximalTree(filters))    // filter lhs
-                                        , new GremlinPipeline().outV().filter(new FilterMaximalTree(filters)) // filter lrhs
-                                     )
-           ) {
-            count++;
-        }
-        return new Double(count).toString();
+        GremlinPipeline    gp = new GremlinPipeline(sg.getEdges()).has("label", rdfsnsSubClassOf).and(
+                new GremlinPipeline().outV().add((new Filter(sg, lhs)).getPipeline())
+                , new GremlinPipeline().inV().add((new Filter(sg, rhs)).getPipeline())
+        ).dedup();
+
+        return Double.toString(gp.count());
     }
 }

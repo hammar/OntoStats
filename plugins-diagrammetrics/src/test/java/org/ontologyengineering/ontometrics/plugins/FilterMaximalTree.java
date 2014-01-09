@@ -3,6 +3,7 @@ package org.ontologyengineering.ontometrics.plugins;
 import com.tinkerpop.blueprints.Direction;
 import com.tinkerpop.blueprints.Edge;
 import com.tinkerpop.blueprints.Vertex;
+import com.tinkerpop.gremlin.java.GremlinPipeline;
 import com.tinkerpop.pipes.PipeFunction;
 
 import java.util.Arrays;
@@ -16,20 +17,18 @@ import org.ontologyengineering.ontometrics.plugins.MaybeBoolean.Option;
  * 
  * @author Aidan Delaney <aidan@phoric.eu>
  *
- * Computes a maximal tree following the relationships:
- * <ul>
- * <li>owl:intersectionOf,</li>
- * <li>owl:unionOf, and</li>
- * <li>owl:complementOf.</li>
- * </ul>
- * Any intermediate node implied by these relationships are followed.
+ * Given an {@see Filter} this class will verify whether the tree rooted at the
+ * vertex passes the filter.
+ * 
+ * A neater way of doing this might be to turn the RDF graph into an AST and use
+ * a standard AST parser.  For the moment, this "works".
  */
 public class FilterMaximalTree implements PipeFunction<Vertex, java.lang.Boolean> {
 
     private String                     typeClass = TestUtils.rdfns + "type";
-    // keeping track of vistited nodes ensures we don't follow cycles.
+    // keeping track of vistited nodes ensures we don't follow cycles.  Only used by isUnrestricted()
     private Map<Vertex, MaybeBoolean>    visited = new HashMap<Vertex, MaybeBoolean>();
-    private List<String>               filterFor; 
+    private Filter                        filter; 
     private final List<String>      atomicFilter = Arrays.asList(TestUtils.owlns + "complementOf"
                                              , TestUtils.owlns + "intersectionOf"
                                              , TestUtils.owlns + "unionOf"
@@ -37,8 +36,8 @@ public class FilterMaximalTree implements PipeFunction<Vertex, java.lang.Boolean
                                              , TestUtils.owlns + "someValuesFrom"
                                              );
 
-    public FilterMaximalTree (List<String> filters) {
-        filterFor = filters;
+    public FilterMaximalTree (Filter filter) {
+        this.filter = filter;
     }
 
     /**
@@ -47,7 +46,7 @@ public class FilterMaximalTree implements PipeFunction<Vertex, java.lang.Boolean
      */
     @Override
     public Boolean compute(Vertex v) {
-        return verifySubgraph(v);
+        return isUnrestricted(v);
     }
 
     /**
@@ -55,7 +54,7 @@ public class FilterMaximalTree implements PipeFunction<Vertex, java.lang.Boolean
      * @param v
      * @return
      */
-    private Boolean verifySubgraph(Vertex v) {
+    private Boolean isUnrestricted(Vertex v) {
         MaybeBoolean o = visited.get(v);
         if(null != o && o.isJust()) {
             // we've visited this and have results.
@@ -68,6 +67,16 @@ public class FilterMaximalTree implements PipeFunction<Vertex, java.lang.Boolean
         };
 
         return Boolean.FALSE;
+    }
+
+    private Boolean isConjunction(Vertex v) {
+        // intersectionOf
+        
+        return false;
+    }
+
+    private Boolean isDisjunction(Vertex v) {
+        return false;
     }
 
     private Boolean isComplex(Vertex v) {
@@ -87,9 +96,9 @@ public class FilterMaximalTree implements PipeFunction<Vertex, java.lang.Boolean
         for(Edge e: v.getEdges(Direction.OUT)) {
             Vertex ev = e.getVertex(Direction.OUT);
 
-            if(filterFor.contains(e.getLabel())) {
-                isComplex = verifySubgraph(ev);
-            }
+            //if(filter.getFilters().contains(e.getLabel())) {
+            //    isComplex = isUnrestricted(ev);
+            //}
         }
 
         if(!isComplex) {
@@ -104,12 +113,19 @@ public class FilterMaximalTree implements PipeFunction<Vertex, java.lang.Boolean
         return isComplex;
     }
 
+    private Boolean isTop(Vertex v) {
+        if(v.getId().equals(TestUtils.owlns + "Thing")) return Boolean.TRUE;
+        return Boolean.FALSE;
+    }
+
+    private Boolean isBot(Vertex v) {
+        if(v.getId().equals(TestUtils.rdfns + "nil")) return Boolean.TRUE;
+        return Boolean.FALSE;
+    }
+
     private Boolean isAtomic(Vertex v) {
         boolean isTypeClass = false,
                 isFiltered  = true;
-
-        // Special case for owl:Thing i.e. \top
-        //if(v.getId().equals(AtomSubsetAtomTest.owlns + "Thing")) return Boolean.TRUE;
 
         // Check that this vertex has rdf:type owl:Class
         for(Vertex i: v.getVertices(Direction.OUT, typeClass)) {
@@ -121,5 +137,9 @@ public class FilterMaximalTree implements PipeFunction<Vertex, java.lang.Boolean
         }
 
         return new Boolean(isTypeClass & isFiltered);
+    }
+
+    private Boolean runPipeline(GremlinPipeline pipeline, Vertex vertex) {
+        return Boolean.TRUE;
     }
 }
