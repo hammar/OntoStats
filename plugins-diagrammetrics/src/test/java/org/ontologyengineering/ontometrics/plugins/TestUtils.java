@@ -1,6 +1,8 @@
 package org.ontologyengineering.ontometrics.plugins;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 
 import com.karlhammar.ontometrics.plugins.LazyParserGremlin;
 import com.karlhammar.ontometrics.plugins.ParserConfiguration;
@@ -50,8 +52,9 @@ public class TestUtils {
         return owl;
     }
 
-    public static File getTestDataFile() {
-        return new File(dirname + File.separator + "BuildingsAndPlaces.rdf");
+    public static List<File> getTestDataFiles() {
+        String basename = dirname + File.separator;
+        return Arrays.asList(new File(basename + "BuildingsAndPlaces.rdf"), new File(basename + "ssn.owl"));
     }
 
     public static String runSimpleTest(File owl, DiagramMetric dm) {
@@ -60,14 +63,14 @@ public class TestUtils {
         return dm.getMetricValue(owl);
     }
 
-    public static String runJenaTestDataFileComparison(DiagramMetric dm) {
-        ParserJena    jena = ParserJena.resetSingletonObject(getTestDataFile(), new ParserConfiguration());
+    public static String runJenaTestDataFileComparison(File testFile, DiagramMetric dm) {
+        ParserJena    jena = ParserJena.resetSingletonObject(testFile, new ParserConfiguration());
         dm.init(jena, null, null);
-        return dm.getMetricValue(getTestDataFile());
+        return dm.getMetricValue(testFile);
     }
 
-    public static String runGremlinTestDataComparison(Filter.FilterType lhs, Filter.FilterType rhs) {
-        LazyParserGremlin lpg = LazyParserGremlin.resetSingletonObject(getTestDataFile(), new ParserConfiguration());
+    public static String runGremlinTestDataComparison(File testFile, Filter.FilterType lhs, Filter.FilterType rhs) {
+        LazyParserGremlin lpg = LazyParserGremlin.resetSingletonObject(testFile, new ParserConfiguration());
         SailGraph          sg = lpg.getOntology();
         GremlinPipeline    gp = new GremlinPipeline(sg.getEdges()).has("label", rdfsnsSubClassOf).and(
                 new GremlinPipeline().outV().add((new Filter(sg, lhs)).getPipeline())
