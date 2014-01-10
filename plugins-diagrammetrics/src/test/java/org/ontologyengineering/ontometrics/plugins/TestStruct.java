@@ -11,4 +11,8 @@ class TestStruct {
         this.lhs = lhs;
         this.rhs = rhs;
     }
+
+    public String toString() {
+        return dm.getClass().getName();
+    }
 }

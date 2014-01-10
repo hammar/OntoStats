@@ -32,14 +32,17 @@ public class Filter {
             case CONJUNCTION:
                 this.pipeline = getConjunctionPipeline(classVertex);
                 break;
+            case DISJUNCTION:
+                this.pipeline = getDisjunctionPipeline(classVertex);
+                break;
         }
     }
 
-    public static GremlinPipeline<Vertex, Vertex> getPipelineVerifyIsOfRDFType(Vertex v) {
+    private static GremlinPipeline<Vertex, Vertex> getPipelineVerifyIsOfRDFType(Vertex v) {
         return new GremlinPipeline()._().as("ver").out(TestUtils.rdfnsType).retain(Arrays.asList(v)).back("ver");
     }
 
-    public static GremlinPipeline getAtomicPipeline(Vertex owlClassVertex) {
+    private static GremlinPipeline getAtomicPipeline(Vertex owlClassVertex) {
         return new GremlinPipeline(). and(
                 new GremlinPipeline().add(getPipelineVerifyIsOfRDFType(owlClassVertex))
                 , new GremlinPipeline().filter(
@@ -60,9 +63,18 @@ public class Filter {
     private GremlinPipeline getConjunctionPipeline(Vertex owlClassVertex) {
         return new GremlinPipeline().and(
                 new GremlinPipeline().add(getPipelineVerifyIsOfRDFType(owlClassVertex))
-                , new GremlinPipeline().outE(TestUtils.owlnsIntersectionOf).outE(TestUtils.rdfnsFirst).add(getAtomicPipeline(owlClassVertex))
-                , new GremlinPipeline().outE(TestUtils.owlnsIntersectionOf).outE(TestUtils.rdfnsRest).outE(TestUtils.rdfnsFirst).add(getAtomicPipeline(owlClassVertex))
-                , new GremlinPipeline().outE(TestUtils.owlnsIntersectionOf).outE(TestUtils.rdfnsRest).outE(TestUtils.rdfnsFirst).has("id", TestUtils.rdfnsNil)
+                , new GremlinPipeline().outE(TestUtils.owlnsIntersectionOf).inV().outE(TestUtils.rdfnsFirst).inV().add(getAtomicPipeline(owlClassVertex))
+                , new GremlinPipeline().outE(TestUtils.owlnsIntersectionOf).inV().outE(TestUtils.rdfnsRest).inV().outE(TestUtils.rdfnsFirst).inV().add(getAtomicPipeline(owlClassVertex))
+                , new GremlinPipeline().outE(TestUtils.owlnsIntersectionOf).inV().outE(TestUtils.rdfnsRest).inV().outE(TestUtils.rdfnsRest).inV().has("id", TestUtils.rdfnsNil)
+        );
+    }
+
+    private GremlinPipeline getDisjunctionPipeline(Vertex owlClassVertex) {
+        return new GremlinPipeline().and(
+                new GremlinPipeline().add(getPipelineVerifyIsOfRDFType(owlClassVertex))
+                , new GremlinPipeline().outE(TestUtils.owlnsUnionOf).inV().outE(TestUtils.rdfnsFirst).inV().add(getAtomicPipeline(owlClassVertex))
+                , new GremlinPipeline().outE(TestUtils.owlnsUnionOf).inV().outE(TestUtils.rdfnsRest).inV().outE(TestUtils.rdfnsFirst).inV().add(getAtomicPipeline(owlClassVertex))
+                , new GremlinPipeline().outE(TestUtils.owlnsUnionOf).inV().outE(TestUtils.rdfnsRest).inV().outE(TestUtils.rdfnsRest).inV().has("id", TestUtils.rdfnsNil)
         );
     }
 

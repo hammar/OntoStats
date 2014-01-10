@@ -21,6 +21,7 @@ public class DiagramMetricTest {
         return Arrays.asList(
                 new TestStruct[]{new TestStruct(new AtomSubsetAtom(), Filter.FilterType.ATOM_ONLY, Filter.FilterType.ATOM_ONLY)}
                 , new TestStruct[]{new TestStruct(new AtomSubsetConj(), Filter.FilterType.ATOM_ONLY, Filter.FilterType.CONJUNCTION)}
+                , new TestStruct[]{new TestStruct(new AtomSubsetDisj(), Filter.FilterType.ATOM_ONLY, Filter.FilterType.DISJUNCTION)}
         );
     }
 
@@ -32,7 +33,7 @@ public class DiagramMetricTest {
     @Test
     public void simpleTest() {
         String res = TestUtils.runSimpleTest(TestUtils.getOWLFile(ts.dm.getClass().getName()), ts.dm);
-        assertEquals(new String("1.0"), res);
+        assertEquals("Failure on " + ts.toString() + " with simpleTest()", new String("1.0"), res);
     }
 
     @Test
@@ -40,7 +41,7 @@ public class DiagramMetricTest {
         for(File f: TestUtils.getTestDataFiles()) {
             String g = TestUtils.runGremlinTestDataComparison(f, ts.lhs, ts.rhs);
             String j = TestUtils.runJenaTestDataFileComparison(f, ts.dm);
-            assertEquals(j, g); // Compare the Jena result with the Gremlin result.
+            assertEquals("Failure on " + ts.toString() + " with " + f.toString(), j, g); // Compare the Jena result with the Gremlin result.
         }
     }
 }
