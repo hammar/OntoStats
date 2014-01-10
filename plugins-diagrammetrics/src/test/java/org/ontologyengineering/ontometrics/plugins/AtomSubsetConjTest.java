@@ -2,9 +2,6 @@ package org.ontologyengineering.ontometrics.plugins;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import org.junit.Test;
 
 public class AtomSubsetConjTest {
@@ -19,8 +16,8 @@ public class AtomSubsetConjTest {
     public void gremlinComparision () {
         AtomSubsetConj cut = new AtomSubsetConj();
         // we're only looking for atoms, so filter nothing.
-        String g = TestUtils.runGremlinSSNComparision(Filter.FilterType.ATOM_ONLY, Filter.FilterType.CONJUNCTION);
-        String j = TestUtils.runJenaSSNComparision(cut);
+        String g = TestUtils.runGremlinTestDataComparison(Filter.FilterType.ATOM_ONLY, Filter.FilterType.CONJUNCTION);
+        String j = TestUtils.runJenaTestDataFileComparison(cut);
 
         assertEquals(j, g); // Compare the Jena result with the Gremlin result.
     }

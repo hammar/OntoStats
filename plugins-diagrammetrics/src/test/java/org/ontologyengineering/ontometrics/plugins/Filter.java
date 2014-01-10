@@ -1,6 +1,5 @@
 package org.ontologyengineering.ontometrics.plugins;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,28 +21,6 @@ public class Filter {
     UNRESTRICTED};
 
     private static List<String> filters = Arrays.asList(TestUtils.owlnsComplementOf, TestUtils.owlnsIntersectionOf, TestUtils.owlnsUnionOf, TestUtils.owlSomeValuesFrom, TestUtils.owlAllValuesFrom);
-    public static GremlinPipeline<Vertex, Vertex> getPipelineToVertex(Vertex v) {
-        return new GremlinPipeline()._().as("ver").out(TestUtils.rdfnsType).retain(Arrays.asList(v)).back("ver");
-    }
-
-    public static GremlinPipeline getAtomicPipeline(Vertex owlClassVertex) {
-        return new GremlinPipeline(). and(
-                new GremlinPipeline().add(getPipelineToVertex(owlClassVertex))
-                , new GremlinPipeline().filter(
-                new PipeFunction<Vertex, Boolean>() {
-                    @Override
-                    public Boolean compute(Vertex v) {
-                        boolean containsBannedEdge = false;
-                        for(Edge e: v.getEdges(Direction.OUT)) {
-                            if(filters.contains(e.getLabel())) containsBannedEdge = true;
-                        }
-                        return new Boolean(!containsBannedEdge);
-                    }
-                }
-        )
-        );
-    }
-
     private GremlinPipeline pipeline;
 
     public Filter(SailGraph sg, FilterType type) {
@@ -53,9 +30,40 @@ public class Filter {
                 this.pipeline = getAtomicPipeline(classVertex);
                 break;
             case CONJUNCTION:
-                //this.pipeline = getConjunctionPipeline(classVertex);
+                this.pipeline = getConjunctionPipeline(classVertex);
                 break;
         }
+    }
+
+    public static GremlinPipeline<Vertex, Vertex> getPipelineVerifyIsOfRDFType(Vertex v) {
+        return new GremlinPipeline()._().as("ver").out(TestUtils.rdfnsType).retain(Arrays.asList(v)).back("ver");
+    }
+
+    public static GremlinPipeline getAtomicPipeline(Vertex owlClassVertex) {
+        return new GremlinPipeline(). and(
+                new GremlinPipeline().add(getPipelineVerifyIsOfRDFType(owlClassVertex))
+                , new GremlinPipeline().filter(
+                    new PipeFunction<Vertex, Boolean>() {
+                        @Override
+                        public Boolean compute(Vertex v) {
+                            boolean containsBannedEdge = false;
+                            for(Edge e: v.getEdges(Direction.OUT)) {
+                                if(filters.contains(e.getLabel())) containsBannedEdge = true;
+                            }
+                            return new Boolean(!containsBannedEdge);
+                        }
+                    }
+                )
+        );
+    }
+
+    private GremlinPipeline getConjunctionPipeline(Vertex owlClassVertex) {
+        return new GremlinPipeline().and(
+                new GremlinPipeline().add(getPipelineVerifyIsOfRDFType(owlClassVertex))
+                , new GremlinPipeline().outE(TestUtils.owlnsIntersectionOf).outE(TestUtils.rdfnsFirst).add(getAtomicPipeline(owlClassVertex))
+                , new GremlinPipeline().outE(TestUtils.owlnsIntersectionOf).outE(TestUtils.rdfnsRest).outE(TestUtils.rdfnsFirst).add(getAtomicPipeline(owlClassVertex))
+                , new GremlinPipeline().outE(TestUtils.owlnsIntersectionOf).outE(TestUtils.rdfnsRest).outE(TestUtils.rdfnsFirst).has("id", TestUtils.rdfnsNil)
+        );
     }
 
     public GremlinPipeline getPipeline() {

@@ -1,17 +1,12 @@
 package org.ontologyengineering.ontometrics.plugins;
 
 import java.io.File;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.karlhammar.ontometrics.plugins.LazyParserGremlin;
 import com.karlhammar.ontometrics.plugins.ParserConfiguration;
 import com.karlhammar.ontometrics.plugins.ParserJena;
 import com.tinkerpop.blueprints.impls.sail.SailGraph;
 import com.tinkerpop.gremlin.java.GremlinPipeline;
-import com.tinkerpop.blueprints.Edge;
-import com.tinkerpop.blueprints.Vertex;
 
 public class TestUtils {
 
@@ -19,6 +14,9 @@ public class TestUtils {
                                 rdfns = "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
                                rdfsns = "http://www.w3.org/2000/01/rdf-schema#",
                             rdfnsType = rdfns + "type",
+                           rdfnsFirst = rdfns + "first",
+                            rdfnsRest = rdfns + "rest",
+                             rdfnsNil = rdfns + "nil",
                      rdfsnsSubClassOf = rdfsns + "subClassOf",
                            owlnsClass = owlns + "Class",
                            owlnsThing = owlns + "Thing",
@@ -52,8 +50,8 @@ public class TestUtils {
         return owl;
     }
 
-    public static File getSSNFile() {
-        return new File(dirname + File.separator + "ssn.owl");
+    public static File getTestDataFile() {
+        return new File(dirname + File.separator + "BuildingsAndPlaces.rdf");
     }
 
     public static String runSimpleTest(File owl, DiagramMetric dm) {
@@ -62,14 +60,14 @@ public class TestUtils {
         return dm.getMetricValue(owl);
     }
 
-    public static String runJenaSSNComparision(DiagramMetric dm) {
-        ParserJena    jena = ParserJena.resetSingletonObject(getSSNFile(), new ParserConfiguration());
+    public static String runJenaTestDataFileComparison(DiagramMetric dm) {
+        ParserJena    jena = ParserJena.resetSingletonObject(getTestDataFile(), new ParserConfiguration());
         dm.init(jena, null, null);
-        return dm.getMetricValue(getSSNFile());
+        return dm.getMetricValue(getTestDataFile());
     }
 
-    public static String runGremlinSSNComparision(Filter.FilterType lhs, Filter.FilterType rhs) {
-        LazyParserGremlin lpg = LazyParserGremlin.resetSingletonObject(getSSNFile(), new ParserConfiguration());
+    public static String runGremlinTestDataComparison(Filter.FilterType lhs, Filter.FilterType rhs) {
+        LazyParserGremlin lpg = LazyParserGremlin.resetSingletonObject(getTestDataFile(), new ParserConfiguration());
         SailGraph          sg = lpg.getOntology();
         GremlinPipeline    gp = new GremlinPipeline(sg.getEdges()).has("label", rdfsnsSubClassOf).and(
                 new GremlinPipeline().outV().add((new Filter(sg, lhs)).getPipeline())
