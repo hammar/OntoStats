@@ -18,6 +18,7 @@ public class Filter {
     COMPLEMENT,
     ALLOF,
     SOMEOF,
+    TOP,
     UNRESTRICTED};
 
     private static List<String> filters = Arrays.asList(TestUtils.owlnsComplementOf, TestUtils.owlnsIntersectionOf, TestUtils.owlnsUnionOf, TestUtils.owlSomeValuesFrom, TestUtils.owlAllValuesFrom);
@@ -35,6 +36,18 @@ public class Filter {
             case DISJUNCTION:
                 this.pipeline = getDisjunctionPipeline(classVertex);
                 break;
+            case SOMEOF:
+                this.pipeline = getSomeValuesFromPipeline(classVertex);
+                break;
+            case ALLOF:
+                this.pipeline = getAllValuesFromPipeline(classVertex);
+                break;
+            case COMPLEMENT:
+                this.pipeline = getComplementPipeline(classVertex);
+                break;
+            case TOP:
+                this.pipeline = getTopPipeline(classVertex);
+                break;
         }
     }
 
@@ -42,10 +55,10 @@ public class Filter {
         return new GremlinPipeline()._().as("ver").out(TestUtils.rdfnsType).retain(Arrays.asList(v)).back("ver");
     }
 
-    private static GremlinPipeline getAtomicPipeline(Vertex owlClassVertex) {
-        return new GremlinPipeline(). and(
-                new GremlinPipeline().add(getPipelineVerifyIsOfRDFType(owlClassVertex))
-                , new GremlinPipeline().filter(
+    private static GremlinPipeline<Vertex, Vertex> getAtomicPipeline(Vertex owlClassVertex) {
+        return new GremlinPipeline<Vertex, Vertex>().and(
+                new GremlinPipeline<Vertex, Vertex>().add(getPipelineVerifyIsOfRDFType(owlClassVertex))
+                , new GremlinPipeline<Vertex, Vertex>().filter(
                     new PipeFunction<Vertex, Boolean>() {
                         @Override
                         public Boolean compute(Vertex v) {
@@ -53,7 +66,7 @@ public class Filter {
                             for(Edge e: v.getEdges(Direction.OUT)) {
                                 if(filters.contains(e.getLabel())) containsBannedEdge = true;
                             }
-                            return new Boolean(!containsBannedEdge);
+                            return !containsBannedEdge;
                         }
                     }
                 )
@@ -76,6 +89,22 @@ public class Filter {
                 , new GremlinPipeline().outE(TestUtils.owlnsUnionOf).inV().outE(TestUtils.rdfnsRest).inV().outE(TestUtils.rdfnsFirst).inV().add(getAtomicPipeline(owlClassVertex))
                 , new GremlinPipeline().outE(TestUtils.owlnsUnionOf).inV().outE(TestUtils.rdfnsRest).inV().outE(TestUtils.rdfnsRest).inV().has("id", TestUtils.rdfnsNil)
         );
+    }
+
+    private GremlinPipeline getSomeValuesFromPipeline(Vertex owlClassVertex) {
+        return new GremlinPipeline().outE(TestUtils.owlSomeValuesFrom).inV().add(getAtomicPipeline(owlClassVertex));
+    }
+
+    private GremlinPipeline getAllValuesFromPipeline(Vertex owlClassVertex) {
+        return new GremlinPipeline().outE(TestUtils.owlAllValuesFrom).inV().add(getAtomicPipeline(owlClassVertex));
+    }
+
+    private GremlinPipeline getComplementPipeline(Vertex owlClassVertex) {
+        return new GremlinPipeline().outE(TestUtils.owlnsComplementOf).add(getAtomicPipeline(owlClassVertex));
+    }
+
+    private GremlinPipeline getTopPipeline(Vertex owlClassVertex) {
+        return new GremlinPipeline().has("id", TestUtils.owlnsThing);
     }
 
     public GremlinPipeline getPipeline() {

@@ -20,8 +20,12 @@ public class DiagramMetricTest {
     public static Collection<TestStruct []> data() {
         return Arrays.asList(
                 new TestStruct[]{new TestStruct(new AtomSubsetAtom(), Filter.FilterType.ATOM_ONLY, Filter.FilterType.ATOM_ONLY)}
+                , new TestStruct[]{new TestStruct(new AtomSubsetNegAtom(), Filter.FilterType.ATOM_ONLY, Filter.FilterType.COMPLEMENT)}
                 , new TestStruct[]{new TestStruct(new AtomSubsetConj(), Filter.FilterType.ATOM_ONLY, Filter.FilterType.CONJUNCTION)}
                 , new TestStruct[]{new TestStruct(new AtomSubsetDisj(), Filter.FilterType.ATOM_ONLY, Filter.FilterType.DISJUNCTION)}
+                , new TestStruct[]{new TestStruct(new AtomSubsetSome(), Filter.FilterType.ATOM_ONLY, Filter.FilterType.SOMEOF)}
+                , new TestStruct[]{new TestStruct(new AtomSubsetOnly(), Filter.FilterType.ATOM_ONLY, Filter.FilterType.ALLOF)}
+                , new TestStruct[]{new TestStruct(new AtomSubsetTop(), Filter.FilterType.ATOM_ONLY, Filter.FilterType.TOP)}
         );
     }
 
