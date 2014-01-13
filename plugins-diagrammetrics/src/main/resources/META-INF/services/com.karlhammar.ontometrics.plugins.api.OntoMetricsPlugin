@@ -30,3 +30,9 @@ org.ontologyengineering.ontometrics.plugins.SomeSubsetDisj
 org.ontologyengineering.ontometrics.plugins.SomeSubsetNegAtom
 org.ontologyengineering.ontometrics.plugins.SomeSubsetOnly
 org.ontologyengineering.ontometrics.plugins.SomeSubsetSome
+org.ontologyengineering.ontometrics.plugins.TopSubsetAtom
+org.ontologyengineering.ontometrics.plugins.TopSubsetDisj
+org.ontologyengineering.ontometrics.plugins.TopSubsetNegAtom
+org.ontologyengineering.ontometrics.plugins.TopSubsetOnly
+org.ontologyengineering.ontometrics.plugins.TopSubsetSome
+org.ontologyengineering.ontometrics.plugins.TopSubsetTop

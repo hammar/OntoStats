@@ -64,7 +64,14 @@ public class DiagramMetricTest {
                 , new TestStruct[]{new TestStruct(new SomeSubsetDisj(),    Filter.FilterType.SOMEOF, Filter.FilterType.DISJUNCTION)}
                 , new TestStruct[]{new TestStruct(new SomeSubsetSome(),    Filter.FilterType.SOMEOF, Filter.FilterType.SOMEOF)}
                 , new TestStruct[]{new TestStruct(new SomeSubsetOnly(),    Filter.FilterType.SOMEOF, Filter.FilterType.ALLOF)}
-
+                // Top subset *
+                , new TestStruct[]{new TestStruct(new TopSubsetAtom(),    Filter.FilterType.TOP, Filter.FilterType.ATOM_ONLY)}
+                , new TestStruct[]{new TestStruct(new TopSubsetNegAtom(), Filter.FilterType.TOP, Filter.FilterType.COMPLEMENT)}
+                , new TestStruct[]{new TestStruct(new TopSubsetConj(),    Filter.FilterType.TOP, Filter.FilterType.CONJUNCTION)}
+                , new TestStruct[]{new TestStruct(new TopSubsetDisj(),    Filter.FilterType.TOP, Filter.FilterType.DISJUNCTION)}
+                , new TestStruct[]{new TestStruct(new TopSubsetSome(),    Filter.FilterType.TOP, Filter.FilterType.SOMEOF)}
+                , new TestStruct[]{new TestStruct(new TopSubsetOnly(),    Filter.FilterType.TOP, Filter.FilterType.ALLOF)}
+                , new TestStruct[]{new TestStruct(new TopSubsetTop(),     Filter.FilterType.TOP, Filter.FilterType.TOP)}
         );
     }
 
