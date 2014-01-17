@@ -21,56 +21,59 @@ public class DiagramMetricTest {
         return Arrays.asList(
                 // Atom subset *
                 new TestStruct[]{new TestStruct(new AtomSubsetAtom(),      Filter.FilterType.ATOM_ONLY, Filter.FilterType.ATOM_ONLY)}
-                , new TestStruct[]{new TestStruct(new AtomSubsetNegAtom(), Filter.FilterType.ATOM_ONLY, Filter.FilterType.COMPLEMENT)}
-                , new TestStruct[]{new TestStruct(new AtomSubsetConj(),    Filter.FilterType.ATOM_ONLY, Filter.FilterType.CONJUNCTION)}
-                , new TestStruct[]{new TestStruct(new AtomSubsetDisj(),    Filter.FilterType.ATOM_ONLY, Filter.FilterType.DISJUNCTION)}
-                , new TestStruct[]{new TestStruct(new AtomSubsetSome(),    Filter.FilterType.ATOM_ONLY, Filter.FilterType.SOMEOF)}
-                , new TestStruct[]{new TestStruct(new AtomSubsetOnly(),    Filter.FilterType.ATOM_ONLY, Filter.FilterType.ALLOF)}
+                , new TestStruct[]{new TestStruct(new AtomSubsetNegAtom(), Filter.FilterType.ATOM_ONLY, Filter.FilterType.ATOM_COMPLEMENT)}
+                , new TestStruct[]{new TestStruct(new AtomSubsetConj(),    Filter.FilterType.ATOM_ONLY, Filter.FilterType.ATOM_CONJUNCTION)}
+                , new TestStruct[]{new TestStruct(new AtomSubsetDisj(),    Filter.FilterType.ATOM_ONLY, Filter.FilterType.ATOM_DISJUNCTION)}
+                , new TestStruct[]{new TestStruct(new AtomSubsetSome(),    Filter.FilterType.ATOM_ONLY, Filter.FilterType.ATOM_SOMEOF)}
+                , new TestStruct[]{new TestStruct(new AtomSubsetOnly(),    Filter.FilterType.ATOM_ONLY, Filter.FilterType.ATOM_ALLOF)}
                 , new TestStruct[]{new TestStruct(new AtomSubsetTop(),     Filter.FilterType.ATOM_ONLY, Filter.FilterType.TOP)}
                 // Conj subset *
-                , new TestStruct[]{new TestStruct(new ConjSubsetAtom(),    Filter.FilterType.CONJUNCTION, Filter.FilterType.ATOM_ONLY)}
-                , new TestStruct[]{new TestStruct(new ConjSubsetNegAtom(), Filter.FilterType.CONJUNCTION, Filter.FilterType.COMPLEMENT)}
-                , new TestStruct[]{new TestStruct(new ConjSubsetConj(),    Filter.FilterType.CONJUNCTION, Filter.FilterType.CONJUNCTION)}
-                , new TestStruct[]{new TestStruct(new ConjSubsetDisj(),    Filter.FilterType.CONJUNCTION, Filter.FilterType.DISJUNCTION)}
-                , new TestStruct[]{new TestStruct(new ConjSubsetSome(),    Filter.FilterType.CONJUNCTION, Filter.FilterType.SOMEOF)}
-                , new TestStruct[]{new TestStruct(new ConjSubsetOnly(),    Filter.FilterType.CONJUNCTION, Filter.FilterType.ALLOF)}
-                //, new TestStruct[]{new TestStruct(new ConjSubsetTop(),     Filter.FilterType.CONJUNCTION, Filter.FilterType.TOP)}
+                , new TestStruct[]{new TestStruct(new ConjSubsetAtom(),    Filter.FilterType.ATOM_CONJUNCTION, Filter.FilterType.ATOM_ONLY)}
+                , new TestStruct[]{new TestStruct(new ConjSubsetNegAtom(), Filter.FilterType.ATOM_CONJUNCTION, Filter.FilterType.ATOM_COMPLEMENT)}
+                , new TestStruct[]{new TestStruct(new ConjSubsetConj(),    Filter.FilterType.ATOM_CONJUNCTION, Filter.FilterType.ATOM_CONJUNCTION)}
+                , new TestStruct[]{new TestStruct(new ConjSubsetDisj(),    Filter.FilterType.ATOM_CONJUNCTION, Filter.FilterType.ATOM_DISJUNCTION)}
+                , new TestStruct[]{new TestStruct(new ConjSubsetSome(),    Filter.FilterType.ATOM_CONJUNCTION, Filter.FilterType.ATOM_SOMEOF)}
+                , new TestStruct[]{new TestStruct(new ConjSubsetOnly(),    Filter.FilterType.ATOM_CONJUNCTION, Filter.FilterType.ATOM_ALLOF)}
+                , new TestStruct[]{new TestStruct(new ConjSubsetTop(),     Filter.FilterType.ATOM_CONJUNCTION, Filter.FilterType.TOP)}
                 // Disj subset *
-                , new TestStruct[]{new TestStruct(new DisjSubsetAtom(),    Filter.FilterType.DISJUNCTION, Filter.FilterType.ATOM_ONLY)}
-                , new TestStruct[]{new TestStruct(new DisjSubsetNegAtom(), Filter.FilterType.DISJUNCTION, Filter.FilterType.COMPLEMENT)}
-                , new TestStruct[]{new TestStruct(new DisjSubsetConj(),    Filter.FilterType.DISJUNCTION, Filter.FilterType.CONJUNCTION)}
-                , new TestStruct[]{new TestStruct(new DisjSubsetDisj(),    Filter.FilterType.DISJUNCTION, Filter.FilterType.DISJUNCTION)}
-                , new TestStruct[]{new TestStruct(new DisjSubsetSome(),    Filter.FilterType.DISJUNCTION, Filter.FilterType.SOMEOF)}
-                , new TestStruct[]{new TestStruct(new DisjSubsetOnly(),    Filter.FilterType.DISJUNCTION, Filter.FilterType.ALLOF)}
-                //, new TestStruct[]{new TestStruct(new DisjSubsetTop(),     Filter.FilterType.DISJUNCTION, Filter.FilterType.TOP)}
+                , new TestStruct[]{new TestStruct(new DisjSubsetAtom(),    Filter.FilterType.ATOM_DISJUNCTION, Filter.FilterType.ATOM_ONLY)}
+                , new TestStruct[]{new TestStruct(new DisjSubsetNegAtom(), Filter.FilterType.ATOM_DISJUNCTION, Filter.FilterType.ATOM_COMPLEMENT)}
+                , new TestStruct[]{new TestStruct(new DisjSubsetConj(),    Filter.FilterType.ATOM_DISJUNCTION, Filter.FilterType.ATOM_CONJUNCTION)}
+                , new TestStruct[]{new TestStruct(new DisjSubsetDisj(),    Filter.FilterType.ATOM_DISJUNCTION, Filter.FilterType.ATOM_DISJUNCTION)}
+                , new TestStruct[]{new TestStruct(new DisjSubsetSome(),    Filter.FilterType.ATOM_DISJUNCTION, Filter.FilterType.ATOM_SOMEOF)}
+                , new TestStruct[]{new TestStruct(new DisjSubsetOnly(),    Filter.FilterType.ATOM_DISJUNCTION, Filter.FilterType.ATOM_ALLOF)}
+                //, new TestStruct[]{new TestStruct(new DisjSubsetTop(),     Filter.FilterType.ATOM_DISJUNCTION, Filter.FilterType.TOP)}
                 // Negation subset *
-                , new TestStruct[]{new TestStruct(new NegAtomSubsetAtom(),    Filter.FilterType.COMPLEMENT, Filter.FilterType.ATOM_ONLY)}
-                , new TestStruct[]{new TestStruct(new NegAtomSubsetNegAtom(), Filter.FilterType.COMPLEMENT, Filter.FilterType.COMPLEMENT)}
-                , new TestStruct[]{new TestStruct(new NegAtomSubsetConj(),    Filter.FilterType.COMPLEMENT, Filter.FilterType.CONJUNCTION)}
-                , new TestStruct[]{new TestStruct(new NegAtomSubsetDisj(),    Filter.FilterType.COMPLEMENT, Filter.FilterType.DISJUNCTION)}
-                , new TestStruct[]{new TestStruct(new NegAtomSubsetSome(),    Filter.FilterType.COMPLEMENT, Filter.FilterType.SOMEOF)}
-                , new TestStruct[]{new TestStruct(new NegAtomSubsetOnly(),    Filter.FilterType.COMPLEMENT, Filter.FilterType.ALLOF)}
+                , new TestStruct[]{new TestStruct(new NegAtomSubsetAtom(),    Filter.FilterType.ATOM_COMPLEMENT, Filter.FilterType.ATOM_ONLY)}
+                , new TestStruct[]{new TestStruct(new NegAtomSubsetNegAtom(), Filter.FilterType.ATOM_COMPLEMENT, Filter.FilterType.ATOM_COMPLEMENT)}
+                , new TestStruct[]{new TestStruct(new NegAtomSubsetConj(),    Filter.FilterType.ATOM_COMPLEMENT, Filter.FilterType.ATOM_CONJUNCTION)}
+                , new TestStruct[]{new TestStruct(new NegAtomSubsetDisj(),    Filter.FilterType.ATOM_COMPLEMENT, Filter.FilterType.ATOM_DISJUNCTION)}
+                , new TestStruct[]{new TestStruct(new NegAtomSubsetSome(),    Filter.FilterType.ATOM_COMPLEMENT, Filter.FilterType.ATOM_SOMEOF)}
+                , new TestStruct[]{new TestStruct(new NegAtomSubsetOnly(),    Filter.FilterType.ATOM_COMPLEMENT, Filter.FilterType.ATOM_ALLOF)}
+                //, new TestStruct[]{new TestStruct(new NegAtomSubsetTop(),    Filter.FilterType.ATOM_COMPLEMENT, Filter.FilterType.TOP)}
                 // Only subset *
-                , new TestStruct[]{new TestStruct(new OnlySubsetAtom(),    Filter.FilterType.ALLOF, Filter.FilterType.ATOM_ONLY)}
-                , new TestStruct[]{new TestStruct(new OnlySubsetNegAtom(), Filter.FilterType.ALLOF, Filter.FilterType.COMPLEMENT)}
-                , new TestStruct[]{new TestStruct(new OnlySubsetConj(),    Filter.FilterType.ALLOF, Filter.FilterType.CONJUNCTION)}
-                , new TestStruct[]{new TestStruct(new OnlySubsetDisj(),    Filter.FilterType.ALLOF, Filter.FilterType.DISJUNCTION)}
-                , new TestStruct[]{new TestStruct(new OnlySubsetSome(),    Filter.FilterType.ALLOF, Filter.FilterType.SOMEOF)}
-                , new TestStruct[]{new TestStruct(new OnlySubsetOnly(),    Filter.FilterType.ALLOF, Filter.FilterType.ALLOF)}
+                , new TestStruct[]{new TestStruct(new OnlySubsetAtom(),    Filter.FilterType.ATOM_ALLOF, Filter.FilterType.ATOM_ONLY)}
+                , new TestStruct[]{new TestStruct(new OnlySubsetNegAtom(), Filter.FilterType.ATOM_ALLOF, Filter.FilterType.ATOM_COMPLEMENT)}
+                , new TestStruct[]{new TestStruct(new OnlySubsetConj(),    Filter.FilterType.ATOM_ALLOF, Filter.FilterType.ATOM_CONJUNCTION)}
+                , new TestStruct[]{new TestStruct(new OnlySubsetDisj(),    Filter.FilterType.ATOM_ALLOF, Filter.FilterType.ATOM_DISJUNCTION)}
+                , new TestStruct[]{new TestStruct(new OnlySubsetSome(),    Filter.FilterType.ATOM_ALLOF, Filter.FilterType.ATOM_SOMEOF)}
+                , new TestStruct[]{new TestStruct(new OnlySubsetOnly(),    Filter.FilterType.ATOM_ALLOF, Filter.FilterType.ATOM_ALLOF)}
+                //, new TestStruct[]{new TestStruct(new OnlySubsetTop(),    Filter.FilterType.ATOM_ALLOF, Filter.FilterType.TOP)}
                 // Some subset *
-                , new TestStruct[]{new TestStruct(new SomeSubsetAtom(),    Filter.FilterType.SOMEOF, Filter.FilterType.ATOM_ONLY)}
-                , new TestStruct[]{new TestStruct(new SomeSubsetNegAtom(), Filter.FilterType.SOMEOF, Filter.FilterType.COMPLEMENT)}
-                , new TestStruct[]{new TestStruct(new SomeSubsetConj(),    Filter.FilterType.SOMEOF, Filter.FilterType.CONJUNCTION)}
-                , new TestStruct[]{new TestStruct(new SomeSubsetDisj(),    Filter.FilterType.SOMEOF, Filter.FilterType.DISJUNCTION)}
-                , new TestStruct[]{new TestStruct(new SomeSubsetSome(),    Filter.FilterType.SOMEOF, Filter.FilterType.SOMEOF)}
-                , new TestStruct[]{new TestStruct(new SomeSubsetOnly(),    Filter.FilterType.SOMEOF, Filter.FilterType.ALLOF)}
+                , new TestStruct[]{new TestStruct(new SomeSubsetAtom(),    Filter.FilterType.ATOM_SOMEOF, Filter.FilterType.ATOM_ONLY)}
+                , new TestStruct[]{new TestStruct(new SomeSubsetNegAtom(), Filter.FilterType.ATOM_SOMEOF, Filter.FilterType.ATOM_COMPLEMENT)}
+                , new TestStruct[]{new TestStruct(new SomeSubsetConj(),    Filter.FilterType.ATOM_SOMEOF, Filter.FilterType.ATOM_CONJUNCTION)}
+                , new TestStruct[]{new TestStruct(new SomeSubsetDisj(),    Filter.FilterType.ATOM_SOMEOF, Filter.FilterType.ATOM_DISJUNCTION)}
+                , new TestStruct[]{new TestStruct(new SomeSubsetSome(),    Filter.FilterType.ATOM_SOMEOF, Filter.FilterType.ATOM_SOMEOF)}
+                , new TestStruct[]{new TestStruct(new SomeSubsetOnly(),    Filter.FilterType.ATOM_SOMEOF, Filter.FilterType.ATOM_ALLOF)}
+                //, new TestStruct[]{new TestStruct(new SomeSubsetTop(),    Filter.FilterType.ATOM_SOMEOF, Filter.FilterType.TOP)}
                 // Top subset *
                 , new TestStruct[]{new TestStruct(new TopSubsetAtom(),    Filter.FilterType.TOP, Filter.FilterType.ATOM_ONLY)}
-                , new TestStruct[]{new TestStruct(new TopSubsetNegAtom(), Filter.FilterType.TOP, Filter.FilterType.COMPLEMENT)}
-                , new TestStruct[]{new TestStruct(new TopSubsetConj(),    Filter.FilterType.TOP, Filter.FilterType.CONJUNCTION)}
-                , new TestStruct[]{new TestStruct(new TopSubsetDisj(),    Filter.FilterType.TOP, Filter.FilterType.DISJUNCTION)}
-                , new TestStruct[]{new TestStruct(new TopSubsetSome(),    Filter.FilterType.TOP, Filter.FilterType.SOMEOF)}
-                , new TestStruct[]{new TestStruct(new TopSubsetOnly(),    Filter.FilterType.TOP, Filter.FilterType.ALLOF)}
+                , new TestStruct[]{new TestStruct(new TopSubsetNegAtom(), Filter.FilterType.TOP, Filter.FilterType.ATOM_COMPLEMENT)}
+                , new TestStruct[]{new TestStruct(new TopSubsetConj(),    Filter.FilterType.TOP, Filter.FilterType.ATOM_CONJUNCTION)}
+                , new TestStruct[]{new TestStruct(new TopSubsetDisj(),    Filter.FilterType.TOP, Filter.FilterType.ATOM_DISJUNCTION)}
+                , new TestStruct[]{new TestStruct(new TopSubsetSome(),    Filter.FilterType.TOP, Filter.FilterType.ATOM_SOMEOF)}
+                , new TestStruct[]{new TestStruct(new TopSubsetOnly(),    Filter.FilterType.TOP, Filter.FilterType.ATOM_ALLOF)}
                 , new TestStruct[]{new TestStruct(new TopSubsetTop(),     Filter.FilterType.TOP, Filter.FilterType.TOP)}
         );
     }
