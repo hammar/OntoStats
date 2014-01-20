@@ -5,7 +5,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT ?atoma ?atomb ?atomc
 WHERE { ?atoma      owl:someValuesFrom                       ?object 
                  ;
-                    rdfs:subClassOf                         ?rhs 
+                    $(TERM)                         ?rhs
                  .
         ?object     rdf:type                                owl:Class 
                  .
@@ -21,15 +21,5 @@ WHERE { ?atoma      owl:someValuesFrom                       ?object
                  .
         ?atomc     rdf:type                                 owl:Class 
                  .
-        # Ensure each atom is atomic
-        FILTER NOT EXISTS{?atoma owl:unionOf        ?ox }
-        FILTER NOT EXISTS{?atoma owl:intersectionOf ?oy } 
-        FILTER NOT EXISTS{?atoma owl:complementOf   ?oz } 
-        FILTER NOT EXISTS{?atomb owl:unionOf        ?o1 } 
-        FILTER NOT EXISTS{?atomb owl:intersectionOf ?o2 } 
-        FILTER NOT EXISTS{?atomb owl:complementOf   ?o3 } 
-        FILTER NOT EXISTS{?atomc owl:unionOf        ?o4 } 
-        FILTER NOT EXISTS{?atomc owl:intersectionOf ?o5 } 
-        FILTER NOT EXISTS{?atomc owl:complementOf   ?o6 }  
        } 
 GROUP BY ?atoma ?atomb ?atomc

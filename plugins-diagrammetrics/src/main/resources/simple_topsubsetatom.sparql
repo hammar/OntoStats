@@ -3,10 +3,7 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
 SELECT ?object 
-WHERE { owl:Thing rdfs:subClassOf       ?object .
-        ?object   rdf:type              owl:Class . 
-        FILTER NOT EXISTS{?object  owl:unionOf        ?o4 } 
-        FILTER NOT EXISTS{?object  owl:intersectionOf ?o5 } 
-        FILTER NOT EXISTS{?object  owl:complementOf   ?o6 } 
+WHERE { owl:Thing $(TERM)       ?object .
+        ?object   rdf:type              owl:Class .
        } 
 GROUP BY ?object

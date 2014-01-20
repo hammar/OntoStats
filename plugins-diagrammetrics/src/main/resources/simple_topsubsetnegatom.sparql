@@ -3,7 +3,7 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
 SELECT ?atomb
-WHERE { owl:Thing     rdfs:subClassOf                          ?object
+WHERE { owl:Thing     $(TERM)                          ?object
                  .
         # FIXME: would like to write ?object owl:unionOf/owl:Class/rdf:first ?atomb here, but it doesn't work.
         ?object     owl:complementOf                          ?atomb
@@ -11,9 +11,5 @@ WHERE { owl:Thing     rdfs:subClassOf                          ?object
                  .
         ?atomb     rdf:type                                 owl:Class 
                  .
-        # Ensure each atom is atomic 
-        FILTER NOT EXISTS{?atomb owl:unionOf        ?o1 } 
-        FILTER NOT EXISTS{?atomb owl:intersectionOf ?o2 } 
-        FILTER NOT EXISTS{?atomb owl:complementOf   ?o3 } 
        } 
 GROUP BY ?atomb
