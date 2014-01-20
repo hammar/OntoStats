@@ -6,7 +6,7 @@ SELECT ?atoma ?atomb ?atomc
 WHERE {
         ?classlhs   owl:unionOf                             ?conja
                  ;  rdf:type                                owl:Class
-                 ;  rdfs:subClassOf                         ?classrhs
+                 ;  $(TERM)                         ?classrhs
                  .
         ?conja      rdf:first                               ?atoma
                  ;  rdf:rest/rdf:first                      ?atomb
@@ -21,15 +21,5 @@ WHERE {
                  .
         ?atomc     rdf:type                                 owl:Class 
                  .
-        # Ensure each atom is atomic
-        FILTER NOT EXISTS{?atoma owl:unionOf        ?ox }
-        FILTER NOT EXISTS{?atoma owl:intersectionOf ?oy } 
-        FILTER NOT EXISTS{?atoma owl:complementOf   ?oz } 
-        FILTER NOT EXISTS{?atomb owl:unionOf        ?o1 } 
-        FILTER NOT EXISTS{?atomb owl:intersectionOf ?o2 } 
-        FILTER NOT EXISTS{?atomb owl:complementOf   ?o3 } 
-        FILTER NOT EXISTS{?atomc owl:unionOf        ?o4 } 
-        FILTER NOT EXISTS{?atomc owl:intersectionOf ?o5 } 
-        FILTER NOT EXISTS{?atomc owl:complementOf   ?o6 } 
-       } 
+       }
 GROUP BY ?atoma ?atomb ?atomc

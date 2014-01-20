@@ -6,7 +6,7 @@ SELECT ?atoma ?atomb ?atomc
 WHERE {
         ?classlhs   owl:unionOf                             ?conja
                  ;  rdf:type                                owl:Class
-                 ;  rdfs:subClassOf                         ?classrhs
+                 ;  $(TERM)                         ?classrhs
                  .
         ?conja      rdf:first                               ?atoma
                  ;  rdf:rest/rdf:first                      ?atomb

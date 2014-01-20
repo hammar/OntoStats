@@ -7,7 +7,7 @@ WHERE {
         # FIXME: would like to write ?object owl:intersectionOf/owl:Class/rdf:first ?atomb here, but it doesn't work.
         ?x          owl:intersectionOf                      ?disj
                  ;  rdf:type                                owl:Class
-                 ;  rdfs:subClassOf                         rdf:nil
+                 ;  $(TERM)                         rdf:nil
                  .
         ?disj       rdf:first                               ?atoma
                  ;  rdf:rest/rdf:first                      ?atomb
@@ -16,12 +16,6 @@ WHERE {
                  .
         ?atomb     rdf:type                                 owl:Class
                  .
-        # Ensure each atom is atomic
-        FILTER NOT EXISTS{?atoma owl:unionOf        ?ox }
-        FILTER NOT EXISTS{?atoma owl:intersectionOf ?oy }
-        FILTER NOT EXISTS{?atoma owl:complementOf   ?oz }
-        FILTER NOT EXISTS{?atomb owl:unionOf        ?o1 }
-        FILTER NOT EXISTS{?atomb owl:intersectionOf ?o2 }
-        FILTER NOT EXISTS{?atomb owl:complementOf   ?o3 }
+
        }
 GROUP BY ?atoma ?atomb

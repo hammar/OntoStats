@@ -28,7 +28,7 @@ public class DiagramMetricTest {
                 , new TestStruct[]{new TestStruct(new AtomSubsetOnly(),    Filter.FilterType.ATOM_ONLY, Filter.FilterType.ATOM_ALLOF)}
                 , new TestStruct[]{new TestStruct(new AtomSubsetTop(),     Filter.FilterType.ATOM_ONLY, Filter.FilterType.TOP)}
 
-                /*// Conj subset *
+                // Conj subset *
                 , new TestStruct[]{new TestStruct(new ConjSubsetAtom(),    Filter.FilterType.ATOM_CONJUNCTION, Filter.FilterType.ATOM_ONLY)}
                 , new TestStruct[]{new TestStruct(new ConjSubsetNegAtom(), Filter.FilterType.ATOM_CONJUNCTION, Filter.FilterType.ATOM_COMPLEMENT)}
                 , new TestStruct[]{new TestStruct(new ConjSubsetConj(),    Filter.FilterType.ATOM_CONJUNCTION, Filter.FilterType.ATOM_CONJUNCTION)}
@@ -53,7 +53,7 @@ public class DiagramMetricTest {
                 , new TestStruct[]{new TestStruct(new NegAtomSubsetOnly(),    Filter.FilterType.ATOM_COMPLEMENT, Filter.FilterType.ATOM_ALLOF)}
                 //, new TestStruct[]{new TestStruct(new NegAtomSubsetTop(),    Filter.FilterType.ATOM_COMPLEMENT, Filter.FilterType.TOP)}
                 // Only subset *
-                , new TestStruct[]{new TestStruct(new OnlySubsetAtom(),    Filter.FilterType.ATOM_ALLOF, Filter.FilterType.ATOM_ONLY)}
+                /*, new TestStruct[]{new TestStruct(new OnlySubsetAtom(),    Filter.FilterType.ATOM_ALLOF, Filter.FilterType.ATOM_ONLY)}
                 , new TestStruct[]{new TestStruct(new OnlySubsetNegAtom(), Filter.FilterType.ATOM_ALLOF, Filter.FilterType.ATOM_COMPLEMENT)}
                 , new TestStruct[]{new TestStruct(new OnlySubsetConj(),    Filter.FilterType.ATOM_ALLOF, Filter.FilterType.ATOM_CONJUNCTION)}
                 , new TestStruct[]{new TestStruct(new OnlySubsetDisj(),    Filter.FilterType.ATOM_ALLOF, Filter.FilterType.ATOM_DISJUNCTION)}

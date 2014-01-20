@@ -3,16 +3,10 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
 SELECT ?subject ?object 
-WHERE { ?lhs     rdfs:subClassOf/owl:allValuesFrom ?object ; 
+WHERE { ?lhs     $(TERM)/owl:allValuesFrom ?object ;
                  rdf:type                          owl:Class ;
                  owl:complementOf                  ?subject .
         ?subject rdf:type                          owl:Class . 
-        ?object  rdf:type                          owl:Class . 
-        FILTER NOT EXISTS{?subject owl:unionOf        ?o1 } 
-        FILTER NOT EXISTS{?subject owl:intersectionOf ?o2 } 
-        FILTER NOT EXISTS{?subject owl:complementOf   ?o3 } 
-        FILTER NOT EXISTS{?object  owl:unionOf        ?o4 } 
-        FILTER NOT EXISTS{?object  owl:intersectionOf ?o5 } 
-        FILTER NOT EXISTS{?object  owl:complementOf   ?o6 } 
+        ?object  rdf:type                          owl:Class .
        } 
 GROUP BY ?subject ?object 
