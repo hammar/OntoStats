@@ -60,9 +60,10 @@ public class Filter {
     }
 
      GremlinPipeline<Vertex, Vertex> getAtomicPipeline() {
-        return new GremlinPipeline<Vertex, Vertex>().and(
+        return new GremlinPipeline<Vertex, Vertex>().or(
                 new GremlinPipeline<Vertex, Vertex>().add(getPipelineVerifyIsOfRDFType(owlClassVertex))
-                , new GremlinPipeline<Vertex, Vertex>().filter(
+                , new GremlinPipeline<Vertex, Vertex>().has("id", TestUtils.owlnsThing)
+                /*, new GremlinPipeline<Vertex, Vertex>().filter(
                     new PipeFunction<Vertex, Boolean>() {
                         @Override
                         public Boolean compute(Vertex v) {
@@ -73,7 +74,7 @@ public class Filter {
                             return !containsBannedEdge;
                         }
                     }
-                )
+                )*/
         );
     }
 

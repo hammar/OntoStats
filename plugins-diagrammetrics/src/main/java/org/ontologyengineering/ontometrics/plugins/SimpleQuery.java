@@ -53,8 +53,7 @@ public class SimpleQuery {
                 String key = i.next();
                 System.out.print(key + "(" + qs.get(key).toString() + ") ");
             }
-            System.out.println();
-            */
+            System.out.println();*/
         }
         return sum;
     }

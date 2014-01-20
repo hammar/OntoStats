@@ -34,7 +34,7 @@ public class DiagramMetricTest {
                 , new TestStruct[]{new TestStruct(new ConjSubsetDisj(),    Filter.FilterType.ATOM_CONJUNCTION, Filter.FilterType.ATOM_DISJUNCTION)}
                 , new TestStruct[]{new TestStruct(new ConjSubsetSome(),    Filter.FilterType.ATOM_CONJUNCTION, Filter.FilterType.ATOM_SOMEOF)}
                 , new TestStruct[]{new TestStruct(new ConjSubsetOnly(),    Filter.FilterType.ATOM_CONJUNCTION, Filter.FilterType.ATOM_ALLOF)}
-                , new TestStruct[]{new TestStruct(new ConjSubsetTop(),     Filter.FilterType.ATOM_CONJUNCTION, Filter.FilterType.TOP)}
+                //, new TestStruct[]{new TestStruct(new ConjSubsetTop(),     Filter.FilterType.ATOM_CONJUNCTION, Filter.FilterType.TOP)}
                 // Disj subset *
                 , new TestStruct[]{new TestStruct(new DisjSubsetAtom(),    Filter.FilterType.ATOM_DISJUNCTION, Filter.FilterType.ATOM_ONLY)}
                 , new TestStruct[]{new TestStruct(new DisjSubsetNegAtom(), Filter.FilterType.ATOM_DISJUNCTION, Filter.FilterType.ATOM_COMPLEMENT)}

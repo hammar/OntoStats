@@ -54,7 +54,7 @@ public class TestUtils {
 
     public static List<File> getTestDataFiles() {
         String basename = dirname + File.separator;
-        return Arrays.asList(new File(basename + "BuildingsAndPlaces.rdf"), new File(basename + "ssn.owl"));
+        return Arrays.asList(new File(basename + "14672877-e396-415e-b8e8-891c072bd662_test15.owl"), new File(basename + "BuildingsAndPlaces.rdf"), new File(basename + "ssn.owl"));
     }
 
     public static String runSimpleTest(File owl, DiagramMetric dm) {
