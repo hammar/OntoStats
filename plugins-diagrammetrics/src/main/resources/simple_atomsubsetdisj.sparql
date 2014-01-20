@@ -3,9 +3,11 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
 SELECT ?atoma ?atomb ?atomc
-WHERE { ?atoma     rdfs:subClassOf                          ?object
+WHERE { {?atoma     $(TERM)                          ?object
                  ; rdf:type                                 owl:Class
-                 .
+                 .}
+        UNION
+        {?atoma $(TERM) owl:Thing}
         # FIXME: would like to write ?object owl:unionOf/owl:Class/rdf:first ?atomb here, but it doesn't work.
         ?object     owl:unionOf                             ?conj
                  ;  rdf:type                                owl:Class 
@@ -20,14 +22,14 @@ WHERE { ?atoma     rdfs:subClassOf                          ?object
         ?atomc     rdf:type                                 owl:Class 
                  .
         # Ensure each atom is atomic
-        FILTER NOT EXISTS{?atoma owl:unionOf        ?ox }
-        FILTER NOT EXISTS{?atoma owl:intersectionOf ?oy } 
-        FILTER NOT EXISTS{?atoma owl:complementOf   ?oz } 
-        FILTER NOT EXISTS{?atomb owl:unionOf        ?o1 } 
-        FILTER NOT EXISTS{?atomb owl:intersectionOf ?o2 } 
-        FILTER NOT EXISTS{?atomb owl:complementOf   ?o3 } 
-        FILTER NOT EXISTS{?atomc owl:unionOf        ?o4 } 
-        FILTER NOT EXISTS{?atomc owl:intersectionOf ?o5 } 
-        FILTER NOT EXISTS{?atomc owl:complementOf   ?o6 } 
+        #FILTER NOT EXISTS{?atoma owl:unionOf        ?ox }
+        #FILTER NOT EXISTS{?atoma owl:intersectionOf ?oy }
+        #FILTER NOT EXISTS{?atoma owl:complementOf   ?oz }
+        #FILTER NOT EXISTS{?atomb owl:unionOf        ?o1 }
+        #FILTER NOT EXISTS{?atomb owl:intersectionOf ?o2 }
+        #FILTER NOT EXISTS{?atomb owl:complementOf   ?o3 }
+        #FILTER NOT EXISTS{?atomc owl:unionOf        ?o4 }
+        #FILTER NOT EXISTS{?atomc owl:intersectionOf ?o5 }
+        #FILTER NOT EXISTS{?atomc owl:complementOf   ?o6 }
        } 
 GROUP BY ?atoma ?atomb ?atomc

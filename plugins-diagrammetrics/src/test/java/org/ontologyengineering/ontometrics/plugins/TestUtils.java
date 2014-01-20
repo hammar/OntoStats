@@ -20,6 +20,7 @@ public class TestUtils {
                             rdfnsRest = rdfns + "rest",
                              rdfnsNil = rdfns + "nil",
                      rdfsnsSubClassOf = rdfsns + "subClassOf",
+                 owlnsEquivalentClass = owlns + "equivalentClass",
                            owlnsClass = owlns + "Class",
                            owlnsThing = owlns + "Thing",
                     owlnsComplementOf = owlns + "complementOf",
@@ -77,6 +78,12 @@ public class TestUtils {
                 , new GremlinPipeline().inV().add((new Filter(sg, rhs)).getPipeline())
         ).dedup();
 
-        return Double.toString(gp.count());
+        GremlinPipeline    eq = new GremlinPipeline(sg.getEdges()).has("label", owlnsEquivalentClass).and(
+                new GremlinPipeline().outV().add((new Filter(sg, lhs)).getPipeline())
+                , new GremlinPipeline().inV().add((new Filter(sg, rhs)).getPipeline())
+        ).dedup();
+
+        // Each A \equiv B counts as A \sqsubset B and B \sqsubseeq A, so double the total of equivs found.
+        return Double.toString(gp.count() + (eq.count() * 2));
     }
 }

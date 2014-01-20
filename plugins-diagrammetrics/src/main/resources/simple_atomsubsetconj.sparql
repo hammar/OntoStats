@@ -3,8 +3,10 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
 SELECT ?atoma ?atomb ?atomc
-WHERE { ?atoma     rdfs:subClassOf                          ?object
-                 ; rdf:type                                 owl:Class
+WHERE { {?atoma     $(TERM)                          ?object
+                 ; rdf:type                                 owl:Class}
+         UNION
+         {?atoma    $(TERM)  owl:Thing}
                  .
         # FIXME: would like to write ?object owl:intersectionOf/owl:Class/rdf:first ?atomb here, but it doesn't work.
         ?object     owl:intersectionOf                      ?conj

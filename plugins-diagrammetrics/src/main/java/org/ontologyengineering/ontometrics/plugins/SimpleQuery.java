@@ -19,7 +19,7 @@ public class SimpleQuery {
     private ParserJena jena;
 
     // this is almost documentation.
-    public String queryString;
+    private String queryString;
 
 
     /* package */ SimpleQuery(ParserJena jena, String resourceId) throws IOException {
@@ -34,11 +34,22 @@ public class SimpleQuery {
     }
 
     private Double runQuery(OntModel jena) {
-        Query qs1         = QueryFactory.create(queryString);
+        String subset     = queryString.replace("$(TERM)", "rdfs:subClassOf");
+        String equiv      = queryString.replace("$(TERM)", "owl:equivalentClass");
+
+        // Run subset query
+        Query qs1         = QueryFactory.create(subset);
         QueryExecution qe = QueryExecutionFactory.create(qs1, jena);
         ResultSet results =  qe.execSelect();
-        
-        return new Double(sumResultSet(results));
+        int subsetR = sumResultSet(results);
+
+        // Run equivalence query
+        qs1 = QueryFactory.create(equiv);
+        qe  = QueryExecutionFactory.create(qs1, jena);
+        results =  qe.execSelect();
+        int equivR = sumResultSet(results) * 2;  // double this as \equiv is two \subseteq's
+
+        return new Double(subsetR + equivR);
     }
 
     // ResultSet is neither a Collection nor Iterable.
