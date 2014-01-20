@@ -74,7 +74,7 @@
 	</dependencies>
         <configuration>
           <includes>
-            <include>%regex[.*Test.*]</include>
+            <include>%regex[.*Test.*.class]</include>
           </includes>
         </configuration>
       </plugin>
