@@ -14,7 +14,7 @@ import com.hp.hpl.jena.query.ResultSet;
 
 import com.karlhammar.ontometrics.plugins.ParserJena;
 
-public class SimpleQuery {
+public class SparqlQuery {
     private Logger logger = Logger.getLogger(getClass().getName());
     private ParserJena jena;
 
@@ -22,7 +22,7 @@ public class SimpleQuery {
     private String queryString;
 
 
-    /* package */ SimpleQuery(ParserJena jena, String resourceId) throws IOException {
+    /* package */ SparqlQuery(ParserJena jena, String resourceId) throws IOException {
         this.jena   = jena;
         queryString = IOUtils.toString(getClass().getClassLoader().getResource(resourceId).openStream());
     }

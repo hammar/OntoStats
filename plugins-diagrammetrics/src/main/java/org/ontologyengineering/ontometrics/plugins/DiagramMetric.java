@@ -17,7 +17,7 @@ import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 public class DiagramMetric extends OntoMetricsPlugin {
     private String name, abbreviation, resource;
     private Logger logger = Logger.getLogger(getClass().getName());
-    private SimpleQuery sq = null;
+    private SparqlQuery sq = null;
 
     public DiagramMetric(String name, String abbreviation, String resource) {
         this.name         = name;
@@ -29,7 +29,7 @@ public class DiagramMetric extends OntoMetricsPlugin {
     public void init(ParserJena jena, ParserOWLAPI owlapi, LazyParserGremlin gremlin) {
         super.init(jena, owlapi, gremlin);
         try {
-            sq = new SimpleQuery(jena, resource);
+            sq = new SparqlQuery(jena, resource);
         } catch (IOException ioe) {
             logger.severe("Cannot load SPARQL resource.");
             logger.severe(ioe.toString());
