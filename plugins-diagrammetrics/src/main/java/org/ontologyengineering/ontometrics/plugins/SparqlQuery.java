@@ -1,7 +1,7 @@
 package org.ontologyengineering.ontometrics.plugins;
 
 import java.io.IOException;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 import org.apache.commons.io.*;
 
@@ -33,19 +33,19 @@ public class SparqlQuery {
         return runQuery(ontmodel).toString();
     }
 
-    private Double runQuery(OntModel jena) {
+    private Double runQuery(OntModel model) {
         String subset     = queryString.replace("$(TERM)", "rdfs:subClassOf");
         String equiv      = queryString.replace("$(TERM)", "owl:equivalentClass");
 
         // Run subset query
         Query qs1         = QueryFactory.create(subset);
-        QueryExecution qe = QueryExecutionFactory.create(qs1, jena);
+        QueryExecution qe = QueryExecutionFactory.create(qs1, model);
         ResultSet results =  qe.execSelect();
         int subsetR = sumResultSet(results);
 
         // Run equivalence query
         qs1 = QueryFactory.create(equiv);
-        qe  = QueryExecutionFactory.create(qs1, jena);
+        qe  = QueryExecutionFactory.create(qs1, model);
         results =  qe.execSelect();
         int equivR = sumResultSet(results) * 2;  // double this as \equiv is two \subseteq's
 

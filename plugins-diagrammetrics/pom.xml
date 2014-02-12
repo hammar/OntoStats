@@ -5,6 +5,12 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>Diagrammatic measures plugin</name>
   <description>Diagram metrics axiom related metrics calculation plugin for OntoMetrics.</description>
+
+  <properties>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.apache.jena</groupId>
@@ -26,6 +32,11 @@
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
       <version>2.4</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>15.0</version>
     </dependency>
 
     <dependency>

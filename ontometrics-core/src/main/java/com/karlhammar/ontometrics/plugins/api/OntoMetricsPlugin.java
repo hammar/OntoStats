@@ -1,6 +1,7 @@
 package com.karlhammar.ontometrics.plugins.api;
 
 import java.io.File;
+import com.google.common.base.Optional;
 import com.karlhammar.ontometrics.plugins.*;
 
 public abstract class OntoMetricsPlugin {
@@ -15,5 +16,5 @@ public abstract class OntoMetricsPlugin {
 	    this.gremlin = gremlin;
 	}
 	abstract public String getMetricAbbreviation();
-	abstract public String getMetricValue(File ontologyFile);
+	abstract public Optional<String> getMetricValue(File ontologyFile);
 }

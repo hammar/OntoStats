@@ -3,16 +3,32 @@ package org.ontologyengineering.ontometrics.plugins;
 import java.util.Arrays;
 import java.util.List;
 
-import com.tinkerpop.blueprints.Direction;
-import com.tinkerpop.blueprints.Edge;
 import com.tinkerpop.blueprints.impls.sail.SailGraph;
 import com.tinkerpop.gremlin.java.GremlinPipeline;
 import com.tinkerpop.blueprints.Vertex;
 import com.tinkerpop.pipes.PipeFunction;
 
 public class Filter {
+    private static final String
+            owlns = "http://www.w3.org/2002/07/owl#",
+            rdfns = "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+            rdfsns = "http://www.w3.org/2000/01/rdf-schema#",
+            rdfnsType = rdfns + "type",
+            rdfnsFirst = rdfns + "first",
+            rdfnsRest = rdfns + "rest",
+            rdfnsNil = rdfns + "nil",
+            rdfsnsSubClassOf = rdfsns + "subClassOf",
+            owlnsEquivalentClass = owlns + "equivalentClass",
+            owlnsClass = owlns + "Class",
+            owlnsThing = owlns + "Thing",
+            owlnsComplementOf = owlns + "complementOf",
+            owlnsUnionOf = owlns + "unionOf",
+            owlnsIntersectionOf = owlns + "intersectionOf",
+            owlSomeValuesFrom = owlns + "someValuesFrom",
+            owlAllValuesFrom = owlns + "allValuesFrom";
+
     public enum FilterType {
-        ATOM_ONLY,
+        ATOM,
         ATOM_CONJUNCTION,
         ATOM_DISJUNCTION,
         ATOM_COMPLEMENT,
@@ -22,14 +38,14 @@ public class Filter {
         COMPLEX_CONJUNCTION,
         UNRESTRICTED};
 
-    private static List<String> filters = Arrays.asList(TestUtils.owlnsComplementOf, TestUtils.owlnsIntersectionOf, TestUtils.owlnsUnionOf, TestUtils.owlSomeValuesFrom, TestUtils.owlAllValuesFrom);
+    private static List<String> filters = Arrays.asList(owlnsComplementOf, owlnsIntersectionOf, owlnsUnionOf, owlSomeValuesFrom, owlAllValuesFrom);
     private GremlinPipeline pipeline;
     private Vertex owlClassVertex;
 
     public Filter(SailGraph sg, FilterType type) {
-        owlClassVertex = sg.getVertex(TestUtils.owlnsClass);
+        owlClassVertex = sg.getVertex(owlnsClass);
         switch (type) {
-            case ATOM_ONLY:
+            case ATOM:
                 this.pipeline = getAtomicPipeline();
                 break;
             case ATOM_CONJUNCTION:
@@ -56,13 +72,13 @@ public class Filter {
     }
 
     private static GremlinPipeline<Vertex, Vertex> getPipelineVerifyIsOfRDFType(Vertex v) {
-        return new GremlinPipeline()._().as("ver").out(TestUtils.rdfnsType).retain(Arrays.asList(v)).back("ver");
+        return new GremlinPipeline()._().as("ver").out(rdfnsType).retain(Arrays.asList(v)).back("ver");
     }
 
      GremlinPipeline<Vertex, Vertex> getAtomicPipeline() {
         return new GremlinPipeline<Vertex, Vertex>().or(
                 new GremlinPipeline<Vertex, Vertex>().add(getPipelineVerifyIsOfRDFType(owlClassVertex))
-                , new GremlinPipeline<Vertex, Vertex>().has("id", TestUtils.owlnsThing)
+                , new GremlinPipeline<Vertex, Vertex>().has("id", owlnsThing)
                 /*, new GremlinPipeline<Vertex, Vertex>().filter(
                     new PipeFunction<Vertex, Boolean>() {
                         @Override
@@ -81,35 +97,35 @@ public class Filter {
     private GremlinPipeline getConjunctionPipeline() {
         return new GremlinPipeline().and(
                 new GremlinPipeline().add(getPipelineVerifyIsOfRDFType(owlClassVertex))
-                , new GremlinPipeline().outE(TestUtils.owlnsIntersectionOf).inV().outE(TestUtils.rdfnsFirst).inV().add(getAtomicPipeline())
-                , new GremlinPipeline().outE(TestUtils.owlnsIntersectionOf).inV().outE(TestUtils.rdfnsRest).inV().outE(TestUtils.rdfnsFirst).inV().add(getAtomicPipeline())
-                , new GremlinPipeline().outE(TestUtils.owlnsIntersectionOf).inV().outE(TestUtils.rdfnsRest).inV().outE(TestUtils.rdfnsRest).inV().has("id", TestUtils.rdfnsNil)
+                , new GremlinPipeline().outE(owlnsIntersectionOf).inV().outE(rdfnsFirst).inV().add(getAtomicPipeline())
+                , new GremlinPipeline().outE(owlnsIntersectionOf).inV().outE(rdfnsRest).inV().outE(rdfnsFirst).inV().add(getAtomicPipeline())
+                , new GremlinPipeline().outE(owlnsIntersectionOf).inV().outE(rdfnsRest).inV().outE(rdfnsRest).inV().has("id", rdfnsNil)
         );
     }
 
     private GremlinPipeline getDisjunctionPipeline() {
         return new GremlinPipeline().and(
                 new GremlinPipeline().add(getPipelineVerifyIsOfRDFType(owlClassVertex))
-                , new GremlinPipeline().outE(TestUtils.owlnsUnionOf).inV().outE(TestUtils.rdfnsFirst).inV().add(getAtomicPipeline())
-                , new GremlinPipeline().outE(TestUtils.owlnsUnionOf).inV().outE(TestUtils.rdfnsRest).inV().outE(TestUtils.rdfnsFirst).inV().add(getAtomicPipeline())
-                , new GremlinPipeline().outE(TestUtils.owlnsUnionOf).inV().outE(TestUtils.rdfnsRest).inV().outE(TestUtils.rdfnsRest).inV().has("id", TestUtils.rdfnsNil)
+                , new GremlinPipeline().outE(owlnsUnionOf).inV().outE(rdfnsFirst).inV().add(getAtomicPipeline())
+                , new GremlinPipeline().outE(owlnsUnionOf).inV().outE(rdfnsRest).inV().outE(rdfnsFirst).inV().add(getAtomicPipeline())
+                , new GremlinPipeline().outE(owlnsUnionOf).inV().outE(rdfnsRest).inV().outE(rdfnsRest).inV().has("id", rdfnsNil)
         );
     }
 
     private GremlinPipeline getSomeValuesFromPipeline() {
-        return new GremlinPipeline().outE(TestUtils.owlSomeValuesFrom).inV().add(getAtomicPipeline());
+        return new GremlinPipeline().outE(owlSomeValuesFrom).inV().add(getAtomicPipeline());
     }
 
     private GremlinPipeline getAllValuesFromPipeline() {
-        return new GremlinPipeline().outE(TestUtils.owlAllValuesFrom).inV().add(getAtomicPipeline());
+        return new GremlinPipeline().outE(owlAllValuesFrom).inV().add(getAtomicPipeline());
     }
 
     private GremlinPipeline getComplementPipeline() {
-        return new GremlinPipeline().outE(TestUtils.owlnsComplementOf).add(getAtomicPipeline());
+        return new GremlinPipeline().outE(owlnsComplementOf).inV().add(getAtomicPipeline());
     }
 
     private GremlinPipeline getTopPipeline() {
-        return new GremlinPipeline().has("id", TestUtils.owlnsThing);
+        return new GremlinPipeline().has("id", owlnsThing);
     }
 
     private GremlinPipeline getComplexPipeline(GremlinPipeline baseCase) {

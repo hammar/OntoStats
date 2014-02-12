@@ -10,7 +10,7 @@ import static junit.framework.Assert.assertEquals;
 public class DiagramAxiomDefinitionTest {
     @Test
     public void testAxiomDefinition () {
-        TestStruct ts = new TestStruct(new AtomSubsetAtom(), Filter.FilterType.ATOM_ONLY, Filter.FilterType.ATOM_ONLY);
+        TestStruct ts = new TestStruct(new AtomSubsetAtom(), Filter.FilterType.ATOM, Filter.FilterType.ATOM);
         String atomSubsetAtomResult = TestUtils.runSimpleTest(TestUtils.getOWLFile(this.getClass().getName()), ts.dm);
 
         assertEquals("", "10.0", atomSubsetAtomResult);

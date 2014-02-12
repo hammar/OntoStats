@@ -90,7 +90,7 @@ public class OntoMetrics {
         	
         	// An error in plugin execution can mean null values returned, so check
         	// for this.
-        	String metricValue = plugin.getMetricValue(ontologyFile);
+        	String metricValue = plugin.getMetricValue(ontologyFile).get();
         	String metricAbbreviation = plugin.getMetricAbbreviation();
         	if (null != metricAbbreviation && null != metricValue) {
         		results.put(metricAbbreviation, metricValue);

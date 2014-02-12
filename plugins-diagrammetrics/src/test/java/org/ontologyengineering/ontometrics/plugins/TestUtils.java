@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
+import com.google.common.base.Optional;
 import com.karlhammar.ontometrics.plugins.LazyParserGremlin;
 import com.karlhammar.ontometrics.plugins.ParserConfiguration;
 import com.karlhammar.ontometrics.plugins.ParserJena;
@@ -59,19 +60,24 @@ public class TestUtils {
     }
 
     public static String runSimpleTest(File owl, DiagramMetric dm) {
-        ParserJena    jena = ParserJena.resetSingletonObject(owl, new ParserConfiguration());
-        dm.init(jena, null, null);
-        return dm.getMetricValue(owl);
+        ParserJena       jena = ParserJena.resetSingletonObject(owl, new ParserConfiguration());
+        LazyParserGremlin lpg = LazyParserGremlin.resetSingletonObject(owl, new ParserConfiguration());
+
+        dm.init(jena, null, lpg);
+        return dm.getMetricValue(owl).get();
     }
 
-    public static String runJenaTestDataFileComparison(File testFile, DiagramMetric dm) {
-        ParserJena    jena = ParserJena.resetSingletonObject(testFile, new ParserConfiguration());
-        dm.init(jena, null, null);
-        return dm.getMetricValue(testFile);
+    public static String runVotingTestDataFileComparison(File testFile, DiagramMetric dm) {
+        ParserJena       jena = ParserJena.resetSingletonObject(testFile, new ParserConfiguration());
+        LazyParserGremlin lpg = LazyParserGremlin.resetSingletonObject(testFile, new ParserConfiguration());
+
+        dm.init(jena, null, lpg);
+        return dm.getMetricValue(testFile).get();
     }
 
     public static String runGremlinTestDataComparison(File testFile, Filter.FilterType lhs, Filter.FilterType rhs) {
         LazyParserGremlin lpg = LazyParserGremlin.resetSingletonObject(testFile, new ParserConfiguration());
+
         SailGraph          sg = lpg.getOntology();
         GremlinPipeline    gp = new GremlinPipeline(sg.getEdges()).has("label", rdfsnsSubClassOf).and(
                 new GremlinPipeline().outV().add((new Filter(sg, lhs)).getPipeline())
