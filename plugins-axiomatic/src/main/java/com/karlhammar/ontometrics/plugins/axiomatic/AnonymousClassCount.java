@@ -3,6 +3,8 @@ package com.karlhammar.ontometrics.plugins.axiomatic;
 import java.io.File;
 import java.util.logging.Logger;
 
+import com.google.common.base.Optional;
+
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
@@ -24,12 +26,12 @@ public class AnonymousClassCount extends OntoMetricsPlugin {
 	}
 
 	@Override
-	public String getMetricValue(File ontologyFile) {
+	public Optional<String> getMetricValue(File ontologyFile) {
 		if (null == jena) {
 			logger.severe("getMetricValue called before init()!");
 		}
 		OntModel ontology = jena.getOntology();
-		return calculateAnonymousClasses(ontology).toString();
+		return Optional.of(calculateAnonymousClasses(ontology).toString());
 	}
 
 	private static Integer calculateAnonymousClasses(OntModel m) {

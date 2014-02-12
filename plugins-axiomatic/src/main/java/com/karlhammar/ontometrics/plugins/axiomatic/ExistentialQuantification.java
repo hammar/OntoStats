@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import com.google.common.base.Optional;
+
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
 import org.semanticweb.owlapi.model.ClassExpressionType;
@@ -30,7 +32,7 @@ public class ExistentialQuantification extends OntoMetricsPlugin {
 	 * return report on whether this ontology is in the RL profile or not.
 	 */
 	@Override
-	public String getMetricValue(File ontologyFile) {
+	public Optional<String> getMetricValue(File ontologyFile) {
 		if (null == owlapi) {
 			logger.severe("getMetricValue called before init()!");
 		}
@@ -44,6 +46,6 @@ public class ExistentialQuantification extends OntoMetricsPlugin {
 				exiQuants++;
 			}
 		}
-		return exiQuants.toString();
+		return Optional.of(exiQuants.toString());
 	}
 }

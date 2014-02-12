@@ -3,6 +3,8 @@ package com.karlhammar.ontometrics.plugins.axiomatic;
 import java.io.File;
 import java.util.logging.Logger;
 
+import com.google.common.base.Optional;
+
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.RDFNode;
@@ -28,7 +30,7 @@ public class ClassOutDegree extends OntoMetricsPlugin {
 	}
 
 	@Override
-	public String getMetricValue(File ontologyFile) {
+	public Optional<String> getMetricValue(File ontologyFile) {
 		if (null == jena) {
 			logger.severe("getMetricValue called before init()!");
 		}
@@ -49,7 +51,7 @@ public class ClassOutDegree extends OntoMetricsPlugin {
 			}
 		}
 		Float outDegree = (float)outEdges / nrClasses;
-		return outDegree.toString();
+		return Optional.of(outDegree.toString());
 	}
 
 }

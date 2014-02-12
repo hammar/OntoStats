@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.List;
 import java.util.logging.Logger;
 
+import com.google.common.base.Optional;
+
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntProperty;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
@@ -23,12 +25,12 @@ public class PropertyRangeRestrictionRatio extends OntoMetricsPlugin {
 	}
 
 	@Override
-	public String getMetricValue(File ontologyFile) {
+	public Optional<String> getMetricValue(File ontologyFile) {
 		if (null == jena) {
 			logger.severe("getMetricValue called before init()!");
 		}
 		OntModel ontology = jena.getOntology();
-		return calculatePropertyRangeRestrictionRate(ontology).toString();
+		return Optional.of(calculatePropertyRangeRestrictionRate(ontology).toString());
 	}
 	
 	private static Double calculatePropertyRangeRestrictionRate(OntModel m) {

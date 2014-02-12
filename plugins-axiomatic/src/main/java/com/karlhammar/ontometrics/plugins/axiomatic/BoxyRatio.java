@@ -9,6 +9,8 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import java.io.File;
 import java.util.logging.Logger;
 
+import com.google.common.base.Optional;
+
 /**
  *
  * @author Aidan Delaney <aidan@phoric.eu>
@@ -42,7 +44,7 @@ public class BoxyRatio extends OntoMetricsPlugin {
      * size of the ontology.
      */
     @Override
-    public String getMetricValue(File ontologyFile) {
+    public Optional<String> getMetricValue(File ontologyFile) {
         if (null == owlapi) {
             logger.severe("getMetricValue called before init()!");
         }
@@ -68,6 +70,6 @@ public class BoxyRatio extends OntoMetricsPlugin {
         float aboxCount   = (float) aboxes/total;
         float rboxCount   = (float) rboxes/total;
 
-        return new String(tboxCount + ":" + aboxCount + ":" + rboxCount);
+        return Optional.of(new String(tboxCount + ":" + aboxCount + ":" + rboxCount));
     }
 }

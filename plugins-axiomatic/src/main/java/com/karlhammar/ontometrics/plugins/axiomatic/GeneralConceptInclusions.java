@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import com.google.common.base.Optional;
+
 import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.OWLClassAxiom;
 import org.semanticweb.owlapi.model.OWLOntology;
@@ -27,7 +29,7 @@ public class GeneralConceptInclusions extends OntoMetricsPlugin {
 	}
 
 	@Override
-	public String getMetricValue(File ontologyFile) {
+	public Optional<String> getMetricValue(File ontologyFile) {
 		if (null == owlapi) {
 			logger.severe("getMetricValue called before init()!");
 		}
@@ -41,6 +43,6 @@ public class GeneralConceptInclusions extends OntoMetricsPlugin {
 				GCIs++;
 			}
 		}
-		return GCIs.toString();
+		return Optional.of(GCIs.toString());
 	}
 }

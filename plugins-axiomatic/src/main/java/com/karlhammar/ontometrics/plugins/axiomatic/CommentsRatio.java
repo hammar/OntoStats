@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import com.google.common.base.Optional;
+
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.vocabulary.RDFS;
@@ -24,12 +26,12 @@ public class CommentsRatio extends OntoMetricsPlugin {
 		return "CommentsRatio";
 	}
 
-	public String getMetricValue(File ontologyFile) {
+	public Optional<String> getMetricValue(File ontologyFile) {
 		if (null == jena) {
 			logger.severe("getMetricValue called before init()!");
 		}
 		OntModel ontology = jena.getOntology();
-		return calculateCommentsRatio(ontology).toString();
+		return Optional.of(calculateCommentsRatio(ontology).toString());
 	}
 
 	private static Double calculateCommentsRatio(OntModel m) {
