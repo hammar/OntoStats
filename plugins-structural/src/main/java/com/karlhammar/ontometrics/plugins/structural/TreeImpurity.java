@@ -3,6 +3,8 @@ package com.karlhammar.ontometrics.plugins.structural;
 import java.io.File;
 import java.util.logging.Logger;
 
+import com.google.common.base.Optional;
+
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Property;
@@ -28,7 +30,7 @@ public class TreeImpurity extends OntoMetricsPlugin {
 		return "TreeImp";
 	}
 
-	public String getMetricValue(File ontologyFile) {
+	public Optional<String> getMetricValue(File ontologyFile) {
 		if (null == jena) {
 			logger.severe("getMetricValue called before init()!");
 		}
@@ -51,7 +53,7 @@ public class TreeImpurity extends OntoMetricsPlugin {
 		}
 		
 		Integer TIP = subClassEdges - classNodes + 1;
-		return TIP.toString();
+		return Optional.of(TIP.toString());
 	}
 
 }

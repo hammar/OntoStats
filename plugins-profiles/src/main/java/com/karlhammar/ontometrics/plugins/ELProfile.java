@@ -3,6 +3,8 @@ package com.karlhammar.ontometrics.plugins;
 import java.io.File;
 import java.util.logging.Logger;
 
+import com.google.common.base.Optional;
+
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
 import org.semanticweb.owlapi.model.OWLOntology;
@@ -25,13 +27,13 @@ public class ELProfile extends OntoMetricsPlugin {
 	 * If plugin has been initiated (and profile singleton instantiated), 
 	 * return report on whether this ontology is in the EL profile or not.
 	 */
-	public String getMetricValue(File ontologyFile) {
+	public Optional<String> getMetricValue(File ontologyFile) {
 		if (null == owlapi) {
 			logger.severe("getMetricValue called before init()!");
 		}
 		OWL2ELProfile o2el = new OWL2ELProfile();
 		OWLOntology ontology = owlapi.getOntology();
 		OWLProfileReport report = o2el.checkOntology(ontology);
-		return new Boolean(report.isInProfile()).toString();
+		return Optional.of(Boolean.toString(report.isInProfile()));
 	}
 }

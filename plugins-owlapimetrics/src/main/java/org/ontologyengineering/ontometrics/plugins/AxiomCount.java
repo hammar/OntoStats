@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import com.google.common.base.Optional;
+
 import com.karlhammar.ontometrics.plugins.ParserConfiguration;
 import com.karlhammar.ontometrics.plugins.ParserJena;
 import com.karlhammar.ontometrics.plugins.ParserOWLAPI;
@@ -27,7 +29,7 @@ public class AxiomCount extends OntoMetricsPlugin {
     }
 
     @Override
-    public String getMetricValue(File ontologyFile) {
+    public Optional<String> getMetricValue(File ontologyFile) {
         if(null == owlapi) {
             logger.severe("getMetricValue called before init!");
         }
@@ -35,6 +37,6 @@ public class AxiomCount extends OntoMetricsPlugin {
         org.semanticweb.owlapi.metrics.AxiomCount ac = new org.semanticweb.owlapi.metrics.AxiomCount(owlapi.getOntology().getOWLOntologyManager());
         ac.setOntology(owlapi.getOntology());
         ac.setImportsClosureUsed(false);
-        return Integer.toString(ac.getValue());
+        return Optional.of(Integer.toString(ac.getValue()));
     }
 }

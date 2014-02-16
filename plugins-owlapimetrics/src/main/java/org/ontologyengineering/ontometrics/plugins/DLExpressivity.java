@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import com.google.common.base.Optional;
+
 import com.karlhammar.ontometrics.plugins.ParserConfiguration;
 import com.karlhammar.ontometrics.plugins.ParserJena;
 import com.karlhammar.ontometrics.plugins.ParserOWLAPI;
@@ -25,7 +27,7 @@ public class DLExpressivity extends OntoMetricsPlugin {
         return "DLExpressivity";
     }
     @Override
-    public String getMetricValue(File ontologyFile) {
+    public Optional<String> getMetricValue(File ontologyFile) {
         if(null == owlapi) {
             logger.severe("getMetricValue called before init!");
         }
@@ -33,6 +35,6 @@ public class DLExpressivity extends OntoMetricsPlugin {
         org.semanticweb.owlapi.metrics.DLExpressivity de = new org.semanticweb.owlapi.metrics.DLExpressivity(owlapi.getOntology().getOWLOntologyManager());
         de.setOntology(owlapi.getOntology());
         de.setImportsClosureUsed(false);
-        return de.getValue();
+        return Optional.of(de.getValue());
     }
 }

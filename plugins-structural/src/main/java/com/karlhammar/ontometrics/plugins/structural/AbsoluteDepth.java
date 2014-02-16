@@ -3,7 +3,6 @@ package com.karlhammar.ontometrics.plugins.structural;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 import java.util.logging.Logger;
 
 import com.google.common.base.Optional;

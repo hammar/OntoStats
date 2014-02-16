@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.List;
 import java.util.logging.Logger;
 
+import com.google.common.base.Optional;
+
 import com.karlhammar.ontometrics.plugins.ParserJena;
 import com.karlhammar.ontometrics.plugins.ParserOWLAPI;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
@@ -20,7 +22,7 @@ public class AverageDepth extends OntoMetricsPlugin {
 		return "AvgDepth";
 	}
 
-	public String getMetricValue(File ontologyFile) {
+	public Optional<String> getMetricValue(File ontologyFile) {
 		if (null == owlapi) {
 			logger.severe("getMetricValue called before init()!");
 		}
@@ -42,6 +44,6 @@ public class AverageDepth extends OntoMetricsPlugin {
 			avgHeight = AbsoluteDepth.getAbsoluteDepth(heights).floatValue() / heights.size();
 		}
 		
-		return avgHeight.toString();
+		return Optional.of(avgHeight.toString());
 	}
 }

@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.List;
 import java.util.logging.Logger;
 
+import com.google.common.base.Optional;
+
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.karlhammar.ontometrics.plugins.ParserJena;
@@ -22,12 +24,12 @@ public class ClassSize extends OntoMetricsPlugin  {
 		return "ClassSize";
 	}
 
-	public String getMetricValue(File ontologyFile) {
+	public Optional<String> getMetricValue(File ontologyFile) {
 		if (null == jena) {
 			logger.severe("getMetricValue called before init()!");
 		}
 		OntModel ontology = jena.getOntology();
-		return getClassSize(ontology).toString();
+		return Optional.of(getClassSize(ontology).toString());
 	}
 	
 	protected static Integer getClassSize(OntModel ontology) {

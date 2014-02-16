@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
+import com.google.common.base.Optional;
+
 import com.karlhammar.ontometrics.plugins.ParserJena;
 import com.karlhammar.ontometrics.plugins.ParserOWLAPI;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
@@ -21,7 +23,7 @@ public class MaximumDepth extends OntoMetricsPlugin {
 		return "MaxDepth";
 	}
 
-	public String getMetricValue(File ontologyFile) {
+	public Optional<String> getMetricValue(File ontologyFile) {
 		if (null == owlapi) {
 			logger.severe("getMetricValue called before init()!");
 		}
@@ -35,12 +37,12 @@ public class MaximumDepth extends OntoMetricsPlugin {
 		// If no heights are recorded then no classes are asserted in the ontology. In that case, 
 		// return zero maximum height.
 		if (heights.size() == 0) {
-			return "0"; 
+			return Optional.of("0");
 		}
 		// Otherwise, sort height paths and return highest.
 		else {
 			Collections.sort(heights, Collections.reverseOrder());
-			return heights.get(0).toString();
+			return Optional.of(heights.get(0).toString());
 		}
 	}
 }

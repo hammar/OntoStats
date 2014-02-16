@@ -3,6 +3,8 @@ package com.karlhammar.ontometrics.plugins.structural;
 import java.io.File;
 import java.util.logging.Logger;
 
+import com.google.common.base.Optional;
+
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
@@ -22,7 +24,7 @@ public class Tangledness extends OntoMetricsPlugin {
 		return "Tangledness";
 	}
 
-	public String getMetricValue(File ontologyFile) {
+	public Optional<String> getMetricValue(File ontologyFile) {
 		if (null == jena) {
 			logger.severe("getMetricValue called before init()!");
 		}
@@ -44,7 +46,7 @@ public class Tangledness extends OntoMetricsPlugin {
 			}
 		}
 		Float Tangledness = ((float)nrOfMultiParentClasses / nrOfClasses);
-		return Tangledness.toString();
+		return Optional.of(Tangledness.toString());
 	}
 
 }
