@@ -1,7 +1,7 @@
 package com.karlhammar.ontometrics.plugins.api;
 
 import java.io.File;
-import com.google.common.base.Optional;
+import java.util.Optional;
 import com.karlhammar.ontometrics.plugins.*;
 
 public abstract class OntoMetricsPlugin {

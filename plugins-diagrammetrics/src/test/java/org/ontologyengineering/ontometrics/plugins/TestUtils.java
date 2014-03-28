@@ -3,8 +3,8 @@ package org.ontologyengineering.ontometrics.plugins;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
-import com.google.common.base.Optional;
 import com.karlhammar.ontometrics.plugins.LazyParserGremlin;
 import com.karlhammar.ontometrics.plugins.ParserConfiguration;
 import com.karlhammar.ontometrics.plugins.ParserJena;

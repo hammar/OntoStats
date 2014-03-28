@@ -3,8 +3,7 @@ package org.ontologyengineering.ontometrics.plugins;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
-
-import com.google.common.base.Optional;
+import java.util.Optional;
 
 import com.karlhammar.ontometrics.plugins.LazyParserGremlin;
 import com.karlhammar.ontometrics.plugins.ParserJena;
@@ -92,7 +91,7 @@ public abstract class DiagramMetric extends OntoMetricsPlugin {
         String gqr = gq.runQuery();
 
         if(!sqr.equals(gqr)) {
-            return Optional.absent();
+            return Optional.empty();
         }
         return Optional.of(sqr);
     }

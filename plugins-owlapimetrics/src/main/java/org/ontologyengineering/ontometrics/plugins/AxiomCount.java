@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 
 import com.karlhammar.ontometrics.plugins.ParserConfiguration;
 import com.karlhammar.ontometrics.plugins.ParserJena;

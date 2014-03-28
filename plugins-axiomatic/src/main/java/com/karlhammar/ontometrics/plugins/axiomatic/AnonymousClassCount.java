@@ -2,8 +2,7 @@ package com.karlhammar.ontometrics.plugins.axiomatic;
 
 import java.io.File;
 import java.util.logging.Logger;
-
-import com.google.common.base.Optional;
+import java.util.Optional;
 
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;

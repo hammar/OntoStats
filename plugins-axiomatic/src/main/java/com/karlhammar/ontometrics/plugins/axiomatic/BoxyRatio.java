@@ -9,7 +9,7 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import java.io.File;
 import java.util.logging.Logger;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 
 /**
  *

@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.List;
 import java.util.logging.Logger;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntProperty;

@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 
