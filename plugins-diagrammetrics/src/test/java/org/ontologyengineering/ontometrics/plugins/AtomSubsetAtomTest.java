@@ -61,7 +61,7 @@ public class AtomSubsetAtomTest {
     public ExpectedException thrown= ExpectedException.none();
 
     @Test
-    public void simpleTest() throws IOException {
+    public void simpleOWLAPITest() throws IOException {
         AtomSubsetAtom cut = new AtomSubsetAtom();
         File tmp = Files.createTempFile("xmlrdfAtomSubsetAtom",".xml").toFile();
         FileUtils.write(tmp, xmlrdfAtomSubsetAtom);
@@ -71,12 +71,32 @@ public class AtomSubsetAtomTest {
     }
 
     @Test
-    public void checkNegation() throws IOException {
+    public void simpleJenaTest() throws IOException {
+        AtomSubsetAtom cut = new AtomSubsetAtom();
+        File tmp = Files.createTempFile("xmlrdfAtomSubsetAtom",".xml").toFile();
+        FileUtils.write(tmp, xmlrdfAtomSubsetAtom);
+
+        String res = TestUtils.runJenaTest(tmp, cut);
+        assertEquals(new String("1.0"), res);
+    }
+
+    @Test
+    public void checkOWLAPINegation() throws IOException {
         AtomSubsetAtom cut = new AtomSubsetAtom();
         File tmp = Files.createTempFile("xmlrdfNegAtomSubsetAtom",".xml").toFile();
         FileUtils.write(tmp, xmlrdfNegAtomSubsetAtom);
 
         String res = TestUtils.runOWLAPITest(tmp, cut);
+        assertEquals(new String("1.0"), res);
+    }
+
+    @Test
+    public void checkJenaNegation() throws IOException {
+        AtomSubsetAtom cut = new AtomSubsetAtom();
+        File tmp = Files.createTempFile("xmlrdfNegAtomSubsetAtom",".xml").toFile();
+        FileUtils.write(tmp, xmlrdfNegAtomSubsetAtom);
+
+        String res = TestUtils.runJenaTest(tmp, cut);
         assertEquals(new String("1.0"), res);
     }
 

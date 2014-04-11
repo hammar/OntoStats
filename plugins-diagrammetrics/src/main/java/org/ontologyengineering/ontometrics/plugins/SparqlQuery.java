@@ -24,7 +24,8 @@ public class SparqlQuery {
 
     /* package */ SparqlQuery(ParserJena jena, FilterType lhs, FilterType rhs) throws IOException {
         this.jena   = jena;
-        String resource = "simple_" + lhs.toString().toLowerCase() + "subset" + rhs.toString().toLowerCase();
+        // hackity, hack, hack, hack.
+        String resource = "simple_" + lhs.toString().toLowerCase() + "subset" + rhs.toString().toLowerCase() + ".sparql";
         queryString = IOUtils.toString(getClass().getClassLoader().getResource(resource).openStream());
     }
 

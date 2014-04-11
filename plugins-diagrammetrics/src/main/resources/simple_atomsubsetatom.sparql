@@ -3,15 +3,16 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
 SELECT ?subject ?object
-WHERE { {?subject $(TERM)       ?object ;
+WHERE { {
+                ?subject $(TERM)                 ?object ;
                          rdf:type              owl:Class .
                 ?object  rdf:type              owl:Class .
-                } UNION
-        {?subject $(TERM)       owl:Thing .}
-        #UNION
-        #{?subject owl:equivalentClass       ?object ;
-        #                 rdf:type              owl:Class .
-        #        ?object  rdf:type              owl:Class .
-        #        }
-       } 
+        } UNION {
+                ?subject $(TERM)       owl:Thing .
+        } FILTER NOT EXISTS {
+            ?subject owl:complementOf ?x .
+        } FILTER NOT EXISTS {
+            ?object  owl:complementOf ?y .
+        }
+     }
 GROUP BY ?subject ?object
