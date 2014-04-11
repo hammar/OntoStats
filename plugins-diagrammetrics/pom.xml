@@ -85,7 +85,7 @@
 	</dependencies>
         <configuration>
           <includes>
-            <include>org.ontologyengineering.ontometrics.plugins.AtomSubsetAtom</include>
+            <include>%regex[.*Test.*.class]</include>
           </includes>
           <argLine>-Ddiagrammetrics.test.resources=${basedir}/src/test/resources/</argLine>
         </configuration>
