@@ -27,34 +27,18 @@ import org.openrdf.sail.memory.MemoryStore;
 public class LazyParserGremlin {
     private static Logger logger = Logger.getLogger("LazyParserGremlin");
 
-    private static LazyParserGremlin ref = null;
     private SailGraph memGraph;
-
-    private LazyParserGremlin(ParserConfiguration pc, FileInputStream fis, URL docUrl) throws IllegalArgumentException {
-        // we can't get a Gremlin parser to resolve imports (yet).
-        if(pc.getImportStrategy() == ParserConfiguration.ImportStrategy.ALLOW_IMPORTS) {
-            throw new IllegalArgumentException();
-        }
-        memGraph = new SailGraph(new MemoryStore());
-        memGraph.loadRDF(fis, docUrl.toString(), "rdf-xml", null);
-    }
 
     public SailGraph getOntology() {
         return memGraph;
     }
 
-    public static synchronized LazyParserGremlin resetSingletonObject(File ontologyFile, ParserConfiguration pc) {
-        ref = null;
-        return getSingletonObject(ontologyFile, pc);
+    public LazyParserGremlin(File ontologyFile) {
+        this(ontologyFile, new ParserConfiguration());
     }
 
-    public static synchronized LazyParserGremlin getSingletonObject(File ontologyFile) {
-        return getSingletonObject(ontologyFile, new ParserConfiguration());
-    }
-
-    public static synchronized LazyParserGremlin getSingletonObject(File ontologyFile, ParserConfiguration pc) {
-        if(null == ref) { // loead the in-memory graph structure
-            URL          docUrl = null;
+    private LazyParserGremlin(File ontologyFile, ParserConfiguration pc) {
+           URL          docUrl = null;
             try {
                 docUrl = new URL("http://example.org/");
             } catch (MalformedURLException e) {
@@ -71,14 +55,12 @@ public class LazyParserGremlin {
             }
 
             try {
-                ref = new LazyParserGremlin(pc, fis, docUrl);
+                memGraph = new SailGraph(new MemoryStore());
+                memGraph.loadRDF(fis, docUrl.toString(), "rdf-xml", null);
             } catch (IllegalArgumentException iae) {
                 logger.severe("Cannot load RDF file with given configuration" + System.lineSeparator() + iae.toString());
                 System.exit(-1);
             }
-        }
-
-        return ref;
     }
 
     @Override

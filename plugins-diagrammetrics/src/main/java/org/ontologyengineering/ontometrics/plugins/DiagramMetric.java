@@ -22,6 +22,7 @@ public abstract class DiagramMetric extends OntoMetricsPlugin {
     private Logger   logger = Logger.getLogger(getClass().getName());
     private SparqlQuery  sq = null;
     private GremlinQuery gq = null;
+    private OWLAPIQuery  oq = null;
     private FilterType   lhs, rhs;
 
     public DiagramMetric(String name, String abbreviation, String resource) {
@@ -64,8 +65,9 @@ public abstract class DiagramMetric extends OntoMetricsPlugin {
     public void init(ParserJena jena, ParserOWLAPI owlapi, LazyParserGremlin gremlin) {
         super.init(jena, owlapi, gremlin);
         try {
-            sq = new SparqlQuery(jena, resource);
+            sq = new SparqlQuery(jena, lhs, rhs);
             gq = new GremlinQuery(gremlin, lhs, rhs);
+            oq = new OWLAPIQuery(owlapi, lhs, rhs);
         } catch (IOException ioe) {
             logger.severe("Cannot load SPARQL resource.");
             logger.severe(ioe.toString());
@@ -87,12 +89,32 @@ public abstract class DiagramMetric extends OntoMetricsPlugin {
         if(null == sq) {
             logger.severe("getMetricValue() called before init!");
         }
-        String sqr = sq.calculatePrettyDiagramRatio();
+        String sqr = sq.runQuery();
         String gqr = gq.runQuery();
+        String oqr = oq.runQuery();
 
         if(!sqr.equals(gqr)) {
+            logger.severe("SPARQL and Gremlin queries disagree for: " + sqr + ", " + gqr + " " + this.getClass().getName());
+            return Optional.empty();
+        } else if (!sqr.equals(oqr)) {
+            logger.severe("SPARQL and OWLAPI queries disagree for: " +  sqr + ", " + oqr + " " + this.getClass().getName());
+            return Optional.empty();
+        } else if (!gqr.equals(oqr)) {
+            logger.severe("Gremlin and OWLAPI queries disagree for " +  gqr + ", " + oqr + " " + this.getClass().getName());
             return Optional.empty();
         }
         return Optional.of(sqr);
+    }
+
+    public FilterType getLHS() {
+        return lhs;
+    }
+
+    public FilterType getRHS() {
+        return rhs;
+    }
+
+    public String getResource() {
+        return resource;
     }
 }

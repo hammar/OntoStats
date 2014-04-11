@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Logger;
+import java.util.Optional;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.HelpFormatter;
@@ -84,9 +85,9 @@ public class OntoMetrics {
         Iterator<OntoMetricsPlugin> plugins = pluginService.getPlugins();
         while (plugins.hasNext()) {
         	OntoMetricsPlugin plugin = plugins.next();
-        	plugin.init(ParserJena.getSingletonObject(ontologyFile),
-        	        ParserOWLAPI.getSingletonObject(ontologyFile),
-        	        LazyParserGremlin.getSingletonObject(ontologyFile));
+        	plugin.init(new ParserJena(ontologyFile),
+        	        new ParserOWLAPI(ontologyFile),
+        	        new LazyParserGremlin(ontologyFile));
         	
         	// An error in plugin execution can mean null values returned, so check
         	// for this.

@@ -1,6 +1,7 @@
 package org.ontologyengineering.ontometrics.plugins;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -8,6 +9,11 @@ import java.util.Optional;
 import com.karlhammar.ontometrics.plugins.LazyParserGremlin;
 import com.karlhammar.ontometrics.plugins.ParserConfiguration;
 import com.karlhammar.ontometrics.plugins.ParserJena;
+import com.karlhammar.ontometrics.plugins.ParserOWLAPI;
+
+import org.ontologyengineering.ontometrics.plugins.DiagramMetric;
+import org.ontologyengineering.ontometrics.plugins.Filter.FilterType;
+
 import com.tinkerpop.blueprints.impls.sail.SailGraph;
 import com.tinkerpop.gremlin.java.GremlinPipeline;
 
@@ -60,36 +66,30 @@ public class TestUtils {
     }
 
     public static String runSimpleTest(File owl, DiagramMetric dm) {
-        ParserJena       jena = ParserJena.resetSingletonObject(owl, new ParserConfiguration());
-        LazyParserGremlin lpg = LazyParserGremlin.resetSingletonObject(owl, new ParserConfiguration());
+        ParserJena       jena = new ParserJena(owl);
+        LazyParserGremlin lpg = new LazyParserGremlin(owl);
+        ParserOWLAPI   owlapi = new ParserOWLAPI(owl);
 
-        dm.init(jena, null, lpg);
+        dm.init(jena, owlapi, lpg);
         return dm.getMetricValue(owl).get();
     }
 
-    public static String runVotingTestDataFileComparison(File testFile, DiagramMetric dm) {
-        ParserJena       jena = ParserJena.resetSingletonObject(testFile, new ParserConfiguration());
-        LazyParserGremlin lpg = LazyParserGremlin.resetSingletonObject(testFile, new ParserConfiguration());
 
-        dm.init(jena, null, lpg);
-        return dm.getMetricValue(testFile).get();
+    public static String runGremlinTest(File owl, DiagramMetric dm) {
+    	LazyParserGremlin lpg = new LazyParserGremlin(owl);
+    	GremlinQuery       gq = new GremlinQuery(lpg, dm.getLHS(), dm.getRHS());
+    	return gq.runQuery();
     }
 
-    public static String runGremlinTestDataComparison(File testFile, Filter.FilterType lhs, Filter.FilterType rhs) {
-        LazyParserGremlin lpg = LazyParserGremlin.resetSingletonObject(testFile, new ParserConfiguration());
+    public static String runOWLAPITest(File owl, DiagramMetric dm) {
+        ParserOWLAPI poa = new ParserOWLAPI(owl);
+        OWLAPIQuery  oaq = new OWLAPIQuery(poa, dm.getLHS(), dm.getRHS());
+        return oaq.runQuery();
+    }
 
-        SailGraph          sg = lpg.getOntology();
-        GremlinPipeline    gp = new GremlinPipeline(sg.getEdges()).has("label", rdfsnsSubClassOf).and(
-                new GremlinPipeline().outV().add((new Filter(sg, lhs)).getPipeline())
-                , new GremlinPipeline().inV().add((new Filter(sg, rhs)).getPipeline())
-        ).dedup();
-
-        GremlinPipeline    eq = new GremlinPipeline(sg.getEdges()).has("label", owlnsEquivalentClass).and(
-                new GremlinPipeline().outV().add((new Filter(sg, lhs)).getPipeline())
-                , new GremlinPipeline().inV().add((new Filter(sg, rhs)).getPipeline())
-        ).dedup();
-
-        // Each A \equiv B counts as A \sqsubset B and B \sqsubseeq A, so double the total of equivs found.
-        return Double.toString(gp.count() + (eq.count() * 2));
+    public static String runJenaTest(File owl, DiagramMetric dm) throws IOException {
+    	ParserJena  pj = new ParserJena(owl);
+    	SparqlQuery jq = new SparqlQuery(pj, dm.getLHS(), dm.getRHS());
+        return jq.runQuery();
     }
 }
