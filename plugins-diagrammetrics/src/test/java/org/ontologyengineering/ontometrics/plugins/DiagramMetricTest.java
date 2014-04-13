@@ -21,7 +21,8 @@ public class DiagramMetricTest {
         return Arrays.asList(
                 // Atom subset *
                 new TestStruct[]{new TestStruct(new AtomSubsetAtom(),      Filter.FilterType.ATOM, Filter.FilterType.ATOM)}
-                , new TestStruct[]{new TestStruct(new AtomSubsetNegAtom(), Filter.FilterType.ATOM, Filter.FilterType.ATOM_COMPLEMENT)}
+                , new TestStruct[]{new TestStruct(new AtomSubsetAtom(),      Filter.FilterType.ATOM, Filter.FilterType.ATOM)}
+/*                , new TestStruct[]{new TestStruct(new AtomSubsetNegAtom(), Filter.FilterType.ATOM, Filter.FilterType.ATOM_COMPLEMENT)}
                 , new TestStruct[]{new TestStruct(new AtomSubsetConj(),    Filter.FilterType.ATOM, Filter.FilterType.ATOM_CONJUNCTION)}
                 , new TestStruct[]{new TestStruct(new AtomSubsetDisj(),    Filter.FilterType.ATOM, Filter.FilterType.ATOM_DISJUNCTION)}
                 , new TestStruct[]{new TestStruct(new AtomSubsetSome(),    Filter.FilterType.ATOM, Filter.FilterType.ATOM_SOMEOF)}
@@ -76,6 +77,7 @@ public class DiagramMetricTest {
                 , new TestStruct[]{new TestStruct(new TopSubsetSome(),    Filter.FilterType.TOP, Filter.FilterType.ATOM_SOMEOF)}
                 , new TestStruct[]{new TestStruct(new TopSubsetOnly(),    Filter.FilterType.TOP, Filter.FilterType.ATOM_ALLOF)}
                 , new TestStruct[]{new TestStruct(new TopSubsetTop(),     Filter.FilterType.TOP, Filter.FilterType.TOP)}
+                */
         );
     }
 
@@ -91,7 +93,7 @@ public class DiagramMetricTest {
         assertEquals("Failure on " + ts.toString() + " with simpleTest()", new String("1.0"), res);
     }
 
-    //@Test
+    @Test
     public void runComparisonTest() {
         for(File f: TestUtils.getTestDataFiles()) {
             //String g = TestUtils.runGremlinTestDataComparison(f, ts.lhs, ts.rhs);

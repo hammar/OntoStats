@@ -90,17 +90,11 @@ public abstract class DiagramMetric extends OntoMetricsPlugin {
             logger.severe("getMetricValue() called before init!");
         }
         String sqr = sq.runQuery();
-        String gqr = gq.runQuery();
+        //String gqr = gq.runQuery();
         String oqr = oq.runQuery();
 
-        if(!sqr.equals(gqr)) {
-            logger.severe("SPARQL and Gremlin queries disagree for: " + sqr + ", " + gqr + " " + this.getClass().getName());
-            return Optional.empty();
-        } else if (!sqr.equals(oqr)) {
+        if (!sqr.equals(oqr)) {
             logger.severe("SPARQL and OWLAPI queries disagree for: " +  sqr + ", " + oqr + " " + this.getClass().getName());
-            return Optional.empty();
-        } else if (!gqr.equals(oqr)) {
-            logger.severe("Gremlin and OWLAPI queries disagree for " +  gqr + ", " + oqr + " " + this.getClass().getName());
             return Optional.empty();
         }
         return Optional.of(sqr);
