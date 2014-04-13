@@ -1,0 +1,891 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://ontology.dumontierlab.com/atom-complex-disjoint#"
+     xml:base="http://ontology.dumontierlab.com/atom-complex-disjoint"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:ontology="http://ontology.dumontierlab.com/">
+    <owl:Ontology rdf:about="http://ontology.dumontierlab.com/atom-complex-disjoint">
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2.0</owl:versionInfo>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2008-02-01</dc:date>
+        <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Atom Ontology (disjoint)</dc:title>
+        <dc:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Disjoint union of atom types.</dc:description>
+        <dc:publisher rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dumontier Lab</dc:publisher>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Michel Dumontier</dc:creator>
+        <dc:format rdf:datatype="http://www.w3.org/2001/XMLSchema#string">application/rdf+xml</dc:format>
+        <dc:language rdf:datatype="http://www.w3.org/2001/XMLSchema#string">en</dc:language>
+        <owl:imports rdf:resource="http://ontology.dumontierlab.com/atom-primitive"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#versionInfo"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/publisher"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/language"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/format"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ActiniumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ActiniumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AluminiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/AluminiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AmericiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/AmericiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AntimonyAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/AntimonyAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ArgonAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ArgonAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ArsenicAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ArsenicAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AstatineAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/AstatineAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Atom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Atom">
+        <owl:disjointUnionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/ActiniumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/AluminiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/AmericiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/AntimonyAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/ArgonAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/ArsenicAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/AstatineAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/BariumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/BerkeliumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/BerylliumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/BismuthAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/BohriumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/BoronAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/BromineAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/CadmiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/CaesiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/CalciumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/CaliforniumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/CarbonAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/CeriumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/ChlorineAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/ChromiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/CobaltAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/CopperAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/CuriumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/DubniumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/DysprosiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/EinsteiniumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/ErbiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/EuropiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/FermiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/FluorineAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/FranciumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/GadoliniumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/GalliumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/GermaniumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/GoldAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/HafniumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/HassiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/HeliumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/HolmiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/HydrogenAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/IndiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/IodineAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/IridiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/IronAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/KryptonAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/LanthanumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/LawrenciumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/LeadAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/LithiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/LutetiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/MagnesiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/ManganeseAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/MeitneriumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/MendeleviumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/MercuryAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/MolybdenumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/NeodymiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/NeonAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/NeptuniumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/NickelAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/NiobiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/NitrogenAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/NobeliumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/OsmiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/OxygenAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/PalladiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/PhosphorusAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/PlatinumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/PlutoniumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/PoloniumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/PotassiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/PraseodymiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/PromethiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/ProtactiniumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/RadiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/RadonAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/RheniumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/RhodiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/RubidiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/RutheniumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/RutherfordiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/SamariumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/ScandiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/SeaborgiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/SeleniumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/SiliconAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/SilverAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/SodiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/StrontiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/SulfurAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/TantalumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/TechnetiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/TelluriumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/TerbiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/ThalliumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/ThoriumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/ThuliumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/TinAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/TitaniumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/TungstenAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/UnunbiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/UnunhexiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/UnunniliumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/UnunoctiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/UnunpentiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/UnunquadiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/UnunseptiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/UnuntriumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/UnununiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/UraniumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/VanadiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/XenonAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/YtterbiumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/YttriumAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/ZincAtom"/>
+            <rdf:Description rdf:about="http://ontology.dumontierlab.com/ZirconiumAtom"/>
+        </owl:disjointUnionOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BariumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BariumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BerkeliumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BerkeliumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BerylliumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BerylliumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BismuthAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BismuthAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BohriumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BohriumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BoronAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BoronAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BromineAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BromineAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CadmiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/CadmiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CaesiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/CaesiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CalciumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/CalciumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CaliforniumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/CaliforniumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CarbonAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/CarbonAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CeriumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/CeriumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ChlorineAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ChlorineAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ChromiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ChromiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CobaltAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/CobaltAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CopperAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/CopperAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CuriumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/CuriumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DubniumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/DubniumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DysprosiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/DysprosiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/EinsteiniumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/EinsteiniumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ErbiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ErbiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/EuropiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/EuropiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/FermiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/FermiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/FluorineAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/FluorineAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/FranciumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/FranciumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/GadoliniumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/GadoliniumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/GalliumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/GalliumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/GermaniumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/GermaniumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/GoldAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/GoldAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HafniumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/HafniumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HassiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/HassiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HeliumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/HeliumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HolmiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/HolmiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HydrogenAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/HydrogenAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/IndiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/IndiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/IodineAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/IodineAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/IridiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/IridiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/IronAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/IronAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/KryptonAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/KryptonAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LanthanumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/LanthanumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LawrenciumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/LawrenciumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LeadAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/LeadAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LithiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/LithiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LutetiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/LutetiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MagnesiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/MagnesiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ManganeseAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ManganeseAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MeitneriumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/MeitneriumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MendeleviumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/MendeleviumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MercuryAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/MercuryAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MolybdenumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/MolybdenumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/NeodymiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/NeodymiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/NeonAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/NeonAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/NeptuniumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/NeptuniumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/NickelAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/NickelAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/NiobiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/NiobiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/NitrogenAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/NitrogenAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/NobeliumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/NobeliumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/OsmiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/OsmiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/OxygenAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/OxygenAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PalladiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/PalladiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PhosphorusAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/PhosphorusAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PlatinumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/PlatinumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PlutoniumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/PlutoniumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PoloniumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/PoloniumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PotassiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/PotassiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PraseodymiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/PraseodymiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PromethiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/PromethiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ProtactiniumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ProtactiniumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/RadiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/RadiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/RadonAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/RadonAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/RheniumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/RheniumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/RhodiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/RhodiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/RubidiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/RubidiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/RutheniumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/RutheniumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/RutherfordiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/RutherfordiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SamariumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SamariumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ScandiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ScandiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SeaborgiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SeaborgiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SeleniumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SeleniumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SiliconAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SiliconAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SilverAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SilverAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SodiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SodiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/StrontiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/StrontiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SulfurAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SulfurAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/TantalumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/TantalumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/TechnetiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/TechnetiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/TelluriumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/TelluriumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/TerbiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/TerbiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ThalliumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ThalliumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ThoriumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ThoriumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ThuliumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ThuliumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/TinAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/TinAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/TitaniumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/TitaniumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/TungstenAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/TungstenAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnunbiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/UnunbiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnunhexiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/UnunhexiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnunniliumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/UnunniliumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnunoctiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/UnunoctiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnunpentiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/UnunpentiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnunquadiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/UnunquadiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnunseptiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/UnunseptiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnuntriumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/UnuntriumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnununiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/UnununiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UraniumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/UraniumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/VanadiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/VanadiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/XenonAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/XenonAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/YtterbiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/YtterbiumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/YttriumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/YttriumAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ZincAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ZincAtom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ZirconiumAtom -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ZirconiumAtom"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.0.0.1450) http://owlapi.sourceforge.net -->
+

@@ -7,12 +7,10 @@ WHERE { {
                 ?subject $(TERM)                 ?object ;
                          rdf:type              owl:Class .
                 ?object  rdf:type              owl:Class .
+                FILTER (isIRI(?subject) && isIRI(?object))
         } UNION {
                 ?subject $(TERM)       owl:Thing .
-        } FILTER NOT EXISTS {
-            ?subject owl:complementOf ?x .
-        } FILTER NOT EXISTS {
-            ?object  owl:complementOf ?y .
+                FILTER (isIRI(?subject))
         }
      }
 GROUP BY ?subject ?object

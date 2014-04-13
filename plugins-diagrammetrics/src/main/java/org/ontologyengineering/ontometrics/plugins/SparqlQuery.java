@@ -12,6 +12,8 @@ import com.hp.hpl.jena.query.QueryExecution;
 import com.hp.hpl.jena.query.QueryExecutionFactory;
 import com.hp.hpl.jena.query.QueryFactory;
 import com.hp.hpl.jena.query.ResultSet;
+import com.hp.hpl.jena.query.ResultSetFactory;
+import com.hp.hpl.jena.query.ResultSetRewindable;
 import com.karlhammar.ontometrics.plugins.ParserJena;
 
 public class SparqlQuery {
@@ -37,31 +39,16 @@ public class SparqlQuery {
         Query qs1         = QueryFactory.create(subset);
         QueryExecution qe = QueryExecutionFactory.create(qs1, jena.getOntology());
         ResultSet results =  qe.execSelect();
-        int subsetR = sumResultSet(results);
+        ResultSetRewindable rsrw = ResultSetFactory.copyResults(results);
+        int subsetR = rsrw.size();
 
         // Run equivalence query
         qs1 = QueryFactory.create(equiv);
         qe  = QueryExecutionFactory.create(qs1, jena.getOntology());
         results =  qe.execSelect();
-        int equivR = sumResultSet(results) * 2;  // double this as \equiv is two \subseteq's
+        rsrw = ResultSetFactory.copyResults(results);
+        int equivR = rsrw.size() * 2;  // double this as \equiv is two \subseteq's
 
         return new Double(subsetR + equivR).toString();
-    }
-
-    // ResultSet is neither a Collection nor Iterable.
-    /* package */ static int sumResultSet(ResultSet rs) {
-        int sum = 0;
-        while (rs.hasNext()) {
-            sum ++;
-            com.hp.hpl.jena.query.QuerySolution qs = rs.next();
-            /*  Will print the ResultSet as it is summed
-            java.util.Iterator<String> i = qs.varNames();
-            while (i.hasNext()) {
-                String key = i.next();
-                System.out.print(key + "(" + qs.get(key).toString() + ") ");
-            }
-            System.out.println();*/
-        }
-        return sum;
     }
 }

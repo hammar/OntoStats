@@ -1,0 +1,1403 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://ontology.dumontierlab.com/pharmacogenomics-complex#"
+     xml:base="http://ontology.dumontierlab.com/pharmacogenomics-complex"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:snap="http://www.ifomis.org/bfo/1.0/snap#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:ontology="http://ontology.dumontierlab.com/"
+     xmlns:span="http://www.ifomis.org/bfo/1.0/span#">
+    <owl:Ontology rdf:about="http://ontology.dumontierlab.com/pharmacogenomics-complex">
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2.1</owl:versionInfo>
+        <dc:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Complex class expressions to enrich the pharmacogenomics ontology for reasoning.</dc:description>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Michel Dumontier</dc:creator>
+        <dc:language rdf:datatype="http://www.w3.org/2001/XMLSchema#string">en</dc:language>
+        <dc:publisher rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://dumontierlab.com</dc:publisher>
+        <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pharmacogenomics ontology (complex)</dc:title>
+        <owl:imports rdf:resource="http://ontology.dumontierlab.com/nulo"/>
+        <owl:imports rdf:resource="http://ontology.dumontierlab.com/pharmacogenomics-primitive"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#versionInfo"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/publisher"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/language"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasPart -->
+
+    <owl:ObjectProperty rdf:about="http://ontology.dumontierlab.com/hasPart"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasParticipant -->
+
+    <owl:ObjectProperty rdf:about="http://ontology.dumontierlab.com/hasParticipant"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isVariantOf -->
+
+    <owl:ObjectProperty rdf:about="http://ontology.dumontierlab.com/isVariantOf"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AnxietyMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/AnxietyMeasure">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/DepressionMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SatietyMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AsthmaFrequency -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/AsthmaFrequency">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/MyocardialInfarctionFrequency"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/NeoplasmFrequency"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BiologicalMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BiologicalMeasure">
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.0/snap#Quality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BiophysicalMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BiophysicalMeasure">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ClinicalOutcomeMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/CognitiveMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/GenotypeMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/MetabolicMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/MolecularMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PharmacodynamicMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PharmacokineticMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phenotype"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TaxonomicMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TissueMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BloodPressure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BloodPressure">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/BodyMassIndexMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ElectrocardiogramQTInterval"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ExerciseResponse"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PulmonaryFunctionMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/WeightMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BloodSerumProteinCount -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BloodSerumProteinCount">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/BoneMineralDensity"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/CellCount"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/CoagulationProfile"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/HomocysteineLevel"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/LipidProfile"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PathogenCount"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ReninAngiotensinSystemMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BodyMassIndex -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BodyMassIndex">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/BodyMassIndexDifference"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BodyMassIndexDecrease -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BodyMassIndexDecrease">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/BodyMassIndexIncrease"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BodyMassIndexDifference -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BodyMassIndexDifference"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BodyMassIndexIncrease -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BodyMassIndexIncrease"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BodyMassIndexMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BodyMassIndexMeasure">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ElectrocardiogramQTInterval"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ExerciseResponse"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PulmonaryFunctionMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/WeightMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BoneMineralDensity -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BoneMineralDensity">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/CellCount"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/CoagulationProfile"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/HomocysteineLevel"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/LipidProfile"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PathogenCount"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ReninAngiotensinSystemMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CellCount -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/CellCount">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/CoagulationProfile"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/HomocysteineLevel"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/LipidProfile"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PathogenCount"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ReninAngiotensinSystemMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ChildDepressionMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ChildDepressionMeasure">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/HamiltonDepressionMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/MontgomeryAsbergDepressionMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ChildDepressionScore -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ChildDepressionScore">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ChildDepressionScoreDifference"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ChildDepressionScoreDifference -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ChildDepressionScoreDifference"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ClinicalOutcomeMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ClinicalOutcomeMeasure">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/CognitiveMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/GenotypeMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/MetabolicMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/MolecularMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PharmacodynamicMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PharmacokineticMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phenotype"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TaxonomicMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TissueMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CoagulationProfile -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/CoagulationProfile">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/HomocysteineLevel"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/LipidProfile"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PathogenCount"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ReninAngiotensinSystemMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CognitiveMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/CognitiveMeasure">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/GenotypeMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/MetabolicMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/MolecularMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PharmacodynamicMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PharmacokineticMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phenotype"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TaxonomicMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TissueMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DatabaseSource -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/DatabaseSource">
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.0/snap#Object"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Drug"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Gene"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Publication"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SingleNucleotidePolymorphism"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SingleNucleotidePolymorphismRecord"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DecreasedDiseaseSusceptibilityWithGene -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/DecreasedDiseaseSusceptibilityWithGene">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/IncreasedDiseaseSusceptibilityWithGene"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DecreasedDrugMetabolismByGene -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/DecreasedDrugMetabolismByGene">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/IncreasedDrugMetabolismByGene"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DecreasedGeneExpressionByDrug -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/DecreasedGeneExpressionByDrug">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/IncreasedGeneExpressionByDrug"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DepressionMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/DepressionMeasure">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SatietyMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Disease -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Disease">
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.0/snap#Disposition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DiseaseFrequency -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/DiseaseFrequency">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/DiseaseSusceptibilityOdds"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ERVisitFrequency"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/EventFreeSurvivalTime"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/QualityOfLife"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/RemissionMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SideEffectMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DiseaseSusceptibilityOdds -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/DiseaseSusceptibilityOdds">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ERVisitFrequency"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/EventFreeSurvivalTime"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/QualityOfLife"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/RemissionMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SideEffectMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Dose -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Dose">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/DoseFrequency"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/DrugClearance"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PlasmaDrugConcentration"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DoseFrequency -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/DoseFrequency">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/DrugClearance"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PlasmaDrugConcentration"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DoseRecommendation -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/DoseRecommendation">
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.0/span#Process"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.dumontierlab.com/hasParticipant"/>
+                <owl:someValuesFrom rdf:resource="http://ontology.dumontierlab.com/DoseFrequency"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.dumontierlab.com/hasParticipant"/>
+                <owl:someValuesFrom rdf:resource="http://ontology.dumontierlab.com/Dose"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.dumontierlab.com/hasParticipant"/>
+                <owl:someValuesFrom rdf:resource="http://ontology.dumontierlab.com/Drug"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Interaction"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Pathway"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Drug -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Drug">
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.0/snap#Object"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Gene"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Publication"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SingleNucleotidePolymorphism"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SingleNucleotidePolymorphismRecord"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DrugClearance -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/DrugClearance">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PlasmaDrugConcentration"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DrugGeneInteraction -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/DrugGeneInteraction">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.dumontierlab.com/hasParticipant"/>
+                <owl:someValuesFrom rdf:resource="http://ontology.dumontierlab.com/Drug"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.dumontierlab.com/hasParticipant"/>
+                <owl:someValuesFrom rdf:resource="http://ontology.dumontierlab.com/Gene"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/DrugInducedSideEffect"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/DrugTreatment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DrugInducedSideEffect -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/DrugInducedSideEffect">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.dumontierlab.com/hasParticipant"/>
+                <owl:someValuesFrom rdf:resource="http://ontology.dumontierlab.com/SideEffectMeasure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.dumontierlab.com/hasParticipant"/>
+                <owl:someValuesFrom rdf:resource="http://ontology.dumontierlab.com/Drug"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/DrugTreatment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DrugInteraction -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/DrugInteraction">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.dumontierlab.com/hasParticipant"/>
+                <owl:someValuesFrom rdf:resource="http://ontology.dumontierlab.com/Drug"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/GeneDiseaseInteraction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DrugMetabolismByGene -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/DrugMetabolismByGene">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/DrugModifiedGeneExpression"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DrugModifiedGeneExpression -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/DrugModifiedGeneExpression"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DrugTreatment -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/DrugTreatment">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.dumontierlab.com/hasParticipant"/>
+                <owl:someValuesFrom rdf:resource="http://ontology.dumontierlab.com/BiologicalMeasure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.dumontierlab.com/hasPart"/>
+                <owl:someValuesFrom rdf:resource="http://ontology.dumontierlab.com/DrugGeneInteraction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.dumontierlab.com/hasPart"/>
+                <owl:someValuesFrom rdf:resource="http://ontology.dumontierlab.com/DrugInducedSideEffect"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.dumontierlab.com/hasParticipant"/>
+                <owl:someValuesFrom rdf:resource="http://ontology.dumontierlab.com/Disease"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.dumontierlab.com/hasParticipant"/>
+                <owl:someValuesFrom rdf:resource="http://ontology.dumontierlab.com/Drug"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ERVisitFrequency -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ERVisitFrequency">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/EventFreeSurvivalTime"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/QualityOfLife"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/RemissionMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SideEffectMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ElectrocardiogramQTInterval -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ElectrocardiogramQTInterval">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ExerciseResponse"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PulmonaryFunctionMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/WeightMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/EventFreeSurvivalTime -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/EventFreeSurvivalTime">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/QualityOfLife"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/RemissionMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SideEffectMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ExerciseResponse -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ExerciseResponse">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PulmonaryFunctionMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/WeightMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/FatalDrugInducedSideEffect -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/FatalDrugInducedSideEffect">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/MildDrugInducedSideEffect"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ModerateDrugInducedSideEffect"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SevereDrugInducedSideEffect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Gender -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Gender">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Race"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Gene -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Gene">
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.0/snap#Object"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Publication"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SingleNucleotidePolymorphism"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SingleNucleotidePolymorphismRecord"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/GeneDiseaseInteraction -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/GeneDiseaseInteraction">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.dumontierlab.com/hasParticipant"/>
+                <owl:someValuesFrom rdf:resource="http://ontology.dumontierlab.com/Gene"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.dumontierlab.com/hasParticipant"/>
+                <owl:someValuesFrom rdf:resource="http://ontology.dumontierlab.com/Disease"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/GeneVariant -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/GeneVariant">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Gene"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://ontology.dumontierlab.com/isVariantOf"/>
+                        <owl:someValuesFrom rdf:resource="http://ontology.dumontierlab.com/Gene"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/GenotypeMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/GenotypeMeasure">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/MetabolicMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/MolecularMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PharmacodynamicMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PharmacokineticMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phenotype"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TaxonomicMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TissueMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HamiltonAnxietyScore -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/HamiltonAnxietyScore">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/HamiltonAnxietyScoreDifference"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HamiltonAnxietyScoreDifference -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/HamiltonAnxietyScoreDifference"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HamiltonDepressionMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/HamiltonDepressionMeasure">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/MontgomeryAsbergDepressionMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HamiltonDepressionScore -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/HamiltonDepressionScore">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/HamiltonDepressionScoreDifference"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HamiltonDepressionScoreDifference -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/HamiltonDepressionScoreDifference"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HighDrugEfficacy -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/HighDrugEfficacy">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/LowDrugEfficacy"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ZeroDrugEfficacy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HighHamiltonDepressionScore -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/HighHamiltonDepressionScore">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/LowHamiltonDepressionScore"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ModerateHamiltonDepressionScore"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HighMontgomeryAsbergDepressionRating -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/HighMontgomeryAsbergDepressionRating">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/LowMontgomeryAsbergDepressionRating"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ModerateMontgomeryAsbergDepressionRating"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HighReductionInChildDepressionScore -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/HighReductionInChildDepressionScore">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/LowReductionInChildDepressionScore"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ModerateReductionInChildDepressionScore"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HighReductionInHamiltonAnxietyScore -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/HighReductionInHamiltonAnxietyScore">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/LowReductionInHamiltonAnxietyScore"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ModerateReductionInHamiltonAnxietyScore"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HighReductionInHamiltonDepressionScore -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/HighReductionInHamiltonDepressionScore">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/LowReductionInHamiltonDepressionScore"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ModerateReductionInHamiltonDepressionScore"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HighReductionInMontgomeryAsbergDepressionRating -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/HighReductionInMontgomeryAsbergDepressionRating">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/LowReductionInMontgomeryAsbergDepressionRating"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ModerateReductionInMontgomeryAsbergDepressionRating"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HighRemission -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/HighRemission">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/LowRemission"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ModerateRemission"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ZeroRemission"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HighRemissionOddsRatio -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/HighRemissionOddsRatio">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/LowRemissionOddsRatio"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SimilarRemissionOddsRatio"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HigherDiseaseSusceptibiltyOdds -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/HigherDiseaseSusceptibiltyOdds">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/LowerDiseaseSusceptibilityOdds"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SimilarDiseaseSusceptibilityOdds"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HomocysteineLevel -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/HomocysteineLevel">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/LipidProfile"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PathogenCount"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ReninAngiotensinSystemMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/IncreasedDiseaseSusceptibilityWithGene -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/IncreasedDiseaseSusceptibilityWithGene"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/IncreasedDrugMetabolismByGene -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/IncreasedDrugMetabolismByGene"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/IncreasedGeneExpressionByDrug -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/IncreasedGeneExpressionByDrug"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Interaction -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Interaction">
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.0/span#Process"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Pathway"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/IntronicGeneVariant -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/IntronicGeneVariant">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/NonSynonymousGeneVariant"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/StartCodonGeneVariant"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SynonymousGeneVariant"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/IntronicSingleNucleotidePolymorphismRecord -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/IntronicSingleNucleotidePolymorphismRecord">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/NonsynonymousSingleNucleotidePolymorphismRecord"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/StartCodonSingleNucleotidePolymorphismRecord"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SynonymousSingleNucleotidePolymorphismRecord"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LipidProfile -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/LipidProfile">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PathogenCount"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ReninAngiotensinSystemMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LowDrugEfficacy -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/LowDrugEfficacy">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ZeroDrugEfficacy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LowHamiltonDepressionScore -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/LowHamiltonDepressionScore">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ModerateHamiltonDepressionScore"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LowMontgomeryAsbergDepressionRating -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/LowMontgomeryAsbergDepressionRating">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ModerateMontgomeryAsbergDepressionRating"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LowReductionInChildDepressionScore -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/LowReductionInChildDepressionScore">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ModerateReductionInChildDepressionScore"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LowReductionInHamiltonAnxietyScore -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/LowReductionInHamiltonAnxietyScore">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ModerateReductionInHamiltonAnxietyScore"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LowReductionInHamiltonDepressionScore -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/LowReductionInHamiltonDepressionScore">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ModerateReductionInHamiltonDepressionScore"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LowReductionInMontgomeryAsbergDepressionRating -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/LowReductionInMontgomeryAsbergDepressionRating">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ModerateReductionInMontgomeryAsbergDepressionRating"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LowRemission -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/LowRemission">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ModerateRemission"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ZeroRemission"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LowRemissionOddsRatio -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/LowRemissionOddsRatio">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SimilarRemissionOddsRatio"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LowerDiseaseSusceptibilityOdds -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/LowerDiseaseSusceptibilityOdds">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SimilarDiseaseSusceptibilityOdds"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MetabolicMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/MetabolicMeasure">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/MolecularMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PharmacodynamicMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PharmacokineticMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phenotype"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TaxonomicMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TissueMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MildDrugInducedSideEffect -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/MildDrugInducedSideEffect">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ModerateDrugInducedSideEffect"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SevereDrugInducedSideEffect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ModerateDrugInducedSideEffect -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ModerateDrugInducedSideEffect">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SevereDrugInducedSideEffect"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ModerateHamiltonDepressionScore -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ModerateHamiltonDepressionScore"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ModerateMontgomeryAsbergDepressionRating -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ModerateMontgomeryAsbergDepressionRating"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ModerateReductionInChildDepressionScore -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ModerateReductionInChildDepressionScore"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ModerateReductionInHamiltonAnxietyScore -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ModerateReductionInHamiltonAnxietyScore"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ModerateReductionInHamiltonDepressionScore -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ModerateReductionInHamiltonDepressionScore"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ModerateReductionInMontgomeryAsbergDepressionRating -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ModerateReductionInMontgomeryAsbergDepressionRating"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ModerateRemission -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ModerateRemission">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ZeroRemission"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MolecularMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/MolecularMeasure">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PharmacodynamicMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PharmacokineticMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phenotype"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TaxonomicMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TissueMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MontgomeryAsbergDepressionMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/MontgomeryAsbergDepressionMeasure"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MontgomeryAsbergDepressionRating -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/MontgomeryAsbergDepressionRating">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/MontgomeryAsbergDepressionRatingDifference"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MontgomeryAsbergDepressionRatingDifference -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/MontgomeryAsbergDepressionRatingDifference"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MyocardialInfarctionFrequency -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/MyocardialInfarctionFrequency">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/NeoplasmFrequency"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/NeoplasmFrequency -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/NeoplasmFrequency"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/NonSynonymousGeneVariant -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/NonSynonymousGeneVariant">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/StartCodonGeneVariant"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SynonymousGeneVariant"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/NonsynonymousSingleNucleotidePolymorphismRecord -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/NonsynonymousSingleNucleotidePolymorphismRecord">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/StartCodonSingleNucleotidePolymorphismRecord"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SynonymousSingleNucleotidePolymorphismRecord"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PathogenCount -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/PathogenCount">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ReninAngiotensinSystemMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Pathway -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Pathway">
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.0/span#Process"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PersonalizedDoseRecommendation -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/PersonalizedDoseRecommendation">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ontology.dumontierlab.com/hasPart"/>
+                <owl:someValuesFrom rdf:resource="http://ontology.dumontierlab.com/DrugGeneInteraction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PharmacodynamicMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/PharmacodynamicMeasure">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PharmacokineticMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phenotype"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TaxonomicMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TissueMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PharmacokineticMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/PharmacokineticMeasure">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phenotype"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TaxonomicMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TissueMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Phenotype -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Phenotype">
+        <rdfs:subClassOf rdf:resource="http://ontology.dumontierlab.com/BiologicalMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TaxonomicMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TissueMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PlasmaDrugConcentration -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/PlasmaDrugConcentration"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Publication -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Publication">
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.0/snap#Object"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SingleNucleotidePolymorphism"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SingleNucleotidePolymorphismRecord"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PulmonaryFunctionMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/PulmonaryFunctionMeasure">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/WeightMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/QualityOfLife -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/QualityOfLife">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/RemissionMeasure"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SideEffectMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Race -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Race"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/RemissionFrequency -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/RemissionFrequency">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/RemissionOddsRatio"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/RemissionMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/RemissionMeasure">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SideEffectMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/RemissionOddsRatio -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/RemissionOddsRatio"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ReninAngiotensinSystemMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ReninAngiotensinSystemMeasure"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Satiety -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Satiety">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SatietyDifference"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SatietyFrequency"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SatietyDecrease -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SatietyDecrease">
+        <rdfs:subClassOf rdf:resource="http://ontology.dumontierlab.com/SatietyDifference"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SatietyIncrease"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SatietyDifference -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SatietyDifference">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SatietyFrequency"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SatietyFrequency -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SatietyFrequency"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SatietyIncrease -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SatietyIncrease"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SatietyMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SatietyMeasure"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SevereDrugInducedSideEffect -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SevereDrugInducedSideEffect"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SideEffectFrequency -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SideEffectFrequency">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SideEffectRate"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SideEffectMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SideEffectMeasure"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SideEffectRate -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SideEffectRate"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SimilarDiseaseSusceptibilityOdds -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SimilarDiseaseSusceptibilityOdds"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SimilarRemissionOddsRatio -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SimilarRemissionOddsRatio"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SingleNucleotidePolymorphism -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SingleNucleotidePolymorphism">
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.0/snap#Object"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SingleNucleotidePolymorphismRecord"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SingleNucleotidePolymorphismRecord -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SingleNucleotidePolymorphismRecord">
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.0/snap#Object"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/StartCodonGeneVariant -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/StartCodonGeneVariant">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SynonymousGeneVariant"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/StartCodonSingleNucleotidePolymorphismRecord -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/StartCodonSingleNucleotidePolymorphismRecord">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SynonymousSingleNucleotidePolymorphismRecord"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SynonymousGeneVariant -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SynonymousGeneVariant"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SynonymousSingleNucleotidePolymorphismRecord -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SynonymousSingleNucleotidePolymorphismRecord"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/TaxonomicMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/TaxonomicMeasure">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TissueMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/TissueMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/TissueMeasure"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/WeightLoss -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/WeightLoss">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/WeigthGain"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/WeightMeasure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/WeightMeasure"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Weigth -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Weigth">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/WeigthDifference"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/WeigthDifference -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/WeigthDifference"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/WeigthGain -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/WeigthGain"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ZeroDrugEfficacy -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ZeroDrugEfficacy"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ZeroRemission -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ZeroRemission"/>
+    
+
+
+    <!-- http://www.ifomis.org/bfo/1.0/snap#Disposition -->
+
+    <owl:Class rdf:about="http://www.ifomis.org/bfo/1.0/snap#Disposition"/>
+    
+
+
+    <!-- http://www.ifomis.org/bfo/1.0/snap#Object -->
+
+    <owl:Class rdf:about="http://www.ifomis.org/bfo/1.0/snap#Object"/>
+    
+
+
+    <!-- http://www.ifomis.org/bfo/1.0/snap#Quality -->
+
+    <owl:Class rdf:about="http://www.ifomis.org/bfo/1.0/snap#Quality"/>
+    
+
+
+    <!-- http://www.ifomis.org/bfo/1.0/span#Process -->
+
+    <owl:Class rdf:about="http://www.ifomis.org/bfo/1.0/span#Process"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.0.0.1450) http://owlapi.sourceforge.net -->
+

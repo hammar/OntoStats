@@ -57,6 +57,36 @@ public class AtomSubsetAtomTest {
                                    "<rdfs:subClassOf rdf:resource=\"http://www.ontologyengineering.org/testAtomSubsetAtom#A\"/>" +
                                "</owl:Class>" +
                 "</rdf:RDF>";
+    String xmlrdfEquivClass = 
+            "<?xml version=\"1.0\"?>\n" + 
+            "<!DOCTYPE rdf:RDF [\n" + 
+            "	<!ENTITY owl \"http://www.w3.org/2002/07/owl#\" >\n" + 
+            "	<!ENTITY xsd \"http://www.w3.org/2001/XMLSchema#\" >\n" + 
+            "	<!ENTITY rdfs \"http://www.w3.org/2000/01/rdf-schema#\" >\n" + 
+            "	<!ENTITY rdf \"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" >\n" + 
+            "]>\n" + 
+            "\n" + 
+            "<rdf:RDF xmlns=\"http://www.ontologyengineering.org/testAtomSubsetAtom#\"\n" + 
+            "	xml:base=\"http://www.ontologyengineering.org/testAtomSubsetAtom\"\n" + 
+            "	xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n" + 
+            "	xmlns:owl=\"http://www.w3.org/2002/07/owl#\"\n" + 
+            "	xmlns:xsd=\"http://www.w3.org/2001/XMLSchema#\"\n" + 
+            "	xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\">\n" + 
+            "    <owl:Ontology rdf:about=\"http://www.ontologyengineering.org/testAtomSubsetAtom\"/>\n" + 
+            "<owl:Class rdf:about=\"http://www.ontologyengineering.org/testAtomSubsetAtom#A\"/>\n" + 
+            "    <owl:Class rdf:about=\"http://www.ontologyengineering.org/testAtomSubsetAtom#B\" />\n" + 
+            "    <owl:Class rdf:about=\"http://www.ontologyengineering.org/testAtomSubsetAtom#C\">\n" + 
+            "        <owl:equivalentClass>\n" + 
+            "            <owl:Class>\n" + 
+            "                <owl:unionOf rdf:parseType=\"Collection\">\n" + 
+            "                    <rdf:Description rdf:about=\"http://www.ontologyengineering.org/testAtomSubsetAtom#A\"/>\n" + 
+            "                    <rdf:Description rdf:about=\"http://www.ontologyengineering.org/testAtomSubsetAtom#B\"/>\n" + 
+            "                </owl:unionOf>\n" + 
+            "            </owl:Class>\n" + 
+            "        </owl:equivalentClass>\n" + 
+            "    </owl:Class>\n" + 
+            "</rdf:RDF>";
+
     @Rule
     public ExpectedException thrown= ExpectedException.none();
 
@@ -87,7 +117,18 @@ public class AtomSubsetAtomTest {
         FileUtils.write(tmp, xmlrdfNegAtomSubsetAtom);
 
         String res = TestUtils.runOWLAPITest(tmp, cut);
-        assertEquals(new String("1.0"), res);
+        assertEquals(new String("2.0"), res);
+    }
+
+    @Test
+    public void checkComplexAgreement() throws IOException {
+        AtomSubsetAtom cut = new AtomSubsetAtom();
+        File tmp = Files.createTempFile("xmlrdfEquivClass",".xml").toFile();
+        FileUtils.write(tmp, xmlrdfEquivClass);
+
+        String  owl = TestUtils.runOWLAPITest(tmp, cut);
+        String jena = TestUtils.runJenaTest(tmp, cut);
+        assertEquals(owl, jena);
     }
 
     @Test
@@ -97,9 +138,29 @@ public class AtomSubsetAtomTest {
         FileUtils.write(tmp, xmlrdfNegAtomSubsetAtom);
 
         String res = TestUtils.runJenaTest(tmp, cut);
-        assertEquals(new String("1.0"), res);
+        assertEquals(new String("2.0"), res);
     }
 
+    @Test
+    public void doALCTest() throws IOException {
+        AtomSubsetAtom cut = new AtomSubsetAtom();
+        for (File alc :TestUtils.getALCFiles()) {
+            String owlapi = TestUtils.runOWLAPITest(alc, cut);
+            String   jena = TestUtils.runJenaTest(alc, cut);
+
+            assertEquals("Failed with file " + alc.toString(), owlapi, jena);
+        }
+    }
+
+    @Test
+    public void doSSNTest() throws IOException {
+        AtomSubsetAtom cut = new AtomSubsetAtom();
+        File ssn = TestUtils.getSSNFile();
+        String owlapi = TestUtils.runOWLAPITest(ssn, cut);
+        String   jena = TestUtils.runJenaTest(ssn, cut);
+
+        assertEquals(owlapi, jena);
+    }
     // Need a combined.owl file that parses correctly.
 //    @Test
 //    public void combinedTest() {

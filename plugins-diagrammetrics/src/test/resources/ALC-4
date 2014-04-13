@@ -1,0 +1,530 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://ontology.dumontierlab.com/subatomic-particle-complex#"
+     xml:base="http://ontology.dumontierlab.com/subatomic-particle-complex"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:snap="http://www.ifomis.org/bfo/1.0/snap#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:ontology="http://ontology.dumontierlab.com/">
+    <owl:Ontology rdf:about="http://ontology.dumontierlab.com/subatomic-particle-complex">
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2.0</owl:versionInfo>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2007-10-01</dc:date>
+        <dc:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Complex class expressions for the subatomic particle ontology.</dc:description>
+        <dc:publisher rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dumontier Lab</dc:publisher>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Michel Dumontier</dc:creator>
+        <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Subatomic Particle Ontology (complex)</dc:title>
+        <dc:format rdf:datatype="http://www.w3.org/2001/XMLSchema#string">application/rdf+xml</dc:format>
+        <dc:language rdf:datatype="http://www.w3.org/2001/XMLSchema#string">en</dc:language>
+        <owl:imports rdf:resource="http://ontology.dumontierlab.com/nulo"/>
+        <owl:imports rdf:resource="http://ontology.dumontierlab.com/subatomic-particle-primitive"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#versionInfo"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/publisher"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/language"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/format"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasPart -->
+
+    <owl:ObjectProperty rdf:about="http://ontology.dumontierlab.com/hasPart"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Antiauon -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Antiauon">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Antimuon"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Antineutrino"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Positron"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Antibaryon -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Antibaryon">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Baryon"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Antiboson -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Antiboson">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Antifermion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Antifermion -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Antifermion"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Antilepton -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Antilepton">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Antiquark"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Antimuon -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Antimuon">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Antineutrino"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Positron"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Antineutrino -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Antineutrino">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Positron"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Antineutron -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Antineutron">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Antiproton"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Antiparticle -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Antiparticle">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Boson"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Fermion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Antiproton -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Antiproton"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Antiquark -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Antiquark"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BMeson -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BMeson">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/JParticle"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Kaon"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Pion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Baryon -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Baryon"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BetaParticle -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BetaParticle">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Electron"/>
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Positron"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Boson -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Boson">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Fermion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BottomAntiquark -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BottomAntiquark">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/CharmAntiquark"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/DownAntiquark"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/StrangeAntiquark"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TopAntiquark"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/UpAntiquark"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BottomQuark -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BottomQuark">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/CharmQuark"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/DownQuark"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/StrangeQuark"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TopQuark"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/UpQuark"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CharmAntiquark -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/CharmAntiquark">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/DownAntiquark"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/StrangeAntiquark"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TopAntiquark"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/UpAntiquark"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CharmQuark -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/CharmQuark">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/DownQuark"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/StrangeQuark"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TopQuark"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/UpQuark"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CompositeParticle -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/CompositeParticle">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/SubatomicParticle"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://ontology.dumontierlab.com/hasPart"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Boson"/>
+                                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Fermion"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ElementaryParticle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DownAntiquark -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/DownAntiquark">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/StrangeAntiquark"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TopAntiquark"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/UpAntiquark"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DownQuark -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/DownQuark">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/StrangeQuark"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TopQuark"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/UpQuark"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Electron -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Electron">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Muon"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Neutrino"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Tauon"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ElementaryParticle -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ElementaryParticle"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Fermion -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Fermion">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Lepton"/>
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Quark"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/GaugeBoson -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/GaugeBoson">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Meson"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Gluon -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Gluon">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Graviton"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Photon"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/WBoson"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ZBoson"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Graviton -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Graviton">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Photon"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/WBoson"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ZBoson"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Hyperon -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Hyperon">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Neutron"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Proton"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/JParticle -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/JParticle">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Kaon"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Pion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Kaon -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Kaon">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Pion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Lepton -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Lepton">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Quark"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Meson -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Meson"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Muon -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Muon">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Neutrino"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Tauon"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Neutrino -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Neutrino">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Tauon"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Neutron -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Neutron">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Proton"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Photon -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Photon">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/WBoson"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ZBoson"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Pion -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Pion"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Positron -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Positron"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Proton -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Proton"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Quark -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Quark"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/StrangeAntiquark -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/StrangeAntiquark">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TopAntiquark"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/UpAntiquark"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/StrangeQuark -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/StrangeQuark">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/TopQuark"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/UpQuark"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SubatomicParticle -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SubatomicParticle">
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.0/snap#Object"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Tauon -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Tauon"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/TopAntiquark -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/TopAntiquark">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/UpAntiquark"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/TopQuark -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/TopQuark">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/UpQuark"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UpAntiquark -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/UpAntiquark"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UpQuark -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/UpQuark"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/WBoson -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/WBoson">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/ZBoson"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ZBoson -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ZBoson"/>
+    
+
+
+    <!-- http://www.ifomis.org/bfo/1.0/snap#Object -->
+
+    <owl:Class rdf:about="http://www.ifomis.org/bfo/1.0/snap#Object"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.0.0.1450) http://owlapi.sourceforge.net -->
+

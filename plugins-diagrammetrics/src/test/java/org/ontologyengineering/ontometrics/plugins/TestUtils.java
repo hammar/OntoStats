@@ -60,6 +60,19 @@ public class TestUtils {
         return owl;
     }
 
+    public static List<File> getALCFiles() {
+        String basename = dirname + File.separator;
+        return Arrays.asList(new File(basename + "ALC-0"), new File(basename + "ALC-1")
+                           , new File(basename + "ALC-2"), new File(basename + "ALC-3")
+                           , new File(basename + "ALC-4"), new File(basename + "ALC-5")
+                           , new File(basename + "ALC-6"));
+    }
+
+    public static File getSSNFile() {
+        String basename = dirname + File.separator;
+        return new File(basename + "ssn.owl");
+    }
+
     public static List<File> getTestDataFiles() {
         String basename = dirname + File.separator;
         return Arrays.asList(new File(basename + "14672877-e396-415e-b8e8-891c072bd662_test15.owl"), new File(basename + "BuildingsAndPlaces.rdf"), new File(basename + "ssn.owl"));
@@ -76,9 +89,9 @@ public class TestUtils {
 
 
     public static String runGremlinTest(File owl, DiagramMetric dm) {
-    	LazyParserGremlin lpg = new LazyParserGremlin(owl);
-    	GremlinQuery       gq = new GremlinQuery(lpg, dm.getLHS(), dm.getRHS());
-    	return gq.runQuery();
+        LazyParserGremlin lpg = new LazyParserGremlin(owl);
+        GremlinQuery       gq = new GremlinQuery(lpg, dm.getLHS(), dm.getRHS());
+        return gq.runQuery();
     }
 
     public static String runOWLAPITest(File owl, DiagramMetric dm) {
@@ -88,8 +101,8 @@ public class TestUtils {
     }
 
     public static String runJenaTest(File owl, DiagramMetric dm) throws IOException {
-    	ParserJena  pj = new ParserJena(owl);
-    	SparqlQuery jq = new SparqlQuery(pj, dm.getLHS(), dm.getRHS());
+        ParserJena  pj = new ParserJena(owl);
+        SparqlQuery jq = new SparqlQuery(pj, dm.getLHS(), dm.getRHS());
         return jq.runQuery();
     }
 }

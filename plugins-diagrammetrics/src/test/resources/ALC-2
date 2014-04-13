@@ -1,0 +1,641 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://ontology.dumontierlab.com/biochemistry-complex#"
+     xml:base="http://ontology.dumontierlab.com/biochemistry-complex"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:snap="http://www.ifomis.org/bfo/1.0/snap#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:ontology="http://ontology.dumontierlab.com/">
+    <owl:Ontology rdf:about="http://ontology.dumontierlab.com/biochemistry-complex">
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</owl:versionInfo>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2007-10-01</dc:date>
+        <dc:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Additional class descriptions for biochemistry ontology.</dc:description>
+        <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Biochemistry Ontology (complex)</dc:title>
+        <dc:publisher rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dumontier Lab</dc:publisher>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Michel Dumontier</dc:creator>
+        <dc:format rdf:datatype="http://www.w3.org/2001/XMLSchema#string">application/rdf+xml</dc:format>
+        <dc:language rdf:datatype="http://www.w3.org/2001/XMLSchema#string">en</dc:language>
+        <owl:imports rdf:resource="http://ontology.dumontierlab.com/biochemistry-primitive"/>
+        <owl:imports rdf:resource="http://ontology.dumontierlab.com/chemistry-complex"/>
+        <owl:imports rdf:resource="http://ontology.dumontierlab.com/nulo"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#versionInfo"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/publisher"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/language"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/format"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Acetylation -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Acetylation">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Alkylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/BiochemicalCleavage"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Biotinylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Fucosylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Glutamylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Glycosylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Hydroxylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Isoprenylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Lipoylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phosphopantetheinylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phosphorylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/S-nitrosylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SUMOylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Sulfation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Ubiquitination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Activator -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Activator"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Alanine -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Alanine"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Alkylation -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Alkylation">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/BiochemicalCleavage"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Biotinylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Fucosylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Glutamylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Glycosylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Hydroxylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Isoprenylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Lipoylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phosphopantetheinylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phosphorylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/S-nitrosylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SUMOylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Sulfation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Ubiquitination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Angle -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Angle"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Arginine -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Arginine"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Asparagine -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Asparagine"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Aspartate -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Aspartate"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BiochemicalCleavage -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BiochemicalCleavage">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Biotinylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Fucosylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Glutamylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Glycosylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Hydroxylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Isoprenylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Lipoylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phosphopantetheinylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phosphorylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/S-nitrosylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SUMOylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Sulfation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Ubiquitination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BiochemicalModification -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BiochemicalModification">
+        <rdfs:subClassOf rdf:resource="http://ontology.dumontierlab.com/ChemicalReaction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BiochemicalPathway -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/BiochemicalPathway">
+        <rdfs:subClassOf rdf:resource="http://ontology.dumontierlab.com/ChemicalReactionPathway"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Biotinylation -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Biotinylation">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Fucosylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Glutamylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Glycosylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Hydroxylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Isoprenylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Lipoylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phosphopantetheinylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phosphorylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/S-nitrosylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SUMOylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Sulfation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Ubiquitination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ChemicalInteraction -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ChemicalInteraction"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ChemicalReaction -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ChemicalReaction"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ChemicalReactionPathway -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ChemicalReactionPathway"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ChemicalSubstance -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/ChemicalSubstance"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CommonProteinAminoAcid -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/CommonProteinAminoAcid">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Alanine"/>
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Arginine"/>
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Asparagine"/>
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Aspartate"/>
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Cysteine"/>
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Glutamate"/>
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Glutamine"/>
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Glycine"/>
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Histidine"/>
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Isoleucine"/>
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Leucine"/>
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Methionine"/>
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Phenylalanine"/>
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Proline"/>
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Serine"/>
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Threonine"/>
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Tryptophan"/>
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Tyrosine"/>
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Valine"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CovalentBond -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/CovalentBond"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Cysteine -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Cysteine"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DNACleavage -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/DNACleavage">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/PeptideCleavage"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Domain -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Domain">
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.0/snap#FiatObjectPart"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Fucosylation -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Fucosylation">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Glutamylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Glycosylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Hydroxylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Isoprenylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Lipoylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phosphopantetheinylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phosphorylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/S-nitrosylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SUMOylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Sulfation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Ubiquitination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Glutamate -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Glutamate"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Glutamine -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Glutamine"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Glutamylation -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Glutamylation">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Glycosylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Hydroxylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Isoprenylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Lipoylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phosphopantetheinylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phosphorylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/S-nitrosylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SUMOylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Sulfation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Ubiquitination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Glycine -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Glycine"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Glycosylation -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Glycosylation">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Hydroxylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Isoprenylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Lipoylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phosphopantetheinylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phosphorylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/S-nitrosylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SUMOylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Sulfation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Ubiquitination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Histidine -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Histidine"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Hydroxylation -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Hydroxylation">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Isoprenylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Lipoylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phosphopantetheinylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phosphorylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/S-nitrosylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SUMOylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Sulfation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Ubiquitination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Identifier -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Identifier">
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.0/snap#Quality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Inhibitor -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Inhibitor"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Isoleucine -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Isoleucine"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Isoprenylation -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Isoprenylation">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Lipoylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phosphopantetheinylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phosphorylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/S-nitrosylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SUMOylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Sulfation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Ubiquitination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Leucine -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Leucine"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Ligand -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Ligand">
+        <rdfs:subClassOf rdf:resource="http://ontology.dumontierlab.com/ChemicalSubstance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Lipoylation -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Lipoylation">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phosphopantetheinylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phosphorylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/S-nitrosylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SUMOylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Sulfation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Ubiquitination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MetabolicPathway -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/MetabolicPathway">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SignalingPathway"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Methionine -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Methionine"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MolecularInteraction -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/MolecularInteraction">
+        <rdfs:subClassOf rdf:resource="http://ontology.dumontierlab.com/ChemicalInteraction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MolecularSite -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/MolecularSite">
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.0/snap#Site"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/OrganicCompound -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/OrganicCompound">
+        <rdfs:subClassOf rdf:resource="http://ontology.dumontierlab.com/ChemicalSubstance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/OrganicGroup -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/OrganicGroup">
+        <rdfs:subClassOf rdf:resource="http://ontology.dumontierlab.com/ChemicalSubstance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PeptideAngle -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/PeptideAngle">
+        <rdfs:subClassOf rdf:resource="http://ontology.dumontierlab.com/Angle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PeptideBond -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/PeptideBond">
+        <rdfs:subClassOf rdf:resource="http://ontology.dumontierlab.com/CovalentBond"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PeptideCleavage -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/PeptideCleavage"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Phenylalanine -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Phenylalanine"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Phosphopantetheinylation -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Phosphopantetheinylation">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Phosphorylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/S-nitrosylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SUMOylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Sulfation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Ubiquitination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Phosphorylation -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Phosphorylation">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/S-nitrosylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SUMOylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Sulfation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Ubiquitination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Proline -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Proline"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Regulator -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Regulator">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Activator"/>
+                    <rdf:Description rdf:about="http://ontology.dumontierlab.com/Inhibitor"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/S-nitrosylation -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/S-nitrosylation">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/SUMOylation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Sulfation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Ubiquitination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SUMOylation -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SUMOylation">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Sulfation"/>
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Ubiquitination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SecondaryStructure -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SecondaryStructure">
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.0/snap#Quality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Serine -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Serine"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SignalingPathway -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/SignalingPathway"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Sulfation -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Sulfation">
+        <owl:disjointWith rdf:resource="http://ontology.dumontierlab.com/Ubiquitination"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Threonine -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Threonine"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Tryptophan -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Tryptophan"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Tyrosine -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Tyrosine"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Ubiquitination -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Ubiquitination"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Valine -->
+
+    <owl:Class rdf:about="http://ontology.dumontierlab.com/Valine"/>
+    
+
+
+    <!-- http://www.ifomis.org/bfo/1.0/snap#FiatObjectPart -->
+
+    <owl:Class rdf:about="http://www.ifomis.org/bfo/1.0/snap#FiatObjectPart"/>
+    
+
+
+    <!-- http://www.ifomis.org/bfo/1.0/snap#Quality -->
+
+    <owl:Class rdf:about="http://www.ifomis.org/bfo/1.0/snap#Quality"/>
+    
+
+
+    <!-- http://www.ifomis.org/bfo/1.0/snap#Site -->
+
+    <owl:Class rdf:about="http://www.ifomis.org/bfo/1.0/snap#Site"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.0.0.1450) http://owlapi.sourceforge.net -->
+
