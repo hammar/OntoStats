@@ -22,6 +22,7 @@ WHERE { {?atoma     $(TERM)                          ?object
         ?atomc     rdf:type                                 owl:Class 
                  .
         # Ensure each atom is atomic
+        FILTER (isIRI(?atoma) && isIRI(?atomb) && isIRI(?atomc))
         #FILTER NOT EXISTS{?atoma owl:unionOf        ?ox }
         #FILTER NOT EXISTS{?atoma owl:intersectionOf ?oy }
         #FILTER NOT EXISTS{?atoma owl:complementOf   ?oz }
