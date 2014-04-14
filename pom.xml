@@ -11,7 +11,9 @@
   <modules>
     <module>ontometrics-core</module>
     <module>plugins-axiomatic</module>
+    <!-- The Diagrammetrics plugins are unfinished.
     <module>plugins-diagrammetrics</module>
+    -->
     <module>plugins-owlapimetrics</module>
     <module>plugins-profiles</module>
     <module>plugins-structural</module>
