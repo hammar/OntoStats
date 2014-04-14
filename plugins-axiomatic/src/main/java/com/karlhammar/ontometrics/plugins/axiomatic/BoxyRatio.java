@@ -49,7 +49,6 @@ public class BoxyRatio extends OntoMetricsPlugin {
             logger.severe("getMetricValue called before init()!");
         }
         OWLOntology ontology = owlapi.getOntology();
-        int total  = ontology.getAxiomCount();
 
         int tboxes = 0;
         for(AxiomType<?> tbox: AxiomType.TBoxAxiomTypes) {
@@ -66,9 +65,9 @@ public class BoxyRatio extends OntoMetricsPlugin {
             rboxes += ontology.getAxiomCount(rbox);
         }
 
-        float tboxCount   = (float) tboxes/total;
-        float aboxCount   = (float) aboxes/total;
-        float rboxCount   = (float) rboxes/total;
+        float tboxCount   = (float) tboxes;
+        float aboxCount   = (float) aboxes;
+        float rboxCount   = (float) rboxes;
 
         return Optional.of(new String(tboxCount + ":" + aboxCount + ":" + rboxCount));
     }
