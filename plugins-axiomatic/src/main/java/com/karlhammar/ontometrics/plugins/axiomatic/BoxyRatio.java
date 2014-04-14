@@ -65,10 +65,6 @@ public class BoxyRatio extends OntoMetricsPlugin {
             rboxes += ontology.getAxiomCount(rbox);
         }
 
-        float tboxCount   = (float) tboxes;
-        float aboxCount   = (float) aboxes;
-        float rboxCount   = (float) rboxes;
-
-        return Optional.of(new String(tboxCount + ":" + aboxCount + ":" + rboxCount));
+        return Optional.of(new String(tboxes + ":" + aboxes + ":" + rboxes));
     }
 }
