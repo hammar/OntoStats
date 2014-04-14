@@ -3,8 +3,10 @@ package org.ontologyengineering.ontometrics.plugins;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
-
 import java.util.Optional;
+
+import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.model.OWLOntologyManager;
 
 import com.karlhammar.ontometrics.plugins.ParserConfiguration;
 import com.karlhammar.ontometrics.plugins.ParserJena;
@@ -20,12 +22,12 @@ public class AxiomCount extends OntoMetricsPlugin {
 
     @Override
     public String getName() {
-        return "The count of axioms in the ontology as per OWL API.";
+        return "The count of logical axioms in the ontology as per OWL API.";
     }
 
     @Override
     public String getMetricAbbreviation() {
-        return "AxiomCount";
+        return "LogicalAxiomCount";
     }
 
     @Override
@@ -34,9 +36,6 @@ public class AxiomCount extends OntoMetricsPlugin {
             logger.severe("getMetricValue called before init!");
         }
 
-        org.semanticweb.owlapi.metrics.AxiomCount ac = new org.semanticweb.owlapi.metrics.AxiomCount(owlapi.getOntology().getOWLOntologyManager());
-        ac.setOntology(owlapi.getOntology());
-        ac.setImportsClosureUsed(false);
-        return Optional.of(Integer.toString(ac.getValue()));
+        return Optional.of(Integer.toString(owlapi.getOntology().getLogicalAxiomCount()));
     }
 }
