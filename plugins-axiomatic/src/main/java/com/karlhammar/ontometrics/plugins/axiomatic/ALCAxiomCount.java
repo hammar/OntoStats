@@ -36,8 +36,8 @@ public class  ALCAxiomCount extends OntoMetricsPlugin {
             e.printStackTrace();
         }
         manager.addAxioms(ontology, owlapi.getOntology().getLogicalAxioms());
-        ALCExpressivityChecker aec = new ALCExpressivityChecker(Collections.singleton(ontology));
-        return Optional.of(Integer.toString(aec.getALCAxiomCount()));
+        //ALCExpressivityChecker aec = new ALCExpressivityChecker(Collections.singleton(ontology));
+        return Optional.of(Integer.toString(ALCExpressivityChecker.getALCAxiomCount(ontology)));
     }
 
 }

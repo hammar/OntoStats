@@ -37,8 +37,7 @@ public class  ALCTBoxCount extends OntoMetricsPlugin {
             e.printStackTrace();
         }
         manager.addAxioms(ontology, owlapi.getOntology().getTBoxAxioms(false));
-        ALCExpressivityChecker aec = new ALCExpressivityChecker(Collections.singleton(ontology));
-        return Optional.of(Integer.toString(aec.getALCAxiomCount()));
+        return Optional.of(Integer.toString(ALCExpressivityChecker.getALCAxiomCount(ontology)));
     }
 
 }
