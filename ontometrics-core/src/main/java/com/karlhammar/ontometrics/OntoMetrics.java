@@ -86,8 +86,7 @@ public class OntoMetrics {
         while (plugins.hasNext()) {
         	OntoMetricsPlugin plugin = plugins.next();
         	plugin.init(new ParserJena(ontologyFile),
-        	        new ParserOWLAPI(ontologyFile),
-        	        new LazyParserGremlin(ontologyFile));
+        	        new ParserOWLAPI(ontologyFile));
         	
         	// An error in plugin execution can mean null values returned, so check
         	// for this.
