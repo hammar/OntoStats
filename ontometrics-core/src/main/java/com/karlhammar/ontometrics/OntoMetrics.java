@@ -16,7 +16,6 @@ import org.apache.commons.cli.PosixParser;
 
 import com.karlhammar.ontometrics.plugins.ParserJena;
 import com.karlhammar.ontometrics.plugins.ParserOWLAPI;
-import com.karlhammar.ontometrics.plugins.LazyParserGremlin;
 import com.karlhammar.ontometrics.plugins.api.OntoMetricsPlugin;
 import com.karlhammar.ontometrics.plugins.api.PluginService;
 import com.karlhammar.ontometrics.plugins.api.PluginServiceFactory;
